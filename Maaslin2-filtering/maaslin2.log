@@ -1,0 +1,1379 @@
+2024-09-05 11:06:40.673236 INFO::Writing function arguments to log file
+2024-09-05 11:06:40.677164 DEBUG::Function arguments
+2024-09-05 11:06:40.678146 DEBUG::Output folder: Maaslin2-filtering
+2024-09-05 11:06:40.679016 DEBUG::Min Abundance: 0.000000
+2024-09-05 11:06:40.679946 DEBUG::Min Prevalence: 0.000000
+2024-09-05 11:06:40.680952 DEBUG::Normalization: TSS
+2024-09-05 11:06:40.681824 DEBUG::Transform: AST
+2024-09-05 11:06:40.682694 DEBUG::Analysis method: LM
+2024-09-05 11:06:40.68367 DEBUG::Max significance: 0.250000
+2024-09-05 11:06:40.684709 DEBUG::Random effects:
+2024-09-05 11:06:40.685582 DEBUG::Fixed effects: Filtered
+2024-09-05 11:06:40.686394 DEBUG::Correction method: BH
+2024-09-05 11:06:40.687442 DEBUG::Standardize: FALSE
+2024-09-05 11:06:40.689319 DEBUG::Cores: 1
+2024-09-05 11:06:40.690316 INFO::Verifying options selected are valid
+2024-09-05 11:06:40.6947 INFO::Determining format of input files
+2024-09-05 11:06:40.69871 INFO::Input format is data samples as rows and metadata samples as rows
+2024-09-05 11:06:40.706161 DEBUG::A total of 16 samples were found in both the data and metadata
+2024-09-05 11:06:40.70708 DEBUG::Reordering data/metadata to use same sample ordering
+2024-09-05 11:06:40.728818 INFO::Formula for fixed effects: expr ~  Filtered
+2024-09-05 11:06:40.734065 INFO::Filter data based on min abundance and min prevalence
+2024-09-05 11:06:40.736732 INFO::Total samples in data: 16
+2024-09-05 11:06:40.742185 INFO::Min samples required with min abundance for a feature not to be filtered: 0.000000
+2024-09-05 11:06:40.774983 INFO::Total filtered features: 0
+2024-09-05 11:06:40.779089 INFO::Filtered feature names from abundance and prevalence filtering:
+2024-09-05 11:06:40.837073 INFO::Total filtered features with variance filtering: 0
+2024-09-05 11:06:40.841743 INFO::Filtered feature names from variance filtering:
+2024-09-05 11:06:40.8448 INFO::Running selected normalization method: TSS
+2024-09-05 11:06:40.874558 INFO::Bypass z-score application to metadata
+2024-09-05 11:06:40.877393 INFO::Running selected transform method: AST
+2024-09-05 11:06:40.908072 INFO::Running selected analysis method: LM
+2024-09-05 11:06:40.918569 INFO::Fitting model to feature number 1, ASV3
+2024-09-05 11:06:40.940221 INFO::Fitting model to feature number 2, ASV5
+2024-09-05 11:06:40.947866 INFO::Fitting model to feature number 3, ASV6
+2024-09-05 11:06:40.955856 INFO::Fitting model to feature number 4, ASV7
+2024-09-05 11:06:40.964234 INFO::Fitting model to feature number 5, ASV8
+2024-09-05 11:06:40.971817 INFO::Fitting model to feature number 6, ASV9
+2024-09-05 11:06:40.979665 INFO::Fitting model to feature number 7, ASV10
+2024-09-05 11:06:40.988717 INFO::Fitting model to feature number 8, ASV11
+2024-09-05 11:06:40.996711 INFO::Fitting model to feature number 9, ASV12
+2024-09-05 11:06:41.005082 INFO::Fitting model to feature number 10, ASV13
+2024-09-05 11:06:41.012244 INFO::Fitting model to feature number 11, ASV14
+2024-09-05 11:06:41.019483 INFO::Fitting model to feature number 12, ASV15
+2024-09-05 11:06:41.027806 INFO::Fitting model to feature number 13, ASV16
+2024-09-05 11:06:41.037358 INFO::Fitting model to feature number 14, ASV17
+2024-09-05 11:06:41.045463 INFO::Fitting model to feature number 15, ASV18
+2024-09-05 11:06:41.052591 INFO::Fitting model to feature number 16, ASV19
+2024-09-05 11:06:41.060571 INFO::Fitting model to feature number 17, ASV20
+2024-09-05 11:06:41.068532 INFO::Fitting model to feature number 18, ASV22
+2024-09-05 11:06:41.078675 INFO::Fitting model to feature number 19, ASV23
+2024-09-05 11:06:41.091808 INFO::Fitting model to feature number 20, ASV24
+2024-09-05 11:06:41.128135 INFO::Fitting model to feature number 21, ASV25
+2024-09-05 11:06:41.15126 INFO::Fitting model to feature number 22, ASV26
+2024-09-05 11:06:41.168189 INFO::Fitting model to feature number 23, ASV27
+2024-09-05 11:06:41.177782 INFO::Fitting model to feature number 24, ASV28
+2024-09-05 11:06:41.212862 INFO::Fitting model to feature number 25, ASV29
+2024-09-05 11:06:41.221059 INFO::Fitting model to feature number 26, ASV30
+2024-09-05 11:06:41.229143 INFO::Fitting model to feature number 27, ASV31
+2024-09-05 11:06:41.239162 INFO::Fitting model to feature number 28, ASV32
+2024-09-05 11:06:41.249429 INFO::Fitting model to feature number 29, ASV33
+2024-09-05 11:06:41.261886 INFO::Fitting model to feature number 30, ASV35
+2024-09-05 11:06:41.27141 INFO::Fitting model to feature number 31, ASV36
+2024-09-05 11:06:41.297703 INFO::Fitting model to feature number 32, ASV37
+2024-09-05 11:06:41.306275 INFO::Fitting model to feature number 33, ASV38
+2024-09-05 11:06:41.314884 INFO::Fitting model to feature number 34, ASV39
+2024-09-05 11:06:41.322361 INFO::Fitting model to feature number 35, ASV42
+2024-09-05 11:06:41.331204 INFO::Fitting model to feature number 36, ASV43
+2024-09-05 11:06:41.338472 INFO::Fitting model to feature number 37, ASV44
+2024-09-05 11:06:41.347267 INFO::Fitting model to feature number 38, ASV45
+2024-09-05 11:06:41.35805 INFO::Fitting model to feature number 39, ASV46
+2024-09-05 11:06:41.367432 INFO::Fitting model to feature number 40, ASV47
+2024-09-05 11:06:41.375055 INFO::Fitting model to feature number 41, ASV48
+2024-09-05 11:06:41.382557 INFO::Fitting model to feature number 42, ASV49
+2024-09-05 11:06:41.391428 INFO::Fitting model to feature number 43, ASV50
+2024-09-05 11:06:41.400493 INFO::Fitting model to feature number 44, ASV51
+2024-09-05 11:06:41.40845 INFO::Fitting model to feature number 45, ASV52
+2024-09-05 11:06:41.421997 INFO::Fitting model to feature number 46, ASV54
+2024-09-05 11:06:41.439456 INFO::Fitting model to feature number 47, ASV55
+2024-09-05 11:06:41.447088 INFO::Fitting model to feature number 48, ASV56
+2024-09-05 11:06:41.453319 INFO::Fitting model to feature number 49, ASV58
+2024-09-05 11:06:41.463244 INFO::Fitting model to feature number 50, ASV59
+2024-09-05 11:06:41.474377 INFO::Fitting model to feature number 51, ASV60
+2024-09-05 11:06:41.482321 INFO::Fitting model to feature number 52, ASV62
+2024-09-05 11:06:41.592232 INFO::Fitting model to feature number 53, ASV63
+2024-09-05 11:06:41.602385 INFO::Fitting model to feature number 54, ASV64
+2024-09-05 11:06:41.610906 INFO::Fitting model to feature number 55, ASV65
+2024-09-05 11:06:41.618865 INFO::Fitting model to feature number 56, ASV66
+2024-09-05 11:06:41.630437 INFO::Fitting model to feature number 57, ASV67
+2024-09-05 11:06:41.829309 INFO::Fitting model to feature number 58, ASV68
+2024-09-05 11:06:41.839996 INFO::Fitting model to feature number 59, ASV69
+2024-09-05 11:06:41.847679 INFO::Fitting model to feature number 60, ASV70
+2024-09-05 11:06:41.86171 INFO::Fitting model to feature number 61, ASV71
+2024-09-05 11:06:41.878813 INFO::Fitting model to feature number 62, ASV72
+2024-09-05 11:06:41.890189 INFO::Fitting model to feature number 63, ASV73
+2024-09-05 11:06:41.904477 INFO::Fitting model to feature number 64, ASV74
+2024-09-05 11:06:41.915694 INFO::Fitting model to feature number 65, ASV75
+2024-09-05 11:06:41.925139 INFO::Fitting model to feature number 66, ASV76
+2024-09-05 11:06:41.933911 INFO::Fitting model to feature number 67, ASV77
+2024-09-05 11:06:41.94197 INFO::Fitting model to feature number 68, ASV78
+2024-09-05 11:06:41.953042 INFO::Fitting model to feature number 69, ASV79
+2024-09-05 11:06:41.963813 INFO::Fitting model to feature number 70, ASV80
+2024-09-05 11:06:41.975686 INFO::Fitting model to feature number 71, ASV81
+2024-09-05 11:06:41.984368 INFO::Fitting model to feature number 72, ASV82
+2024-09-05 11:06:42.004842 INFO::Fitting model to feature number 73, ASV83
+2024-09-05 11:06:42.015741 INFO::Fitting model to feature number 74, ASV84
+2024-09-05 11:06:42.024137 INFO::Fitting model to feature number 75, ASV85
+2024-09-05 11:06:42.034622 INFO::Fitting model to feature number 76, ASV86
+2024-09-05 11:06:42.042188 INFO::Fitting model to feature number 77, ASV87
+2024-09-05 11:06:42.052327 INFO::Fitting model to feature number 78, ASV88
+2024-09-05 11:06:42.06211 INFO::Fitting model to feature number 79, ASV89
+2024-09-05 11:06:42.071588 INFO::Fitting model to feature number 80, ASV90
+2024-09-05 11:06:42.081185 INFO::Fitting model to feature number 81, ASV91
+2024-09-05 11:06:42.089308 INFO::Fitting model to feature number 82, ASV92
+2024-09-05 11:06:42.096898 INFO::Fitting model to feature number 83, ASV94
+2024-09-05 11:06:42.105371 INFO::Fitting model to feature number 84, ASV96
+2024-09-05 11:06:42.116926 INFO::Fitting model to feature number 85, ASV97
+2024-09-05 11:06:42.125074 INFO::Fitting model to feature number 86, ASV98
+2024-09-05 11:06:42.133645 INFO::Fitting model to feature number 87, ASV99
+2024-09-05 11:06:42.141359 INFO::Fitting model to feature number 88, ASV100
+2024-09-05 11:06:42.149989 INFO::Fitting model to feature number 89, ASV101
+2024-09-05 11:06:42.158345 INFO::Fitting model to feature number 90, ASV102
+2024-09-05 11:06:42.175269 INFO::Fitting model to feature number 91, ASV103
+2024-09-05 11:06:42.185439 INFO::Fitting model to feature number 92, ASV104
+2024-09-05 11:06:42.193646 INFO::Fitting model to feature number 93, ASV105
+2024-09-05 11:06:42.201585 INFO::Fitting model to feature number 94, ASV106
+2024-09-05 11:06:42.209966 INFO::Fitting model to feature number 95, ASV107
+2024-09-05 11:06:42.221487 INFO::Fitting model to feature number 96, ASV108
+2024-09-05 11:06:42.229879 INFO::Fitting model to feature number 97, ASV110
+2024-09-05 11:06:42.239564 INFO::Fitting model to feature number 98, ASV111
+2024-09-05 11:06:42.249986 INFO::Fitting model to feature number 99, ASV112
+2024-09-05 11:06:42.259034 INFO::Fitting model to feature number 100, ASV113
+2024-09-05 11:06:42.26969 INFO::Fitting model to feature number 101, ASV114
+2024-09-05 11:06:42.277271 INFO::Fitting model to feature number 102, ASV115
+2024-09-05 11:06:42.28623 INFO::Fitting model to feature number 103, ASV116
+2024-09-05 11:06:42.294104 INFO::Fitting model to feature number 104, ASV117
+2024-09-05 11:06:42.304514 INFO::Fitting model to feature number 105, ASV119
+2024-09-05 11:06:42.31893 INFO::Fitting model to feature number 106, ASV120
+2024-09-05 11:06:42.327957 INFO::Fitting model to feature number 107, ASV121
+2024-09-05 11:06:42.33758 INFO::Fitting model to feature number 108, ASV122
+2024-09-05 11:06:42.347808 INFO::Fitting model to feature number 109, ASV123
+2024-09-05 11:06:42.35724 INFO::Fitting model to feature number 110, ASV124
+2024-09-05 11:06:42.370341 INFO::Fitting model to feature number 111, ASV125
+2024-09-05 11:06:42.380045 INFO::Fitting model to feature number 112, ASV126
+2024-09-05 11:06:42.391692 INFO::Fitting model to feature number 113, ASV127
+2024-09-05 11:06:42.403055 INFO::Fitting model to feature number 114, ASV128
+2024-09-05 11:06:42.412928 INFO::Fitting model to feature number 115, ASV130
+2024-09-05 11:06:42.423964 INFO::Fitting model to feature number 116, ASV131
+2024-09-05 11:06:42.433323 INFO::Fitting model to feature number 117, ASV133
+2024-09-05 11:06:42.443141 INFO::Fitting model to feature number 118, ASV135
+2024-09-05 11:06:42.452869 INFO::Fitting model to feature number 119, ASV136
+2024-09-05 11:06:42.463515 INFO::Fitting model to feature number 120, ASV137
+2024-09-05 11:06:42.472936 INFO::Fitting model to feature number 121, ASV138
+2024-09-05 11:06:42.551117 INFO::Fitting model to feature number 122, ASV139
+2024-09-05 11:06:42.567679 INFO::Fitting model to feature number 123, ASV140
+2024-09-05 11:06:42.5835 INFO::Fitting model to feature number 124, ASV141
+2024-09-05 11:06:42.592323 INFO::Fitting model to feature number 125, ASV142
+2024-09-05 11:06:42.602316 INFO::Fitting model to feature number 126, ASV144
+2024-09-05 11:06:42.614707 INFO::Fitting model to feature number 127, ASV145
+2024-09-05 11:06:42.625802 INFO::Fitting model to feature number 128, ASV146
+2024-09-05 11:06:42.638584 INFO::Fitting model to feature number 129, ASV147
+2024-09-05 11:06:42.649755 INFO::Fitting model to feature number 130, ASV149
+2024-09-05 11:06:42.867561 INFO::Fitting model to feature number 131, ASV151
+2024-09-05 11:06:42.875857 INFO::Fitting model to feature number 132, ASV152
+2024-09-05 11:06:42.886362 INFO::Fitting model to feature number 133, ASV153
+2024-09-05 11:06:42.897803 INFO::Fitting model to feature number 134, ASV154
+2024-09-05 11:06:42.907486 INFO::Fitting model to feature number 135, ASV155
+2024-09-05 11:06:42.919242 INFO::Fitting model to feature number 136, ASV156
+2024-09-05 11:06:42.929099 INFO::Fitting model to feature number 137, ASV157
+2024-09-05 11:06:42.940141 INFO::Fitting model to feature number 138, ASV159
+2024-09-05 11:06:42.956442 INFO::Fitting model to feature number 139, ASV160
+2024-09-05 11:06:42.976697 INFO::Fitting model to feature number 140, ASV161
+2024-09-05 11:06:42.989932 INFO::Fitting model to feature number 141, ASV162
+2024-09-05 11:06:42.999102 INFO::Fitting model to feature number 142, ASV164
+2024-09-05 11:06:43.008512 INFO::Fitting model to feature number 143, ASV165
+2024-09-05 11:06:43.030038 INFO::Fitting model to feature number 144, ASV166
+2024-09-05 11:06:43.039206 INFO::Fitting model to feature number 145, ASV168
+2024-09-05 11:06:43.049781 INFO::Fitting model to feature number 146, ASV169
+2024-09-05 11:06:43.059635 INFO::Fitting model to feature number 147, ASV170
+2024-09-05 11:06:43.07141 INFO::Fitting model to feature number 148, ASV171
+2024-09-05 11:06:43.085177 INFO::Fitting model to feature number 149, ASV172
+2024-09-05 11:06:43.096613 INFO::Fitting model to feature number 150, ASV173
+2024-09-05 11:06:43.106317 INFO::Fitting model to feature number 151, ASV174
+2024-09-05 11:06:43.116107 INFO::Fitting model to feature number 152, ASV176
+2024-09-05 11:06:43.127339 INFO::Fitting model to feature number 153, ASV177
+2024-09-05 11:06:43.135742 INFO::Fitting model to feature number 154, ASV178
+2024-09-05 11:06:43.146813 INFO::Fitting model to feature number 155, ASV180
+2024-09-05 11:06:43.156184 INFO::Fitting model to feature number 156, ASV181
+2024-09-05 11:06:43.165034 INFO::Fitting model to feature number 157, ASV182
+2024-09-05 11:06:43.176381 INFO::Fitting model to feature number 158, ASV183
+2024-09-05 11:06:43.185278 INFO::Fitting model to feature number 159, ASV184
+2024-09-05 11:06:43.194275 INFO::Fitting model to feature number 160, ASV185
+2024-09-05 11:06:43.20252 INFO::Fitting model to feature number 161, ASV186
+2024-09-05 11:06:43.217651 INFO::Fitting model to feature number 162, ASV187
+2024-09-05 11:06:43.236558 INFO::Fitting model to feature number 163, ASV188
+2024-09-05 11:06:43.245237 INFO::Fitting model to feature number 164, ASV189
+2024-09-05 11:06:43.254153 INFO::Fitting model to feature number 165, ASV191
+2024-09-05 11:06:43.262288 INFO::Fitting model to feature number 166, ASV192
+2024-09-05 11:06:43.270917 INFO::Fitting model to feature number 167, ASV193
+2024-09-05 11:06:43.279327 INFO::Fitting model to feature number 168, ASV194
+2024-09-05 11:06:43.291805 INFO::Fitting model to feature number 169, ASV196
+2024-09-05 11:06:43.30281 INFO::Fitting model to feature number 170, ASV197
+2024-09-05 11:06:43.31049 INFO::Fitting model to feature number 171, ASV198
+2024-09-05 11:06:43.3185 INFO::Fitting model to feature number 172, ASV199
+2024-09-05 11:06:43.326931 INFO::Fitting model to feature number 173, ASV200
+2024-09-05 11:06:43.335197 INFO::Fitting model to feature number 174, ASV201
+2024-09-05 11:06:43.346716 INFO::Fitting model to feature number 175, ASV203
+2024-09-05 11:06:43.355453 INFO::Fitting model to feature number 176, ASV205
+2024-09-05 11:06:43.363587 INFO::Fitting model to feature number 177, ASV207
+2024-09-05 11:06:43.372081 INFO::Fitting model to feature number 178, ASV208
+2024-09-05 11:06:43.379874 INFO::Fitting model to feature number 179, ASV209
+2024-09-05 11:06:43.390198 INFO::Fitting model to feature number 180, ASV210
+2024-09-05 11:06:43.400523 INFO::Fitting model to feature number 181, ASV212
+2024-09-05 11:06:43.410121 INFO::Fitting model to feature number 182, ASV216
+2024-09-05 11:06:43.419679 INFO::Fitting model to feature number 183, ASV217
+2024-09-05 11:06:43.4278 INFO::Fitting model to feature number 184, ASV218
+2024-09-05 11:06:43.436165 INFO::Fitting model to feature number 185, ASV219
+2024-09-05 11:06:43.44613 INFO::Fitting model to feature number 186, ASV220
+2024-09-05 11:06:43.45405 INFO::Fitting model to feature number 187, ASV221
+2024-09-05 11:06:43.463444 INFO::Fitting model to feature number 188, ASV222
+2024-09-05 11:06:43.555501 INFO::Fitting model to feature number 189, ASV224
+2024-09-05 11:06:43.565077 INFO::Fitting model to feature number 190, ASV225
+2024-09-05 11:06:43.57323 INFO::Fitting model to feature number 191, ASV227
+2024-09-05 11:06:43.582721 INFO::Fitting model to feature number 192, ASV228
+2024-09-05 11:06:43.591084 INFO::Fitting model to feature number 193, ASV231
+2024-09-05 11:06:43.600993 INFO::Fitting model to feature number 194, ASV232
+2024-09-05 11:06:43.608367 INFO::Fitting model to feature number 195, ASV233
+2024-09-05 11:06:43.617273 INFO::Fitting model to feature number 196, ASV235
+2024-09-05 11:06:43.629745 INFO::Fitting model to feature number 197, ASV236
+2024-09-05 11:06:43.637961 INFO::Fitting model to feature number 198, ASV237
+2024-09-05 11:06:43.645526 INFO::Fitting model to feature number 199, ASV238
+2024-09-05 11:06:43.880628 INFO::Fitting model to feature number 200, ASV239
+2024-09-05 11:06:43.889053 INFO::Fitting model to feature number 201, ASV240
+2024-09-05 11:06:43.89753 INFO::Fitting model to feature number 202, ASV241
+2024-09-05 11:06:43.90464 INFO::Fitting model to feature number 203, ASV242
+2024-09-05 11:06:43.913282 INFO::Fitting model to feature number 204, ASV243
+2024-09-05 11:06:43.920822 INFO::Fitting model to feature number 205, ASV244
+2024-09-05 11:06:43.929496 INFO::Fitting model to feature number 206, ASV245
+2024-09-05 11:06:43.938298 INFO::Fitting model to feature number 207, ASV246
+2024-09-05 11:06:43.947439 INFO::Fitting model to feature number 208, ASV247
+2024-09-05 11:06:43.954874 INFO::Fitting model to feature number 209, ASV248
+2024-09-05 11:06:43.963767 INFO::Fitting model to feature number 210, ASV249
+2024-09-05 11:06:43.972208 INFO::Fitting model to feature number 211, ASV250
+2024-09-05 11:06:43.980154 INFO::Fitting model to feature number 212, ASV251
+2024-09-05 11:06:43.988242 INFO::Fitting model to feature number 213, ASV252
+2024-09-05 11:06:44.008709 INFO::Fitting model to feature number 214, ASV253
+2024-09-05 11:06:44.046131 INFO::Fitting model to feature number 215, ASV254
+2024-09-05 11:06:44.05998 INFO::Fitting model to feature number 216, ASV257
+2024-09-05 11:06:44.070151 INFO::Fitting model to feature number 217, ASV258
+2024-09-05 11:06:44.079595 INFO::Fitting model to feature number 218, ASV259
+2024-09-05 11:06:44.087467 INFO::Fitting model to feature number 219, ASV260
+2024-09-05 11:06:44.116173 INFO::Fitting model to feature number 220, ASV261
+2024-09-05 11:06:44.125683 INFO::Fitting model to feature number 221, ASV262
+2024-09-05 11:06:44.136902 INFO::Fitting model to feature number 222, ASV263
+2024-09-05 11:06:44.145104 INFO::Fitting model to feature number 223, ASV264
+2024-09-05 11:06:44.158505 INFO::Fitting model to feature number 224, ASV265
+2024-09-05 11:06:44.170202 INFO::Fitting model to feature number 225, ASV267
+2024-09-05 11:06:44.178687 INFO::Fitting model to feature number 226, ASV268
+2024-09-05 11:06:44.187394 INFO::Fitting model to feature number 227, ASV272
+2024-09-05 11:06:44.19836 INFO::Fitting model to feature number 228, ASV273
+2024-09-05 11:06:44.207017 INFO::Fitting model to feature number 229, ASV275
+2024-09-05 11:06:44.228832 INFO::Fitting model to feature number 230, ASV276
+2024-09-05 11:06:44.237064 INFO::Fitting model to feature number 231, ASV277
+2024-09-05 11:06:44.247949 INFO::Fitting model to feature number 232, ASV278
+2024-09-05 11:06:44.255247 INFO::Fitting model to feature number 233, ASV280
+2024-09-05 11:06:44.264226 INFO::Fitting model to feature number 234, ASV281
+2024-09-05 11:06:44.273113 INFO::Fitting model to feature number 235, ASV282
+2024-09-05 11:06:44.285027 INFO::Fitting model to feature number 236, ASV283
+2024-09-05 11:06:44.297487 INFO::Fitting model to feature number 237, ASV284
+2024-09-05 11:06:44.306418 INFO::Fitting model to feature number 238, ASV286
+2024-09-05 11:06:44.31614 INFO::Fitting model to feature number 239, ASV287
+2024-09-05 11:06:44.324179 INFO::Fitting model to feature number 240, ASV288
+2024-09-05 11:06:44.331988 INFO::Fitting model to feature number 241, ASV290
+2024-09-05 11:06:44.342077 INFO::Fitting model to feature number 242, ASV291
+2024-09-05 11:06:44.359369 INFO::Fitting model to feature number 243, ASV292
+2024-09-05 11:06:44.37277 INFO::Fitting model to feature number 244, ASV293
+2024-09-05 11:06:44.381314 INFO::Fitting model to feature number 245, ASV294
+2024-09-05 11:06:44.392347 INFO::Fitting model to feature number 246, ASV296
+2024-09-05 11:06:44.400569 INFO::Fitting model to feature number 247, ASV297
+2024-09-05 11:06:44.409423 INFO::Fitting model to feature number 248, ASV298
+2024-09-05 11:06:44.417727 INFO::Fitting model to feature number 249, ASV299
+2024-09-05 11:06:44.426786 INFO::Fitting model to feature number 250, ASV301
+2024-09-05 11:06:44.437541 INFO::Fitting model to feature number 251, ASV302
+2024-09-05 11:06:44.447133 INFO::Fitting model to feature number 252, ASV303
+2024-09-05 11:06:44.459077 INFO::Fitting model to feature number 253, ASV305
+2024-09-05 11:06:44.468133 INFO::Fitting model to feature number 254, ASV306
+2024-09-05 11:06:44.476842 INFO::Fitting model to feature number 255, ASV307
+2024-09-05 11:06:44.485417 INFO::Fitting model to feature number 256, ASV308
+2024-09-05 11:06:44.49649 INFO::Fitting model to feature number 257, ASV309
+2024-09-05 11:06:44.504962 INFO::Fitting model to feature number 258, ASV310
+2024-09-05 11:06:44.596596 INFO::Fitting model to feature number 259, ASV311
+2024-09-05 11:06:44.609214 INFO::Fitting model to feature number 260, ASV312
+2024-09-05 11:06:44.620709 INFO::Fitting model to feature number 261, ASV314
+2024-09-05 11:06:44.631747 INFO::Fitting model to feature number 262, ASV315
+2024-09-05 11:06:44.639702 INFO::Fitting model to feature number 263, ASV316
+2024-09-05 11:06:44.651206 INFO::Fitting model to feature number 264, ASV317
+2024-09-05 11:06:44.659239 INFO::Fitting model to feature number 265, ASV318
+2024-09-05 11:06:44.669072 INFO::Fitting model to feature number 266, ASV319
+2024-09-05 11:06:45.384666 INFO::Fitting model to feature number 267, ASV320
+2024-09-05 11:06:45.39757 INFO::Fitting model to feature number 268, ASV322
+2024-09-05 11:06:45.408942 INFO::Fitting model to feature number 269, ASV324
+2024-09-05 11:06:45.421058 INFO::Fitting model to feature number 270, ASV326
+2024-09-05 11:06:45.435296 INFO::Fitting model to feature number 271, ASV327
+2024-09-05 11:06:45.444893 INFO::Fitting model to feature number 272, ASV328
+2024-09-05 11:06:45.454954 INFO::Fitting model to feature number 273, ASV330
+2024-09-05 11:06:45.463885 INFO::Fitting model to feature number 274, ASV332
+2024-09-05 11:06:45.469973 INFO::Fitting model to feature number 275, ASV333
+2024-09-05 11:06:45.476271 INFO::Fitting model to feature number 276, ASV334
+2024-09-05 11:06:45.48539 INFO::Fitting model to feature number 277, ASV335
+2024-09-05 11:06:45.49164 INFO::Fitting model to feature number 278, ASV336
+2024-09-05 11:06:45.497401 INFO::Fitting model to feature number 279, ASV337
+2024-09-05 11:06:45.504372 INFO::Fitting model to feature number 280, ASV338
+2024-09-05 11:06:45.511869 INFO::Fitting model to feature number 281, ASV341
+2024-09-05 11:06:45.517355 INFO::Fitting model to feature number 282, ASV342
+2024-09-05 11:06:45.523276 INFO::Fitting model to feature number 283, ASV344
+2024-09-05 11:06:45.62364 INFO::Fitting model to feature number 284, ASV346
+2024-09-05 11:06:45.633466 INFO::Fitting model to feature number 285, ASV347
+2024-09-05 11:06:45.640579 INFO::Fitting model to feature number 286, ASV348
+2024-09-05 11:06:45.646997 INFO::Fitting model to feature number 287, ASV349
+2024-09-05 11:06:45.654599 INFO::Fitting model to feature number 288, ASV350
+2024-09-05 11:06:45.661625 INFO::Fitting model to feature number 289, ASV351
+2024-09-05 11:06:45.668113 INFO::Fitting model to feature number 290, ASV352
+2024-09-05 11:06:45.938761 INFO::Fitting model to feature number 291, ASV353
+2024-09-05 11:06:45.946343 INFO::Fitting model to feature number 292, ASV354
+2024-09-05 11:06:45.953897 INFO::Fitting model to feature number 293, ASV356
+2024-09-05 11:06:45.960399 INFO::Fitting model to feature number 294, ASV358
+2024-09-05 11:06:45.968307 INFO::Fitting model to feature number 295, ASV359
+2024-09-05 11:06:45.977012 INFO::Fitting model to feature number 296, ASV360
+2024-09-05 11:06:45.984142 INFO::Fitting model to feature number 297, ASV361
+2024-09-05 11:06:45.991903 INFO::Fitting model to feature number 298, ASV362
+2024-09-05 11:06:46.001479 INFO::Fitting model to feature number 299, ASV363
+2024-09-05 11:06:46.008515 INFO::Fitting model to feature number 300, ASV365
+2024-09-05 11:06:46.014826 INFO::Fitting model to feature number 301, ASV366
+2024-09-05 11:06:46.023569 INFO::Fitting model to feature number 302, ASV367
+2024-09-05 11:06:46.030684 INFO::Fitting model to feature number 303, ASV368
+2024-09-05 11:06:46.036457 INFO::Fitting model to feature number 304, ASV369
+2024-09-05 11:06:46.043761 INFO::Fitting model to feature number 305, ASV371
+2024-09-05 11:06:46.050578 INFO::Fitting model to feature number 306, ASV372
+2024-09-05 11:06:46.059352 INFO::Fitting model to feature number 307, ASV373
+2024-09-05 11:06:46.065358 INFO::Fitting model to feature number 308, ASV376
+2024-09-05 11:06:46.072545 INFO::Fitting model to feature number 309, ASV377
+2024-09-05 11:06:46.07939 INFO::Fitting model to feature number 310, ASV378
+2024-09-05 11:06:46.086181 INFO::Fitting model to feature number 311, ASV380
+2024-09-05 11:06:46.092534 INFO::Fitting model to feature number 312, ASV382
+2024-09-05 11:06:46.099639 INFO::Fitting model to feature number 313, ASV384
+2024-09-05 11:06:46.108358 INFO::Fitting model to feature number 314, ASV385
+2024-09-05 11:06:46.115284 INFO::Fitting model to feature number 315, ASV386
+2024-09-05 11:06:46.122284 INFO::Fitting model to feature number 316, ASV387
+2024-09-05 11:06:46.13074 INFO::Fitting model to feature number 317, ASV388
+2024-09-05 11:06:46.137004 INFO::Fitting model to feature number 318, ASV389
+2024-09-05 11:06:46.142666 INFO::Fitting model to feature number 319, ASV390
+2024-09-05 11:06:46.148848 INFO::Fitting model to feature number 320, ASV391
+2024-09-05 11:06:46.16772 INFO::Fitting model to feature number 321, ASV393
+2024-09-05 11:06:46.179601 INFO::Fitting model to feature number 322, ASV394
+2024-09-05 11:06:46.189014 INFO::Fitting model to feature number 323, ASV395
+2024-09-05 11:06:46.199744 INFO::Fitting model to feature number 324, ASV396
+2024-09-05 11:06:46.207523 INFO::Fitting model to feature number 325, ASV397
+2024-09-05 11:06:46.213922 INFO::Fitting model to feature number 326, ASV398
+2024-09-05 11:06:46.220918 INFO::Fitting model to feature number 327, ASV400
+2024-09-05 11:06:46.229515 INFO::Fitting model to feature number 328, ASV402
+2024-09-05 11:06:46.240897 INFO::Fitting model to feature number 329, ASV403
+2024-09-05 11:06:46.257781 INFO::Fitting model to feature number 330, ASV404
+2024-09-05 11:06:46.277962 INFO::Fitting model to feature number 331, ASV405
+2024-09-05 11:06:46.285955 INFO::Fitting model to feature number 332, ASV406
+2024-09-05 11:06:46.294464 INFO::Fitting model to feature number 333, ASV409
+2024-09-05 11:06:46.305196 INFO::Fitting model to feature number 334, ASV410
+2024-09-05 11:06:46.317329 INFO::Fitting model to feature number 335, ASV411
+2024-09-05 11:06:46.325916 INFO::Fitting model to feature number 336, ASV412
+2024-09-05 11:06:46.333484 INFO::Fitting model to feature number 337, ASV414
+2024-09-05 11:06:46.434618 INFO::Fitting model to feature number 338, ASV417
+2024-09-05 11:06:46.444004 INFO::Fitting model to feature number 339, ASV419
+2024-09-05 11:06:46.452785 INFO::Fitting model to feature number 340, ASV420
+2024-09-05 11:06:46.461097 INFO::Fitting model to feature number 341, ASV421
+2024-09-05 11:06:46.471007 INFO::Fitting model to feature number 342, ASV422
+2024-09-05 11:06:46.481038 INFO::Fitting model to feature number 343, ASV423
+2024-09-05 11:06:46.489172 INFO::Fitting model to feature number 344, ASV424
+2024-09-05 11:06:46.498109 INFO::Fitting model to feature number 345, ASV425
+2024-09-05 11:06:46.520817 INFO::Fitting model to feature number 346, ASV429
+2024-09-05 11:06:46.825189 INFO::Fitting model to feature number 347, ASV430
+2024-09-05 11:06:46.834145 INFO::Fitting model to feature number 348, ASV432
+2024-09-05 11:06:46.840856 INFO::Fitting model to feature number 349, ASV433
+2024-09-05 11:06:46.847385 INFO::Fitting model to feature number 350, ASV434
+2024-09-05 11:06:46.856515 INFO::Fitting model to feature number 351, ASV435
+2024-09-05 11:06:46.862761 INFO::Fitting model to feature number 352, ASV436
+2024-09-05 11:06:46.868879 INFO::Fitting model to feature number 353, ASV438
+2024-09-05 11:06:46.876501 INFO::Fitting model to feature number 354, ASV439
+2024-09-05 11:06:46.882528 INFO::Fitting model to feature number 355, ASV441
+2024-09-05 11:06:46.891286 INFO::Fitting model to feature number 356, ASV443
+2024-09-05 11:06:46.899286 INFO::Fitting model to feature number 357, ASV444
+2024-09-05 11:06:46.906098 INFO::Fitting model to feature number 358, ASV445
+2024-09-05 11:06:46.911492 INFO::Fitting model to feature number 359, ASV446
+2024-09-05 11:06:46.917316 INFO::Fitting model to feature number 360, ASV448
+2024-09-05 11:06:46.92285 INFO::Fitting model to feature number 361, ASV449
+2024-09-05 11:06:46.929273 INFO::Fitting model to feature number 362, ASV450
+2024-09-05 11:06:46.935299 INFO::Fitting model to feature number 363, ASV451
+2024-09-05 11:06:46.943377 INFO::Fitting model to feature number 364, ASV452
+2024-09-05 11:06:46.952321 INFO::Fitting model to feature number 365, ASV453
+2024-09-05 11:06:46.958598 INFO::Fitting model to feature number 366, ASV455
+2024-09-05 11:06:46.964236 INFO::Fitting model to feature number 367, ASV456
+2024-09-05 11:06:46.969639 INFO::Fitting model to feature number 368, ASV458
+2024-09-05 11:06:46.975004 INFO::Fitting model to feature number 369, ASV459
+2024-09-05 11:06:46.981002 INFO::Fitting model to feature number 370, ASV460
+2024-09-05 11:06:46.986391 INFO::Fitting model to feature number 371, ASV461
+2024-09-05 11:06:46.993478 INFO::Fitting model to feature number 372, ASV462
+2024-09-05 11:06:47.006491 INFO::Fitting model to feature number 373, ASV463
+2024-09-05 11:06:47.017249 INFO::Fitting model to feature number 374, ASV464
+2024-09-05 11:06:47.026052 INFO::Fitting model to feature number 375, ASV465
+2024-09-05 11:06:47.043266 INFO::Fitting model to feature number 376, ASV466
+2024-09-05 11:06:47.057833 INFO::Fitting model to feature number 377, ASV467
+2024-09-05 11:06:47.069411 INFO::Fitting model to feature number 378, ASV473
+2024-09-05 11:06:47.076819 INFO::Fitting model to feature number 379, ASV475
+2024-09-05 11:06:47.105609 INFO::Fitting model to feature number 380, ASV476
+2024-09-05 11:06:47.111023 INFO::Fitting model to feature number 381, ASV478
+2024-09-05 11:06:47.116039 INFO::Fitting model to feature number 382, ASV479
+2024-09-05 11:06:47.121504 INFO::Fitting model to feature number 383, ASV480
+2024-09-05 11:06:47.126666 INFO::Fitting model to feature number 384, ASV484
+2024-09-05 11:06:47.131557 INFO::Fitting model to feature number 385, ASV485
+2024-09-05 11:06:47.137743 INFO::Fitting model to feature number 386, ASV486
+2024-09-05 11:06:47.143031 INFO::Fitting model to feature number 387, ASV487
+2024-09-05 11:06:47.148941 INFO::Fitting model to feature number 388, ASV489
+2024-09-05 11:06:47.155426 INFO::Fitting model to feature number 389, ASV490
+2024-09-05 11:06:47.163529 INFO::Fitting model to feature number 390, ASV491
+2024-09-05 11:06:47.169595 INFO::Fitting model to feature number 391, ASV495
+2024-09-05 11:06:47.176359 INFO::Fitting model to feature number 392, ASV498
+2024-09-05 11:06:47.183674 INFO::Fitting model to feature number 393, ASV500
+2024-09-05 11:06:47.18874 INFO::Fitting model to feature number 394, ASV501
+2024-09-05 11:06:47.194432 INFO::Fitting model to feature number 395, ASV502
+2024-09-05 11:06:47.199408 INFO::Fitting model to feature number 396, ASV503
+2024-09-05 11:06:47.204404 INFO::Fitting model to feature number 397, ASV504
+2024-09-05 11:06:47.209403 INFO::Fitting model to feature number 398, ASV505
+2024-09-05 11:06:47.214642 INFO::Fitting model to feature number 399, ASV507
+2024-09-05 11:06:47.221241 INFO::Fitting model to feature number 400, ASV508
+2024-09-05 11:06:47.227382 INFO::Fitting model to feature number 401, ASV511
+2024-09-05 11:06:47.232982 INFO::Fitting model to feature number 402, ASV513
+2024-09-05 11:06:47.241073 INFO::Fitting model to feature number 403, ASV515
+2024-09-05 11:06:47.247047 INFO::Fitting model to feature number 404, ASV518
+2024-09-05 11:06:47.254663 INFO::Fitting model to feature number 405, ASV519
+2024-09-05 11:06:47.267914 INFO::Fitting model to feature number 406, ASV521
+2024-09-05 11:06:47.274432 INFO::Fitting model to feature number 407, ASV525
+2024-09-05 11:06:47.279583 INFO::Fitting model to feature number 408, ASV526
+2024-09-05 11:06:47.284896 INFO::Fitting model to feature number 409, ASV527
+2024-09-05 11:06:47.290266 INFO::Fitting model to feature number 410, ASV528
+2024-09-05 11:06:47.295288 INFO::Fitting model to feature number 411, ASV529
+2024-09-05 11:06:47.300337 INFO::Fitting model to feature number 412, ASV531
+2024-09-05 11:06:47.306361 INFO::Fitting model to feature number 413, ASV532
+2024-09-05 11:06:47.312567 INFO::Fitting model to feature number 414, ASV534
+2024-09-05 11:06:47.318921 INFO::Fitting model to feature number 415, ASV535
+2024-09-05 11:06:47.324177 INFO::Fitting model to feature number 416, ASV543
+2024-09-05 11:06:47.329113 INFO::Fitting model to feature number 417, ASV544
+2024-09-05 11:06:47.334533 INFO::Fitting model to feature number 418, ASV545
+2024-09-05 11:06:47.343064 INFO::Fitting model to feature number 419, ASV546
+2024-09-05 11:06:47.348809 INFO::Fitting model to feature number 420, ASV547
+2024-09-05 11:06:47.355907 INFO::Fitting model to feature number 421, ASV548
+2024-09-05 11:06:47.362154 INFO::Fitting model to feature number 422, ASV549
+2024-09-05 11:06:47.367186 INFO::Fitting model to feature number 423, ASV550
+2024-09-05 11:06:47.372395 INFO::Fitting model to feature number 424, ASV551
+2024-09-05 11:06:47.377668 INFO::Fitting model to feature number 425, ASV552
+2024-09-05 11:06:47.476729 INFO::Fitting model to feature number 426, ASV553
+2024-09-05 11:06:47.482564 INFO::Fitting model to feature number 427, ASV554
+2024-09-05 11:06:47.489103 INFO::Fitting model to feature number 428, ASV556
+2024-09-05 11:06:47.496098 INFO::Fitting model to feature number 429, ASV559
+2024-09-05 11:06:47.503953 INFO::Fitting model to feature number 430, ASV560
+2024-09-05 11:06:47.512903 INFO::Fitting model to feature number 431, ASV561
+2024-09-05 11:06:47.519524 INFO::Fitting model to feature number 432, ASV563
+2024-09-05 11:06:47.524505 INFO::Fitting model to feature number 433, ASV564
+2024-09-05 11:06:47.52991 INFO::Fitting model to feature number 434, ASV565
+2024-09-05 11:06:47.538346 INFO::Fitting model to feature number 435, ASV569
+2024-09-05 11:06:47.54359 INFO::Fitting model to feature number 436, ASV570
+2024-09-05 11:06:47.548559 INFO::Fitting model to feature number 437, ASV572
+2024-09-05 11:06:47.554345 INFO::Fitting model to feature number 438, ASV573
+2024-09-05 11:06:47.5603 INFO::Fitting model to feature number 439, ASV574
+2024-09-05 11:06:47.569448 INFO::Fitting model to feature number 440, ASV575
+2024-09-05 11:06:47.851279 INFO::Fitting model to feature number 441, ASV577
+2024-09-05 11:06:47.858233 INFO::Fitting model to feature number 442, ASV578
+2024-09-05 11:06:47.863474 INFO::Fitting model to feature number 443, ASV579
+2024-09-05 11:06:47.868465 INFO::Fitting model to feature number 444, ASV580
+2024-09-05 11:06:47.87335 INFO::Fitting model to feature number 445, ASV581
+2024-09-05 11:06:47.878643 INFO::Fitting model to feature number 446, ASV582
+2024-09-05 11:06:47.884109 INFO::Fitting model to feature number 447, ASV583
+2024-09-05 11:06:47.889319 INFO::Fitting model to feature number 448, ASV584
+2024-09-05 11:06:47.896963 INFO::Fitting model to feature number 449, ASV585
+2024-09-05 11:06:47.902285 INFO::Fitting model to feature number 450, ASV586
+2024-09-05 11:06:47.909893 INFO::Fitting model to feature number 451, ASV589
+2024-09-05 11:06:47.915184 INFO::Fitting model to feature number 452, ASV590
+2024-09-05 11:06:47.921704 INFO::Fitting model to feature number 453, ASV592
+2024-09-05 11:06:47.92711 INFO::Fitting model to feature number 454, ASV595
+2024-09-05 11:06:47.931968 INFO::Fitting model to feature number 455, ASV596
+2024-09-05 11:06:47.938451 INFO::Fitting model to feature number 456, ASV599
+2024-09-05 11:06:47.943927 INFO::Fitting model to feature number 457, ASV600
+2024-09-05 11:06:47.948829 INFO::Fitting model to feature number 458, ASV602
+2024-09-05 11:06:47.955329 INFO::Fitting model to feature number 459, ASV603
+2024-09-05 11:06:47.960813 INFO::Fitting model to feature number 460, ASV607
+2024-09-05 11:06:47.969427 INFO::Fitting model to feature number 461, ASV608
+2024-09-05 11:06:47.975496 INFO::Fitting model to feature number 462, ASV609
+2024-09-05 11:06:47.981505 INFO::Fitting model to feature number 463, ASV612
+2024-09-05 11:06:47.986319 INFO::Fitting model to feature number 464, ASV614
+2024-09-05 11:06:47.992615 INFO::Fitting model to feature number 465, ASV615
+2024-09-05 11:06:47.998622 INFO::Fitting model to feature number 466, ASV616
+2024-09-05 11:06:48.003672 INFO::Fitting model to feature number 467, ASV617
+2024-09-05 11:06:48.009001 INFO::Fitting model to feature number 468, ASV618
+2024-09-05 11:06:48.015357 INFO::Fitting model to feature number 469, ASV619
+2024-09-05 11:06:48.021939 INFO::Fitting model to feature number 470, ASV620
+2024-09-05 11:06:48.030203 INFO::Fitting model to feature number 471, ASV622
+2024-09-05 11:06:48.035692 INFO::Fitting model to feature number 472, ASV626
+2024-09-05 11:06:48.042102 INFO::Fitting model to feature number 473, ASV627
+2024-09-05 11:06:48.047857 INFO::Fitting model to feature number 474, ASV628
+2024-09-05 11:06:48.05303 INFO::Fitting model to feature number 475, ASV629
+2024-09-05 11:06:48.058023 INFO::Fitting model to feature number 476, ASV630
+2024-09-05 11:06:48.064043 INFO::Fitting model to feature number 477, ASV631
+2024-09-05 11:06:48.068784 INFO::Fitting model to feature number 478, ASV636
+2024-09-05 11:06:48.073563 INFO::Fitting model to feature number 479, ASV637
+2024-09-05 11:06:48.07878 INFO::Fitting model to feature number 480, ASV638
+2024-09-05 11:06:48.084406 INFO::Fitting model to feature number 481, ASV640
+2024-09-05 11:06:48.089945 INFO::Fitting model to feature number 482, ASV641
+2024-09-05 11:06:48.096797 INFO::Fitting model to feature number 483, ASV642
+2024-09-05 11:06:48.105154 INFO::Fitting model to feature number 484, ASV643
+2024-09-05 11:06:48.112384 INFO::Fitting model to feature number 485, ASV644
+2024-09-05 11:06:48.117478 INFO::Fitting model to feature number 486, ASV646
+2024-09-05 11:06:48.122479 INFO::Fitting model to feature number 487, ASV647
+2024-09-05 11:06:48.127574 INFO::Fitting model to feature number 488, ASV649
+2024-09-05 11:06:48.132622 INFO::Fitting model to feature number 489, ASV652
+2024-09-05 11:06:48.137621 INFO::Fitting model to feature number 490, ASV654
+2024-09-05 11:06:48.14375 INFO::Fitting model to feature number 491, ASV657
+2024-09-05 11:06:48.149376 INFO::Fitting model to feature number 492, ASV658
+2024-09-05 11:06:48.155114 INFO::Fitting model to feature number 493, ASV659
+2024-09-05 11:06:48.160774 INFO::Fitting model to feature number 494, ASV660
+2024-09-05 11:06:48.168862 INFO::Fitting model to feature number 495, ASV661
+2024-09-05 11:06:48.174131 INFO::Fitting model to feature number 496, ASV667
+2024-09-05 11:06:48.179521 INFO::Fitting model to feature number 497, ASV669
+2024-09-05 11:06:48.187039 INFO::Fitting model to feature number 498, ASV670
+2024-09-05 11:06:48.191988 INFO::Fitting model to feature number 499, ASV674
+2024-09-05 11:06:48.196931 INFO::Fitting model to feature number 500, ASV678
+2024-09-05 11:06:48.202143 INFO::Fitting model to feature number 501, ASV679
+2024-09-05 11:06:48.208269 INFO::Fitting model to feature number 502, ASV680
+2024-09-05 11:06:48.213922 INFO::Fitting model to feature number 503, ASV681
+2024-09-05 11:06:48.219778 INFO::Fitting model to feature number 504, ASV682
+2024-09-05 11:06:48.226534 INFO::Fitting model to feature number 505, ASV686
+2024-09-05 11:06:48.234454 INFO::Fitting model to feature number 506, ASV687
+2024-09-05 11:06:48.239533 INFO::Fitting model to feature number 507, ASV688
+2024-09-05 11:06:48.244669 INFO::Fitting model to feature number 508, ASV689
+2024-09-05 11:06:48.24986 INFO::Fitting model to feature number 509, ASV693
+2024-09-05 11:06:48.256463 INFO::Fitting model to feature number 510, ASV694
+2024-09-05 11:06:48.261662 INFO::Fitting model to feature number 511, ASV695
+2024-09-05 11:06:48.267475 INFO::Fitting model to feature number 512, ASV700
+2024-09-05 11:06:48.272893 INFO::Fitting model to feature number 513, ASV704
+2024-09-05 11:06:48.279189 INFO::Fitting model to feature number 514, ASV705
+2024-09-05 11:06:48.285397 INFO::Fitting model to feature number 515, ASV708
+2024-09-05 11:06:48.290687 INFO::Fitting model to feature number 516, ASV709
+2024-09-05 11:06:48.308692 INFO::Fitting model to feature number 517, ASV712
+2024-09-05 11:06:48.321638 INFO::Fitting model to feature number 518, ASV717
+2024-09-05 11:06:48.336846 INFO::Fitting model to feature number 519, ASV718
+2024-09-05 11:06:48.376533 INFO::Fitting model to feature number 520, ASV719
+2024-09-05 11:06:48.382189 INFO::Fitting model to feature number 521, ASV720
+2024-09-05 11:06:48.387926 INFO::Fitting model to feature number 522, ASV721
+2024-09-05 11:06:48.395326 INFO::Fitting model to feature number 523, ASV725
+2024-09-05 11:06:48.401408 INFO::Fitting model to feature number 524, ASV726
+2024-09-05 11:06:48.407824 INFO::Fitting model to feature number 525, ASV727
+2024-09-05 11:06:48.414143 INFO::Fitting model to feature number 526, ASV730
+2024-09-05 11:06:48.418976 INFO::Fitting model to feature number 527, ASV731
+2024-09-05 11:06:48.521538 INFO::Fitting model to feature number 528, ASV733
+2024-09-05 11:06:48.527651 INFO::Fitting model to feature number 529, ASV736
+2024-09-05 11:06:48.533014 INFO::Fitting model to feature number 530, ASV737
+2024-09-05 11:06:48.538732 INFO::Fitting model to feature number 531, ASV742
+2024-09-05 11:06:48.544781 INFO::Fitting model to feature number 532, ASV749
+2024-09-05 11:06:48.551305 INFO::Fitting model to feature number 533, ASV750
+2024-09-05 11:06:48.556636 INFO::Fitting model to feature number 534, ASV751
+2024-09-05 11:06:48.561799 INFO::Fitting model to feature number 535, ASV754
+2024-09-05 11:06:48.566991 INFO::Fitting model to feature number 536, ASV756
+2024-09-05 11:06:48.57224 INFO::Fitting model to feature number 537, ASV759
+2024-09-05 11:06:48.577406 INFO::Fitting model to feature number 538, ASV760
+2024-09-05 11:06:48.586635 INFO::Fitting model to feature number 539, ASV764
+2024-09-05 11:06:48.593246 INFO::Fitting model to feature number 540, ASV765
+2024-09-05 11:06:48.598806 INFO::Fitting model to feature number 541, ASV767
+2024-09-05 11:06:48.609347 INFO::Fitting model to feature number 542, ASV768
+2024-09-05 11:06:48.615576 INFO::Fitting model to feature number 543, ASV769
+2024-09-05 11:06:48.621321 INFO::Fitting model to feature number 544, ASV773
+2024-09-05 11:06:48.626541 INFO::Fitting model to feature number 545, ASV774
+2024-09-05 11:06:48.631783 INFO::Fitting model to feature number 546, ASV777
+2024-09-05 11:06:48.637801 INFO::Fitting model to feature number 547, ASV779
+2024-09-05 11:06:48.643578 INFO::Fitting model to feature number 548, ASV782
+2024-09-05 11:06:48.649171 INFO::Fitting model to feature number 549, ASV783
+2024-09-05 11:06:48.655455 INFO::Fitting model to feature number 550, ASV784
+2024-09-05 11:06:48.661179 INFO::Fitting model to feature number 551, ASV785
+2024-09-05 11:06:48.951715 INFO::Fitting model to feature number 552, ASV786
+2024-09-05 11:06:48.958733 INFO::Fitting model to feature number 553, ASV787
+2024-09-05 11:06:48.965326 INFO::Fitting model to feature number 554, ASV792
+2024-09-05 11:06:48.972018 INFO::Fitting model to feature number 555, ASV793
+2024-09-05 11:06:48.977533 INFO::Fitting model to feature number 556, ASV795
+2024-09-05 11:06:48.982753 INFO::Fitting model to feature number 557, ASV805
+2024-09-05 11:06:48.987636 INFO::Fitting model to feature number 558, ASV808
+2024-09-05 11:06:48.992374 INFO::Fitting model to feature number 559, ASV809
+2024-09-05 11:06:48.99743 INFO::Fitting model to feature number 560, ASV812
+2024-09-05 11:06:49.004502 INFO::Fitting model to feature number 561, ASV815
+2024-09-05 11:06:49.010387 INFO::Fitting model to feature number 562, ASV819
+2024-09-05 11:06:49.018495 INFO::Fitting model to feature number 563, ASV820
+2024-09-05 11:06:49.024181 INFO::Fitting model to feature number 564, ASV821
+2024-09-05 11:06:49.029343 INFO::Fitting model to feature number 565, ASV822
+2024-09-05 11:06:49.03589 INFO::Fitting model to feature number 566, ASV824
+2024-09-05 11:06:49.041114 INFO::Fitting model to feature number 567, ASV829
+2024-09-05 11:06:49.046903 INFO::Fitting model to feature number 568, ASV832
+2024-09-05 11:06:49.052294 INFO::Fitting model to feature number 569, ASV837
+2024-09-05 11:06:49.057191 INFO::Fitting model to feature number 570, ASV838
+2024-09-05 11:06:49.062541 INFO::Fitting model to feature number 571, ASV840
+2024-09-05 11:06:49.068298 INFO::Fitting model to feature number 572, ASV841
+2024-09-05 11:06:49.073774 INFO::Fitting model to feature number 573, ASV842
+2024-09-05 11:06:49.080988 INFO::Fitting model to feature number 574, ASV848
+2024-09-05 11:06:49.088513 INFO::Fitting model to feature number 575, ASV850
+2024-09-05 11:06:49.093869 INFO::Fitting model to feature number 576, ASV851
+2024-09-05 11:06:49.099184 INFO::Fitting model to feature number 577, ASV853
+2024-09-05 11:06:49.106149 INFO::Fitting model to feature number 578, ASV861
+2024-09-05 11:06:49.111703 INFO::Fitting model to feature number 579, ASV862
+2024-09-05 11:06:49.116603 INFO::Fitting model to feature number 580, ASV865
+2024-09-05 11:06:49.12195 INFO::Fitting model to feature number 581, ASV866
+2024-09-05 11:06:49.12807 INFO::Fitting model to feature number 582, ASV867
+2024-09-05 11:06:49.132891 INFO::Fitting model to feature number 583, ASV876
+2024-09-05 11:06:49.137755 INFO::Fitting model to feature number 584, ASV878
+2024-09-05 11:06:49.142657 INFO::Fitting model to feature number 585, ASV880
+2024-09-05 11:06:49.148469 INFO::Fitting model to feature number 586, ASV883
+2024-09-05 11:06:49.154139 INFO::Fitting model to feature number 587, ASV888
+2024-09-05 11:06:49.163906 INFO::Fitting model to feature number 588, ASV893
+2024-09-05 11:06:49.183532 INFO::Fitting model to feature number 589, ASV894
+2024-09-05 11:06:49.193929 INFO::Fitting model to feature number 590, ASV895
+2024-09-05 11:06:49.216607 INFO::Fitting model to feature number 591, ASV896
+2024-09-05 11:06:49.227374 INFO::Fitting model to feature number 592, ASV901
+2024-09-05 11:06:49.23335 INFO::Fitting model to feature number 593, ASV902
+2024-09-05 11:06:49.24539 INFO::Fitting model to feature number 594, ASV903
+2024-09-05 11:06:49.250965 INFO::Fitting model to feature number 595, ASV904
+2024-09-05 11:06:49.258264 INFO::Fitting model to feature number 596, ASV906
+2024-09-05 11:06:49.271974 INFO::Fitting model to feature number 597, ASV920
+2024-09-05 11:06:49.279134 INFO::Fitting model to feature number 598, ASV921
+2024-09-05 11:06:49.284153 INFO::Fitting model to feature number 599, ASV935
+2024-09-05 11:06:49.289327 INFO::Fitting model to feature number 600, ASV937
+2024-09-05 11:06:49.294485 INFO::Fitting model to feature number 601, ASV939
+2024-09-05 11:06:49.299954 INFO::Fitting model to feature number 602, ASV940
+2024-09-05 11:06:49.306726 INFO::Fitting model to feature number 603, ASV941
+2024-09-05 11:06:49.312051 INFO::Fitting model to feature number 604, ASV948
+2024-09-05 11:06:49.322326 INFO::Fitting model to feature number 605, ASV949
+2024-09-05 11:06:49.329357 INFO::Fitting model to feature number 606, ASV950
+2024-09-05 11:06:49.337694 INFO::Fitting model to feature number 607, ASV951
+2024-09-05 11:06:49.357281 INFO::Fitting model to feature number 608, ASV953
+2024-09-05 11:06:49.363155 INFO::Fitting model to feature number 609, ASV954
+2024-09-05 11:06:49.369703 INFO::Fitting model to feature number 610, ASV955
+2024-09-05 11:06:49.375042 INFO::Fitting model to feature number 611, ASV957
+2024-09-05 11:06:49.380302 INFO::Fitting model to feature number 612, ASV958
+2024-09-05 11:06:49.385202 INFO::Fitting model to feature number 613, ASV959
+2024-09-05 11:06:49.392113 INFO::Fitting model to feature number 614, ASV969
+2024-09-05 11:06:49.39783 INFO::Fitting model to feature number 615, ASV971
+2024-09-05 11:06:49.402874 INFO::Fitting model to feature number 616, ASV974
+2024-09-05 11:06:49.40852 INFO::Fitting model to feature number 617, ASV976
+2024-09-05 11:06:49.414651 INFO::Fitting model to feature number 618, ASV977
+2024-09-05 11:06:49.42195 INFO::Fitting model to feature number 619, ASV980
+2024-09-05 11:06:49.428977 INFO::Fitting model to feature number 620, ASV982
+2024-09-05 11:06:49.434511 INFO::Fitting model to feature number 621, ASV984
+2024-09-05 11:06:49.443327 INFO::Fitting model to feature number 622, ASV988
+2024-09-05 11:06:49.449437 INFO::Fitting model to feature number 623, ASV996
+2024-09-05 11:06:49.455915 INFO::Fitting model to feature number 624, ASV998
+2024-09-05 11:06:49.462822 INFO::Fitting model to feature number 625, ASV999
+2024-09-05 11:06:49.467889 INFO::Fitting model to feature number 626, ASV1002
+2024-09-05 11:06:49.565307 INFO::Fitting model to feature number 627, ASV1006
+2024-09-05 11:06:49.572456 INFO::Fitting model to feature number 628, ASV1007
+2024-09-05 11:06:49.5775 INFO::Fitting model to feature number 629, ASV1017
+2024-09-05 11:06:49.58231 INFO::Fitting model to feature number 630, ASV1019
+2024-09-05 11:06:49.588688 INFO::Fitting model to feature number 631, ASV1027
+2024-09-05 11:06:49.594783 INFO::Fitting model to feature number 632, ASV1034
+2024-09-05 11:06:49.600611 INFO::Fitting model to feature number 633, ASV1037
+2024-09-05 11:06:49.608879 INFO::Fitting model to feature number 634, ASV1038
+2024-09-05 11:06:49.615858 INFO::Fitting model to feature number 635, ASV1039
+2024-09-05 11:06:49.622617 INFO::Fitting model to feature number 636, ASV1040
+2024-09-05 11:06:49.628952 INFO::Fitting model to feature number 637, ASV1043
+2024-09-05 11:06:49.634977 INFO::Fitting model to feature number 638, ASV1045
+2024-09-05 11:06:49.640942 INFO::Fitting model to feature number 639, ASV1049
+2024-09-05 11:06:49.646859 INFO::Fitting model to feature number 640, ASV1050
+2024-09-05 11:06:49.651901 INFO::Fitting model to feature number 641, ASV1051
+2024-09-05 11:06:49.659112 INFO::Fitting model to feature number 642, ASV1052
+2024-09-05 11:06:49.6651 INFO::Fitting model to feature number 643, ASV1053
+2024-09-05 11:06:49.674517 INFO::Fitting model to feature number 644, ASV1057
+2024-09-05 11:06:49.680848 INFO::Fitting model to feature number 645, ASV1062
+2024-09-05 11:06:49.685788 INFO::Fitting model to feature number 646, ASV1067
+2024-09-05 11:06:49.691268 INFO::Fitting model to feature number 647, ASV1069
+2024-09-05 11:06:49.69823 INFO::Fitting model to feature number 648, ASV1076
+2024-09-05 11:06:49.703121 INFO::Fitting model to feature number 649, ASV1080
+2024-09-05 11:06:49.708042 INFO::Fitting model to feature number 650, ASV1081
+2024-09-05 11:06:49.713225 INFO::Fitting model to feature number 651, ASV1083
+2024-09-05 11:06:49.99072 INFO::Fitting model to feature number 652, ASV1085
+2024-09-05 11:06:49.995911 INFO::Fitting model to feature number 653, ASV1095
+2024-09-05 11:06:50.000902 INFO::Fitting model to feature number 654, ASV1106
+2024-09-05 11:06:50.005948 INFO::Fitting model to feature number 655, ASV1108
+2024-09-05 11:06:50.011348 INFO::Fitting model to feature number 656, ASV1110
+2024-09-05 11:06:50.016376 INFO::Fitting model to feature number 657, ASV1112
+2024-09-05 11:06:50.021643 INFO::Fitting model to feature number 658, ASV1116
+2024-09-05 11:06:50.027748 INFO::Fitting model to feature number 659, ASV1131
+2024-09-05 11:06:50.032872 INFO::Fitting model to feature number 660, ASV1133
+2024-09-05 11:06:50.039369 INFO::Fitting model to feature number 661, ASV1135
+2024-09-05 11:06:50.045448 INFO::Fitting model to feature number 662, ASV1137
+2024-09-05 11:06:50.054327 INFO::Fitting model to feature number 663, ASV1142
+2024-09-05 11:06:50.060607 INFO::Fitting model to feature number 664, ASV1168
+2024-09-05 11:06:50.06625 INFO::Fitting model to feature number 665, ASV1175
+2024-09-05 11:06:50.072099 INFO::Fitting model to feature number 666, ASV1176
+2024-09-05 11:06:50.077192 INFO::Fitting model to feature number 667, ASV1193
+2024-09-05 11:06:50.082375 INFO::Fitting model to feature number 668, ASV1198
+2024-09-05 11:06:50.087545 INFO::Fitting model to feature number 669, ASV1200
+2024-09-05 11:06:50.092654 INFO::Fitting model to feature number 670, ASV1202
+2024-09-05 11:06:50.097703 INFO::Fitting model to feature number 671, ASV1204
+2024-09-05 11:06:50.105321 INFO::Fitting model to feature number 672, ASV1206
+2024-09-05 11:06:50.112381 INFO::Fitting model to feature number 673, ASV1208
+2024-09-05 11:06:50.120428 INFO::Fitting model to feature number 674, ASV1211
+2024-09-05 11:06:50.126045 INFO::Fitting model to feature number 675, ASV1212
+2024-09-05 11:06:50.136729 INFO::Fitting model to feature number 676, ASV1228
+2024-09-05 11:06:50.143348 INFO::Fitting model to feature number 677, ASV1239
+2024-09-05 11:06:50.148276 INFO::Fitting model to feature number 678, ASV1244
+2024-09-05 11:06:50.15341 INFO::Fitting model to feature number 679, ASV1247
+2024-09-05 11:06:50.205476 INFO::Fitting model to feature number 680, ASV1265
+2024-09-05 11:06:50.218607 INFO::Fitting model to feature number 681, ASV1274
+2024-09-05 11:06:50.228803 INFO::Fitting model to feature number 682, ASV1276
+2024-09-05 11:06:50.237934 INFO::Fitting model to feature number 683, ASV1279
+2024-09-05 11:06:50.24727 INFO::Fitting model to feature number 684, ASV1280
+2024-09-05 11:06:50.255496 INFO::Fitting model to feature number 685, ASV1301
+2024-09-05 11:06:50.264993 INFO::Fitting model to feature number 686, ASV1308
+2024-09-05 11:06:50.272511 INFO::Fitting model to feature number 687, ASV1309
+2024-09-05 11:06:50.277735 INFO::Fitting model to feature number 688, ASV1324
+2024-09-05 11:06:50.285272 INFO::Fitting model to feature number 689, ASV1349
+2024-09-05 11:06:50.290083 INFO::Fitting model to feature number 690, ASV1388
+2024-09-05 11:06:50.295277 INFO::Fitting model to feature number 691, ASV1415
+2024-09-05 11:06:50.300022 INFO::Fitting model to feature number 692, ASV1416
+2024-09-05 11:06:50.454223 INFO::Counting total values for each feature
+2024-09-05 11:06:50.880464 INFO::Writing filtered data to file Maaslin2-filtering/features/filtered_data.tsv
+2024-09-05 11:06:50.900695 INFO::Writing filtered, normalized data to file Maaslin2-filtering/features/filtered_data_norm.tsv
+2024-09-05 11:06:50.920273 INFO::Writing filtered, normalized, transformed data to file Maaslin2-filtering/features/filtered_data_norm_transformed.tsv
+2024-09-05 11:06:50.945833 WARNING::Deleting existing residuals file: Maaslin2-filtering/fits/residuals.rds
+2024-09-05 11:06:50.952518 INFO::Writing residuals to file Maaslin2-filtering/fits/residuals.rds
+2024-09-05 11:06:50.960696 WARNING::Deleting existing fitted file: Maaslin2-filtering/fits/fitted.rds
+2024-09-05 11:06:50.965404 INFO::Writing fitted values to file Maaslin2-filtering/fits/fitted.rds
+2024-09-05 11:06:50.971653 INFO::Writing all results to file (ordered by increasing q-values): Maaslin2-filtering/all_results.tsv
+2024-09-05 11:06:50.98183 INFO::Writing the significant results (those which are less than or equal to the threshold of 0.250000 ) to file (ordered by increasing q-values): Maaslin2-filtering/significant_results.tsv
+2024-09-05 11:06:50.990821 INFO::Writing heatmap of significant results to file: Maaslin2-filtering/heatmap.pdf
+2024-09-05 11:06:51.005913 INFO::Writing association plots (one for each significant association) to output folder: Maaslin2-filtering
+2024-09-05 11:06:51.025889 INFO::Plotting associations from most to least significant, grouped by metadata
+2024-09-05 11:06:51.028344 INFO::Plotting data for metadata number 1, Filtered
+2024-09-05 11:06:51.042592 INFO::Creating boxplot for categorical data, Filtered vs ASV29
+2024-09-05 11:06:51.330208 INFO::Creating boxplot for categorical data, Filtered vs ASV245
+2024-09-05 11:06:52.704751 INFO::Creating boxplot for categorical data, Filtered vs ASV262
+2024-09-05 11:06:52.952784 INFO::Creating boxplot for categorical data, Filtered vs ASV3
+2024-09-05 11:06:53.182368 INFO::Creating boxplot for categorical data, Filtered vs ASV47
+2024-09-05 11:06:53.411838 INFO::Creating boxplot for categorical data, Filtered vs ASV78
+2024-09-05 11:06:54.099386 INFO::Creating boxplot for categorical data, Filtered vs ASV85
+2024-09-05 11:06:54.329754 INFO::Creating boxplot for categorical data, Filtered vs ASV87
+2024-09-05 11:06:54.954811 INFO::Creating boxplot for categorical data, Filtered vs ASV194
+2024-09-05 11:06:55.194822 INFO::Creating boxplot for categorical data, Filtered vs ASV307
+2024-09-05 11:06:55.430051 INFO::Creating boxplot for categorical data, Filtered vs ASV98
+2024-09-05 11:06:56.041814 INFO::Creating boxplot for categorical data, Filtered vs ASV64
+2024-09-05 11:06:56.272599 INFO::Creating boxplot for categorical data, Filtered vs ASV183
+2024-09-05 11:06:56.971509 INFO::Creating boxplot for categorical data, Filtered vs ASV46
+2024-09-05 11:06:57.216138 INFO::Creating boxplot for categorical data, Filtered vs ASV52
+2024-09-05 11:06:57.447987 INFO::Creating boxplot for categorical data, Filtered vs ASV119
+2024-09-05 11:06:58.067032 INFO::Creating boxplot for categorical data, Filtered vs ASV184
+2024-09-05 11:06:58.302249 INFO::Creating boxplot for categorical data, Filtered vs ASV193
+2024-09-05 11:06:58.531075 INFO::Creating boxplot for categorical data, Filtered vs ASV239
+2024-09-05 11:06:59.193541 INFO::Creating boxplot for categorical data, Filtered vs ASV70
+2024-09-05 11:06:59.808308 INFO::Creating boxplot for categorical data, Filtered vs ASV79
+2024-09-05 11:07:00.067792 INFO::Creating boxplot for categorical data, Filtered vs ASV101
+2024-09-05 11:07:00.299354 INFO::Creating boxplot for categorical data, Filtered vs ASV106
+2024-09-05 11:07:01.025799 INFO::Creating boxplot for categorical data, Filtered vs ASV242
+2024-09-05 11:07:01.607884 INFO::Creating boxplot for categorical data, Filtered vs ASV378
+2024-09-05 11:07:02.205534 INFO::Creating boxplot for categorical data, Filtered vs ASV249
+2024-09-05 11:07:02.59748 INFO::Creating boxplot for categorical data, Filtered vs ASV382
+2024-09-05 11:07:03.189823 INFO::Creating boxplot for categorical data, Filtered vs ASV464
+2024-09-05 11:07:03.46108 INFO::Creating boxplot for categorical data, Filtered vs ASV113
+2024-09-05 11:07:04.105981 INFO::Creating boxplot for categorical data, Filtered vs ASV86
+2024-09-05 11:07:04.344249 INFO::Creating boxplot for categorical data, Filtered vs ASV217
+2024-09-05 11:07:04.947188 INFO::Creating boxplot for categorical data, Filtered vs ASV303
+2024-09-05 11:07:05.235563 INFO::Creating boxplot for categorical data, Filtered vs ASV398
+2024-09-05 11:07:05.464894 INFO::Creating boxplot for categorical data, Filtered vs ASV111
+2024-09-05 11:07:06.102539 INFO::Creating boxplot for categorical data, Filtered vs ASV147
+2024-09-05 11:07:06.340708 INFO::Creating boxplot for categorical data, Filtered vs ASV366
+2024-09-05 11:07:06.690685 INFO::Creating boxplot for categorical data, Filtered vs ASV25
+2024-09-05 11:07:07.200728 INFO::Creating boxplot for categorical data, Filtered vs ASV62
+2024-09-05 11:07:07.815131 INFO::Creating boxplot for categorical data, Filtered vs ASV157
+2024-09-05 11:07:08.11139 INFO::Creating boxplot for categorical data, Filtered vs ASV254
+2024-09-05 11:07:08.341853 INFO::Creating boxplot for categorical data, Filtered vs ASV15
+2024-09-05 11:07:08.977765 INFO::Creating boxplot for categorical data, Filtered vs ASV107
+2024-09-05 11:07:09.216729 INFO::Creating boxplot for categorical data, Filtered vs ASV231
+2024-09-05 11:07:09.453499 INFO::Creating boxplot for categorical data, Filtered vs ASV324
+2024-09-05 11:07:10.070304 INFO::Creating boxplot for categorical data, Filtered vs ASV387
+2024-09-05 11:07:10.305689 INFO::Creating boxplot for categorical data, Filtered vs ASV421
+2024-09-05 11:07:10.972849 INFO::Creating boxplot for categorical data, Filtered vs ASV459
+2024-09-05 11:07:11.220609 INFO::Creating boxplot for categorical data, Filtered vs ASV466
+2024-09-05 11:07:11.453193 INFO::Creating boxplot for categorical data, Filtered vs ASV532
+2024-09-05 11:07:12.073157 INFO::Creating boxplot for categorical data, Filtered vs ASV643
+2024-09-05 11:07:12.308211 INFO::Creating boxplot for categorical data, Filtered vs ASV16
+2024-09-05 11:07:12.539549 INFO::Creating boxplot for categorical data, Filtered vs ASV308
+2024-09-05 11:07:13.20288 INFO::Creating boxplot for categorical data, Filtered vs ASV352
+2024-09-05 11:07:13.431404 INFO::Creating boxplot for categorical data, Filtered vs ASV341
+2024-09-05 11:07:14.053653 INFO::Creating boxplot for categorical data, Filtered vs ASV531
+2024-09-05 11:07:14.29283 INFO::Creating boxplot for categorical data, Filtered vs ASV424
+2024-09-05 11:07:14.538001 INFO::Creating boxplot for categorical data, Filtered vs ASV218
+2024-09-05 11:07:15.146407 INFO::Creating boxplot for categorical data, Filtered vs ASV432
+2024-09-05 11:07:15.388679 INFO::Creating boxplot for categorical data, Filtered vs ASV90
+2024-09-05 11:07:16.058225 INFO::Creating boxplot for categorical data, Filtered vs ASV259
+2024-09-05 11:07:16.302807 INFO::Creating boxplot for categorical data, Filtered vs ASV66
+2024-09-05 11:07:16.537018 INFO::Creating boxplot for categorical data, Filtered vs ASV117
+2024-09-05 11:07:17.226051 INFO::Creating boxplot for categorical data, Filtered vs ASV267
+2024-09-05 11:07:17.463842 INFO::Creating boxplot for categorical data, Filtered vs ASV82
+2024-09-05 11:07:18.067566 INFO::Creating boxplot for categorical data, Filtered vs ASV291
+2024-09-05 11:07:18.365231 INFO::Creating boxplot for categorical data, Filtered vs ASV154
+2024-09-05 11:07:19.005951 INFO::Creating boxplot for categorical data, Filtered vs ASV458
+2024-09-05 11:07:19.240919 INFO::Creating boxplot for categorical data, Filtered vs ASV188
+2024-09-05 11:07:19.854417 INFO::Creating boxplot for categorical data, Filtered vs ASV196
+2024-09-05 11:07:20.099845 INFO::Creating boxplot for categorical data, Filtered vs ASV450
+2024-09-05 11:07:20.325697 INFO::Creating boxplot for categorical data, Filtered vs ASV73
+2024-09-05 11:07:20.944159 INFO::Creating boxplot for categorical data, Filtered vs ASV9
+2024-09-05 11:07:21.225555 INFO::Creating boxplot for categorical data, Filtered vs ASV20
+2024-09-05 11:07:21.551462 INFO::Creating boxplot for categorical data, Filtered vs ASV36
+2024-09-05 11:07:22.077834 INFO::Creating boxplot for categorical data, Filtered vs ASV37
+2024-09-05 11:07:22.312799 INFO::Creating boxplot for categorical data, Filtered vs ASV49
+2024-09-05 11:07:22.929744 INFO::Creating boxplot for categorical data, Filtered vs ASV59
+2024-09-05 11:07:23.184277 INFO::Creating boxplot for categorical data, Filtered vs ASV74
+2024-09-05 11:07:23.575618 INFO::Creating boxplot for categorical data, Filtered vs ASV88
+2024-09-05 11:07:24.11043 INFO::Creating boxplot for categorical data, Filtered vs ASV89
+2024-09-05 11:07:24.344005 INFO::Creating boxplot for categorical data, Filtered vs ASV91
+2024-09-05 11:07:24.94749 INFO::Creating boxplot for categorical data, Filtered vs ASV102
+2024-09-05 11:07:25.198773 INFO::Creating boxplot for categorical data, Filtered vs ASV103
+2024-09-05 11:07:25.428808 INFO::Creating boxplot for categorical data, Filtered vs ASV110
+2024-09-05 11:07:26.047457 INFO::Creating boxplot for categorical data, Filtered vs ASV123
+2024-09-05 11:07:26.332246 INFO::Creating boxplot for categorical data, Filtered vs ASV125
+2024-09-05 11:07:26.664231 INFO::Creating boxplot for categorical data, Filtered vs ASV128
+2024-09-05 11:07:27.205484 INFO::Creating boxplot for categorical data, Filtered vs ASV151
+2024-09-05 11:07:27.439808 INFO::Creating boxplot for categorical data, Filtered vs ASV153
+2024-09-05 11:07:28.052673 INFO::Creating boxplot for categorical data, Filtered vs ASV166
+2024-09-05 11:07:28.288657 INFO::Creating boxplot for categorical data, Filtered vs ASV176
+2024-09-05 11:07:28.952709 INFO::Creating boxplot for categorical data, Filtered vs ASV182
+2024-09-05 11:07:29.223341 INFO::Creating boxplot for categorical data, Filtered vs ASV198
+2024-09-05 11:07:29.463787 INFO::Creating boxplot for categorical data, Filtered vs ASV208
+2024-09-05 11:07:30.083929 INFO::Creating boxplot for categorical data, Filtered vs ASV224
+2024-09-05 11:07:30.331837 INFO::Creating boxplot for categorical data, Filtered vs ASV246
+2024-09-05 11:07:30.93412 INFO::Creating boxplot for categorical data, Filtered vs ASV258
+2024-09-05 11:07:31.18305 INFO::Creating boxplot for categorical data, Filtered vs ASV277
+2024-09-05 11:07:31.452648 INFO::Creating boxplot for categorical data, Filtered vs ASV299
+2024-09-05 11:07:32.086574 INFO::Creating boxplot for categorical data, Filtered vs ASV301
+2024-09-05 11:07:32.319217 INFO::Creating boxplot for categorical data, Filtered vs ASV312
+2024-09-05 11:07:32.93138 INFO::Creating boxplot for categorical data, Filtered vs ASV322
+2024-09-05 11:07:33.17723 INFO::Creating boxplot for categorical data, Filtered vs ASV334
+2024-09-05 11:07:33.41014 INFO::Creating boxplot for categorical data, Filtered vs ASV350
+2024-09-05 11:07:34.081741 INFO::Creating boxplot for categorical data, Filtered vs ASV354
+2024-09-05 11:07:34.317389 INFO::Creating boxplot for categorical data, Filtered vs ASV362
+2024-09-05 11:07:34.934936 INFO::Creating boxplot for categorical data, Filtered vs ASV377
+2024-09-05 11:07:35.200929 INFO::Creating boxplot for categorical data, Filtered vs ASV384
+2024-09-05 11:07:35.514932 INFO::Creating boxplot for categorical data, Filtered vs ASV391
+2024-09-05 11:07:36.118614 INFO::Creating boxplot for categorical data, Filtered vs ASV394
+2024-09-05 11:07:36.357229 INFO::Creating boxplot for categorical data, Filtered vs ASV396
+2024-09-05 11:07:36.765863 INFO::Creating boxplot for categorical data, Filtered vs ASV397
+2024-09-05 11:07:37.303822 INFO::Creating boxplot for categorical data, Filtered vs ASV436
+2024-09-05 11:07:37.933106 INFO::Creating boxplot for categorical data, Filtered vs ASV445
+2024-09-05 11:07:38.179037 INFO::Creating boxplot for categorical data, Filtered vs ASV448
+2024-09-05 11:07:38.411911 INFO::Creating boxplot for categorical data, Filtered vs ASV463
+2024-09-05 11:07:39.021847 INFO::Creating boxplot for categorical data, Filtered vs ASV479
+2024-09-05 11:07:39.301902 INFO::Creating boxplot for categorical data, Filtered vs ASV491
+2024-09-05 11:07:39.627508 INFO::Creating boxplot for categorical data, Filtered vs ASV528
+2024-09-05 11:07:40.172573 INFO::Creating boxplot for categorical data, Filtered vs ASV553
+2024-09-05 11:07:40.401855 INFO::Creating boxplot for categorical data, Filtered vs ASV563
+2024-09-05 11:07:40.738252 INFO::Creating boxplot for categorical data, Filtered vs ASV608
+2024-09-05 11:07:41.247865 INFO::Creating boxplot for categorical data, Filtered vs ASV612
+2024-09-05 11:07:41.920057 INFO::Creating boxplot for categorical data, Filtered vs ASV642
+2024-09-05 11:07:42.163408 INFO::Creating boxplot for categorical data, Filtered vs ASV644
+2024-09-05 11:07:42.398022 INFO::Creating boxplot for categorical data, Filtered vs ASV646
+2024-09-05 11:07:43.020682 INFO::Creating boxplot for categorical data, Filtered vs ASV700
+2024-09-05 11:07:43.260611 INFO::Creating boxplot for categorical data, Filtered vs ASV709
+2024-09-05 11:07:43.865801 INFO::Creating boxplot for categorical data, Filtered vs ASV737
+2024-09-05 11:07:44.109856 INFO::Creating boxplot for categorical data, Filtered vs ASV829
+2024-09-05 11:07:44.432761 INFO::Creating boxplot for categorical data, Filtered vs ASV969
+2024-09-05 11:07:45.057325 INFO::Creating boxplot for categorical data, Filtered vs ASV1050
+2024-09-05 11:07:45.299614 INFO::Creating boxplot for categorical data, Filtered vs ASV56
+2024-09-05 11:07:45.534425 INFO::Creating boxplot for categorical data, Filtered vs ASV84
+2024-09-05 11:07:46.170644 INFO::Creating boxplot for categorical data, Filtered vs ASV181
+2024-09-05 11:07:46.40113 INFO::Creating boxplot for categorical data, Filtered vs ASV237
+2024-09-05 11:07:47.086839 INFO::Creating boxplot for categorical data, Filtered vs ASV257
+2024-09-05 11:07:47.348617 INFO::Creating boxplot for categorical data, Filtered vs ASV260
+2024-09-05 11:07:47.574831 INFO::Creating boxplot for categorical data, Filtered vs ASV365
+2024-09-05 11:07:48.197137 INFO::Creating boxplot for categorical data, Filtered vs ASV446
+2024-09-05 11:07:48.538942 INFO::Creating boxplot for categorical data, Filtered vs ASV50
+2024-09-05 11:07:49.072655 INFO::Creating boxplot for categorical data, Filtered vs ASV607
+2024-09-05 11:07:49.29678 INFO::Creating boxplot for categorical data, Filtered vs ASV31
+2024-09-05 11:07:49.989717 INFO::Creating boxplot for categorical data, Filtered vs ASV149
+2024-09-05 11:07:50.246097 INFO::Creating boxplot for categorical data, Filtered vs ASV174
+2024-09-05 11:07:50.483776 INFO::Creating boxplot for categorical data, Filtered vs ASV559
+2024-09-05 11:07:51.115436 INFO::Creating boxplot for categorical data, Filtered vs ASV809
+2024-09-05 11:07:51.364665 INFO::Creating boxplot for categorical data, Filtered vs ASV116
+2024-09-05 11:07:51.586479 INFO::Creating boxplot for categorical data, Filtered vs ASV131
+2024-09-05 11:07:52.19989 INFO::Creating boxplot for categorical data, Filtered vs ASV205
+2024-09-05 11:07:52.496828 INFO::Creating boxplot for categorical data, Filtered vs ASV235
+2024-09-05 11:07:53.114758 INFO::Creating boxplot for categorical data, Filtered vs ASV278
+2024-09-05 11:07:53.376029 INFO::Creating boxplot for categorical data, Filtered vs ASV406
+2024-09-05 11:07:53.717376 INFO::Creating boxplot for categorical data, Filtered vs ASV508
+2024-09-05 11:07:54.236843 INFO::Creating boxplot for categorical data, Filtered vs ASV96
+2024-09-05 11:07:54.560166 INFO::Creating boxplot for categorical data, Filtered vs ASV126
+2024-09-05 11:07:55.144585 INFO::Creating boxplot for categorical data, Filtered vs ASV173
+2024-09-05 11:07:55.365432 INFO::Creating boxplot for categorical data, Filtered vs ASV187
+2024-09-05 11:07:56.000887 INFO::Creating boxplot for categorical data, Filtered vs ASV310
+2024-09-05 11:07:56.251759 INFO::Creating boxplot for categorical data, Filtered vs ASV393
+2024-09-05 11:07:56.490332 INFO::Creating boxplot for categorical data, Filtered vs ASV30
+2024-09-05 11:07:57.129501 INFO::Creating boxplot for categorical data, Filtered vs ASV83
+2024-09-05 11:07:57.364622 INFO::Creating boxplot for categorical data, Filtered vs ASV160
+2024-09-05 11:07:58.072157 INFO::Creating boxplot for categorical data, Filtered vs ASV600
+2024-09-05 11:07:58.314497 INFO::Creating boxplot for categorical data, Filtered vs ASV726
+2024-09-05 11:07:58.549046 INFO::Creating boxplot for categorical data, Filtered vs ASV60
+2024-09-05 11:07:59.186358 INFO::Creating boxplot for categorical data, Filtered vs ASV679
+2024-09-05 11:07:59.427424 INFO::Creating boxplot for categorical data, Filtered vs ASV135
+2024-09-05 11:08:00.034103 INFO::Creating boxplot for categorical data, Filtered vs ASV168
+2024-09-05 11:08:00.317574 INFO::Creating boxplot for categorical data, Filtered vs ASV782
+2024-09-05 11:08:00.559166 INFO::Creating boxplot for categorical data, Filtered vs ASV44
+2024-09-05 11:08:01.242944 INFO::Creating boxplot for categorical data, Filtered vs ASV45
+2024-09-05 11:08:01.482819 INFO::Creating boxplot for categorical data, Filtered vs ASV32
+2024-09-05 11:08:02.134667 INFO::Creating boxplot for categorical data, Filtered vs ASV694
+2024-09-05 11:08:02.382532 INFO::Creating boxplot for categorical data, Filtered vs ASV315
+2024-09-05 11:08:02.609744 INFO::Creating boxplot for categorical data, Filtered vs ASV372
+2024-09-05 11:08:03.303036 INFO::Creating boxplot for categorical data, Filtered vs ASV71
+2024-09-05 11:08:03.931118 INFO::Creating boxplot for categorical data, Filtered vs ASV72
+2024-09-05 11:08:04.179924 INFO::Creating boxplot for categorical data, Filtered vs ASV764
+2024-09-05 11:08:04.507243 INFO::Creating boxplot for categorical data, Filtered vs ASV55
+2024-09-05 11:08:05.053848 INFO::Creating boxplot for categorical data, Filtered vs ASV263
+2024-09-05 11:08:05.281815 INFO::Creating boxplot for categorical data, Filtered vs ASV38
+2024-09-05 11:08:05.616386 INFO::Creating boxplot for categorical data, Filtered vs ASV54
+2024-09-05 11:08:06.224557 INFO::Creating boxplot for categorical data, Filtered vs ASV92
+2024-09-05 11:08:06.453718 INFO::Creating boxplot for categorical data, Filtered vs ASV105
+2024-09-05 11:08:07.083066 INFO::Creating boxplot for categorical data, Filtered vs ASV108
+2024-09-05 11:08:07.342026 INFO::Creating boxplot for categorical data, Filtered vs ASV122
+2024-09-05 11:08:07.673918 INFO::Creating boxplot for categorical data, Filtered vs ASV133
+2024-09-05 11:08:08.185771 INFO::Creating boxplot for categorical data, Filtered vs ASV141
+2024-09-05 11:08:08.479317 INFO::Creating boxplot for categorical data, Filtered vs ASV144
+2024-09-05 11:08:09.117578 INFO::Creating boxplot for categorical data, Filtered vs ASV164
+2024-09-05 11:08:09.358685 INFO::Creating boxplot for categorical data, Filtered vs ASV225
+2024-09-05 11:08:09.58837 INFO::Creating boxplot for categorical data, Filtered vs ASV243
+2024-09-05 11:08:10.209228 INFO::Creating boxplot for categorical data, Filtered vs ASV247
+2024-09-05 11:08:10.439879 INFO::Creating boxplot for categorical data, Filtered vs ASV275
+2024-09-05 11:08:11.066552 INFO::Creating boxplot for categorical data, Filtered vs ASV296
+2024-09-05 11:08:11.390273 INFO::Creating boxplot for categorical data, Filtered vs ASV297
+2024-09-05 11:08:11.621896 INFO::Creating boxplot for categorical data, Filtered vs ASV305
+2024-09-05 11:08:12.24979 INFO::Creating boxplot for categorical data, Filtered vs ASV306
+2024-09-05 11:08:12.487814 INFO::Creating boxplot for categorical data, Filtered vs ASV314
+2024-09-05 11:08:13.108962 INFO::Creating boxplot for categorical data, Filtered vs ASV320
+2024-09-05 11:08:13.349334 INFO::Creating boxplot for categorical data, Filtered vs ASV333
+2024-09-05 11:08:13.747831 INFO::Creating boxplot for categorical data, Filtered vs ASV347
+2024-09-05 11:08:14.276878 INFO::Creating boxplot for categorical data, Filtered vs ASV368
+2024-09-05 11:08:14.903232 INFO::Creating boxplot for categorical data, Filtered vs ASV371
+2024-09-05 11:08:15.149857 INFO::Creating boxplot for categorical data, Filtered vs ASV376
+2024-09-05 11:08:15.390484 INFO::Creating boxplot for categorical data, Filtered vs ASV385
+2024-09-05 11:08:15.995978 INFO::Creating boxplot for categorical data, Filtered vs ASV386
+2024-09-05 11:08:16.238037 INFO::Creating boxplot for categorical data, Filtered vs ASV390
+2024-09-05 11:08:16.619744 INFO::Creating boxplot for categorical data, Filtered vs ASV395
+2024-09-05 11:08:17.146256 INFO::Creating boxplot for categorical data, Filtered vs ASV402
+2024-09-05 11:08:17.396864 INFO::Creating boxplot for categorical data, Filtered vs ASV435
+2024-09-05 11:08:18.042751 INFO::Creating boxplot for categorical data, Filtered vs ASV455
+2024-09-05 11:08:18.277009 INFO::Creating boxplot for categorical data, Filtered vs ASV473
+2024-09-05 11:08:18.519784 INFO::Creating boxplot for categorical data, Filtered vs ASV475
+2024-09-05 11:08:19.217444 INFO::Creating boxplot for categorical data, Filtered vs ASV478
+2024-09-05 11:08:19.444517 INFO::Creating boxplot for categorical data, Filtered vs ASV489
+2024-09-05 11:08:20.063892 INFO::Creating boxplot for categorical data, Filtered vs ASV490
+2024-09-05 11:08:20.304174 INFO::Creating boxplot for categorical data, Filtered vs ASV495
+2024-09-05 11:08:20.544215 INFO::Creating boxplot for categorical data, Filtered vs ASV498
+2024-09-05 11:08:21.150264 INFO::Creating boxplot for categorical data, Filtered vs ASV502
+2024-09-05 11:08:21.431027 INFO::Creating boxplot for categorical data, Filtered vs ASV503
+2024-09-05 11:08:22.076186 INFO::Creating boxplot for categorical data, Filtered vs ASV505
+2024-09-05 11:08:22.324585 INFO::Creating boxplot for categorical data, Filtered vs ASV507
+2024-09-05 11:08:22.555956 INFO::Creating boxplot for categorical data, Filtered vs ASV513
+2024-09-05 11:08:23.178755 INFO::Creating boxplot for categorical data, Filtered vs ASV519
+2024-09-05 11:08:23.413507 INFO::Creating boxplot for categorical data, Filtered vs ASV526
+2024-09-05 11:08:23.740326 INFO::Creating boxplot for categorical data, Filtered vs ASV543
+2024-09-05 11:08:24.328585 INFO::Creating boxplot for categorical data, Filtered vs ASV544
+2024-09-05 11:08:24.579332 INFO::Creating boxplot for categorical data, Filtered vs ASV554
+2024-09-05 11:08:25.212927 INFO::Creating boxplot for categorical data, Filtered vs ASV564
+2024-09-05 11:08:25.458204 INFO::Creating boxplot for categorical data, Filtered vs ASV603
+2024-09-05 11:08:26.097858 INFO::Creating boxplot for categorical data, Filtered vs ASV626
+2024-09-05 11:08:26.332434 INFO::Creating boxplot for categorical data, Filtered vs ASV636
+2024-09-05 11:08:27.005893 INFO::Creating boxplot for categorical data, Filtered vs ASV640
+2024-09-05 11:08:27.261361 INFO::Creating boxplot for categorical data, Filtered vs ASV641
+2024-09-05 11:08:27.996206 INFO::Creating boxplot for categorical data, Filtered vs ASV649
+2024-09-05 11:08:28.242841 INFO::Creating boxplot for categorical data, Filtered vs ASV681
+2024-09-05 11:08:28.481791 INFO::Creating boxplot for categorical data, Filtered vs ASV682
+2024-09-05 11:08:29.102739 INFO::Creating boxplot for categorical data, Filtered vs ASV693
+2024-09-05 11:08:29.343358 INFO::Creating boxplot for categorical data, Filtered vs ASV725
+2024-09-05 11:08:30.049854 INFO::Creating boxplot for categorical data, Filtered vs ASV730
+2024-09-05 11:08:30.291866 INFO::Creating boxplot for categorical data, Filtered vs ASV742
+2024-09-05 11:08:30.523804 INFO::Creating boxplot for categorical data, Filtered vs ASV751
+2024-09-05 11:08:31.14763 INFO::Creating boxplot for categorical data, Filtered vs ASV754
+2024-09-05 11:08:31.387215 INFO::Creating boxplot for categorical data, Filtered vs ASV759
+2024-09-05 11:08:31.979521 INFO::Creating boxplot for categorical data, Filtered vs ASV765
+2024-09-05 11:08:32.301152 INFO::Creating boxplot for categorical data, Filtered vs ASV808
+2024-09-05 11:08:32.526758 INFO::Creating boxplot for categorical data, Filtered vs ASV820
+2024-09-05 11:08:33.153614 INFO::Creating boxplot for categorical data, Filtered vs ASV837
+2024-09-05 11:08:33.395918 INFO::Creating boxplot for categorical data, Filtered vs ASV878
+2024-09-05 11:08:33.729944 INFO::Creating boxplot for categorical data, Filtered vs ASV902
+2024-09-05 11:08:34.242024 INFO::Creating boxplot for categorical data, Filtered vs ASV971
+2024-09-05 11:08:34.483581 INFO::Creating boxplot for categorical data, Filtered vs ASV996
+2024-09-05 11:08:35.184488 INFO::Creating boxplot for categorical data, Filtered vs ASV1043
+2024-09-05 11:08:35.419539 INFO::Creating boxplot for categorical data, Filtered vs ASV1067
+2024-09-05 11:08:35.748838 INFO::Creating boxplot for categorical data, Filtered vs ASV1168
+2024-09-05 11:08:36.281223 INFO::Creating boxplot for categorical data, Filtered vs ASV417
+2024-09-05 11:08:36.890605 INFO::Creating boxplot for categorical data, Filtered vs ASV518
+2024-09-05 11:08:37.133548 INFO::Creating boxplot for categorical data, Filtered vs ASV124
+2024-09-05 11:08:37.4408 INFO::Creating boxplot for categorical data, Filtered vs ASV404
+2024-09-05 11:08:38.072438 INFO::Creating boxplot for categorical data, Filtered vs ASV280
+2024-09-05 11:08:38.314012 INFO::Creating boxplot for categorical data, Filtered vs ASV326
+2024-09-05 11:08:38.55535 INFO::Creating boxplot for categorical data, Filtered vs ASV433
+2024-09-05 11:08:39.174714 INFO::Creating boxplot for categorical data, Filtered vs ASV282
+2024-09-05 11:08:39.408742 INFO::Creating boxplot for categorical data, Filtered vs ASV99
+2024-09-05 11:08:43.601231 INFO::Creating boxplot for categorical data, Filtered vs ASV337
+2024-09-05 11:08:43.784142 INFO::Creating boxplot for categorical data, Filtered vs ASV356
+2024-09-05 11:08:44.554686 INFO::Creating boxplot for categorical data, Filtered vs ASV363
+2024-09-05 11:08:45.357012 INFO::Creating boxplot for categorical data, Filtered vs ASV787
+2024-09-05 11:08:45.605011 INFO::Creating boxplot for categorical data, Filtered vs ASV43
+2024-09-05 11:08:45.987467 INFO::Creating boxplot for categorical data, Filtered vs ASV286
+2024-09-05 11:08:46.638268 INFO::Creating boxplot for categorical data, Filtered vs ASV346
+2024-09-05 11:08:47.47851 INFO::Creating boxplot for categorical data, Filtered vs ASV439
+2024-09-05 11:08:47.729168 INFO::Creating boxplot for categorical data, Filtered vs ASV586
+2024-09-05 11:08:48.507944 INFO::Creating boxplot for categorical data, Filtered vs ASV779
+2024-09-05 11:08:48.735429 INFO::Creating boxplot for categorical data, Filtered vs ASV861
+2024-09-05 11:08:49.530817 INFO::Creating boxplot for categorical data, Filtered vs ASV795
+2024-09-05 11:08:49.907632 INFO::Creating boxplot for categorical data, Filtered vs ASV130
+2024-09-05 11:08:50.556888 INFO::Creating boxplot for categorical data, Filtered vs ASV180
+2024-09-05 11:08:50.804354 INFO::Creating boxplot for categorical data, Filtered vs ASV191
+2024-09-05 11:08:51.588414 INFO::Creating boxplot for categorical data, Filtered vs ASV311
+2024-09-05 11:08:52.385333 INFO::Creating boxplot for categorical data, Filtered vs ASV317
+2024-09-05 11:08:52.631149 INFO::Creating boxplot for categorical data, Filtered vs ASV338
+2024-09-05 11:08:53.431138 INFO::Creating boxplot for categorical data, Filtered vs ASV476
+2024-09-05 11:08:53.671115 INFO::Creating boxplot for categorical data, Filtered vs ASV546
+2024-09-05 11:08:54.492004 INFO::Creating boxplot for categorical data, Filtered vs ASV901
+2024-09-05 11:08:55.317984 INFO::Creating boxplot for categorical data, Filtered vs ASV1080
+2024-09-05 11:08:55.551361 INFO::Creating boxplot for categorical data, Filtered vs ASV444
+2024-09-05 11:08:55.775534 INFO::Creating boxplot for categorical data, Filtered vs ASV736
+2024-09-05 11:08:56.564761 INFO::Creating boxplot for categorical data, Filtered vs ASV784
+2024-09-05 11:08:57.374255 INFO::Creating boxplot for categorical data, Filtered vs ASV97
+2024-09-05 11:08:57.603965 INFO::Creating boxplot for categorical data, Filtered vs ASV5
+2024-09-05 11:08:58.424008 INFO::Creating boxplot for categorical data, Filtered vs ASV7
+2024-09-05 11:08:59.299047 INFO::Creating boxplot for categorical data, Filtered vs ASV14
+2024-09-05 11:08:59.552723 INFO::Creating boxplot for categorical data, Filtered vs ASV18
+2024-09-05 11:08:59.936006 INFO::Creating boxplot for categorical data, Filtered vs ASV48
+2024-09-05 11:09:00.60074 INFO::Creating boxplot for categorical data, Filtered vs ASV58
+2024-09-05 11:09:00.835295 INFO::Creating boxplot for categorical data, Filtered vs ASV63
+2024-09-05 11:09:01.628609 INFO::Creating boxplot for categorical data, Filtered vs ASV65
+2024-09-05 11:09:02.451852 INFO::Creating boxplot for categorical data, Filtered vs ASV69
+2024-09-05 11:09:02.685277 INFO::Creating boxplot for categorical data, Filtered vs ASV94
+2024-09-05 11:09:03.477667 INFO::Creating boxplot for categorical data, Filtered vs ASV112
+2024-09-05 11:09:03.860087 INFO::Creating boxplot for categorical data, Filtered vs ASV120
+2024-09-05 11:09:04.524812 INFO::Creating boxplot for categorical data, Filtered vs ASV121
+2024-09-05 11:09:04.753759 INFO::Creating boxplot for categorical data, Filtered vs ASV127
+2024-09-05 11:09:05.541775 INFO::Creating boxplot for categorical data, Filtered vs ASV136
+2024-09-05 11:09:06.371989 INFO::Creating boxplot for categorical data, Filtered vs ASV137
+2024-09-05 11:09:06.613178 INFO::Creating boxplot for categorical data, Filtered vs ASV138
+2024-09-05 11:09:06.988637 INFO::Creating boxplot for categorical data, Filtered vs ASV140
+2024-09-05 11:09:07.643207 INFO::Creating boxplot for categorical data, Filtered vs ASV146
+2024-09-05 11:09:07.884291 INFO::Creating boxplot for categorical data, Filtered vs ASV152
+2024-09-05 11:09:08.132289 INFO::Creating boxplot for categorical data, Filtered vs ASV156
+2024-09-05 11:09:08.379001 INFO::Creating boxplot for categorical data, Filtered vs ASV159
+2024-09-05 11:09:08.595203 INFO::Creating boxplot for categorical data, Filtered vs ASV161
+2024-09-05 11:09:09.39153 INFO::Creating boxplot for categorical data, Filtered vs ASV162
+2024-09-05 11:09:09.627231 INFO::Creating boxplot for categorical data, Filtered vs ASV165
+2024-09-05 11:09:10.447189 INFO::Creating boxplot for categorical data, Filtered vs ASV169
+2024-09-05 11:09:10.835083 INFO::Creating boxplot for categorical data, Filtered vs ASV171
+2024-09-05 11:09:11.489869 INFO::Creating boxplot for categorical data, Filtered vs ASV172
+2024-09-05 11:09:11.737653 INFO::Creating boxplot for categorical data, Filtered vs ASV177
+2024-09-05 11:09:12.523145 INFO::Creating boxplot for categorical data, Filtered vs ASV185
+2024-09-05 11:09:12.75078 INFO::Creating boxplot for categorical data, Filtered vs ASV186
+2024-09-05 11:09:13.54716 INFO::Creating boxplot for categorical data, Filtered vs ASV189
+2024-09-05 11:09:13.941071 INFO::Creating boxplot for categorical data, Filtered vs ASV197
+2024-09-05 11:09:14.585957 INFO::Creating boxplot for categorical data, Filtered vs ASV199
+2024-09-05 11:09:14.812846 INFO::Creating boxplot for categorical data, Filtered vs ASV201
+2024-09-05 11:09:15.641367 INFO::Creating boxplot for categorical data, Filtered vs ASV203
+2024-09-05 11:09:16.434759 INFO::Creating boxplot for categorical data, Filtered vs ASV209
+2024-09-05 11:09:16.663921 INFO::Creating boxplot for categorical data, Filtered vs ASV210
+2024-09-05 11:09:17.461243 INFO::Creating boxplot for categorical data, Filtered vs ASV212
+2024-09-05 11:09:17.854137 INFO::Creating boxplot for categorical data, Filtered vs ASV219
+2024-09-05 11:09:18.510446 INFO::Creating boxplot for categorical data, Filtered vs ASV220
+2024-09-05 11:09:18.765699 INFO::Creating boxplot for categorical data, Filtered vs ASV228
+2024-09-05 11:09:19.560816 INFO::Creating boxplot for categorical data, Filtered vs ASV232
+2024-09-05 11:09:20.35457 INFO::Creating boxplot for categorical data, Filtered vs ASV238
+2024-09-05 11:09:20.60514 INFO::Creating boxplot for categorical data, Filtered vs ASV240
+2024-09-05 11:09:20.985003 INFO::Creating boxplot for categorical data, Filtered vs ASV241
+2024-09-05 11:09:21.644913 INFO::Creating boxplot for categorical data, Filtered vs ASV244
+2024-09-05 11:09:21.872558 INFO::Creating boxplot for categorical data, Filtered vs ASV250
+2024-09-05 11:09:22.689016 INFO::Creating boxplot for categorical data, Filtered vs ASV251
+2024-09-05 11:09:23.516998 INFO::Creating boxplot for categorical data, Filtered vs ASV253
+2024-09-05 11:09:23.745454 INFO::Creating boxplot for categorical data, Filtered vs ASV261
+2024-09-05 11:09:24.539056 INFO::Creating boxplot for categorical data, Filtered vs ASV264
+2024-09-05 11:09:24.926305 INFO::Creating boxplot for categorical data, Filtered vs ASV265
+2024-09-05 11:09:25.582394 INFO::Creating boxplot for categorical data, Filtered vs ASV268
+2024-09-05 11:09:25.810965 INFO::Creating boxplot for categorical data, Filtered vs ASV273
+2024-09-05 11:09:26.62796 INFO::Creating boxplot for categorical data, Filtered vs ASV281
+2024-09-05 11:09:27.415292 INFO::Creating boxplot for categorical data, Filtered vs ASV284
+2024-09-05 11:09:27.678397 INFO::Creating boxplot for categorical data, Filtered vs ASV287
+2024-09-05 11:09:28.469143 INFO::Creating boxplot for categorical data, Filtered vs ASV290
+2024-09-05 11:09:28.863036 INFO::Creating boxplot for categorical data, Filtered vs ASV293
+2024-09-05 11:09:29.517048 INFO::Creating boxplot for categorical data, Filtered vs ASV316
+2024-09-05 11:09:29.772743 INFO::Creating boxplot for categorical data, Filtered vs ASV318
+2024-09-05 11:09:30.555618 INFO::Creating boxplot for categorical data, Filtered vs ASV319
+2024-09-05 11:09:30.804904 INFO::Creating boxplot for categorical data, Filtered vs ASV327
+2024-09-05 11:09:31.625977 INFO::Creating boxplot for categorical data, Filtered vs ASV330
+2024-09-05 11:09:32.50735 INFO::Creating boxplot for categorical data, Filtered vs ASV332
+2024-09-05 11:09:33.312256 INFO::Creating boxplot for categorical data, Filtered vs ASV335
+2024-09-05 11:09:33.550392 INFO::Creating boxplot for categorical data, Filtered vs ASV342
+2024-09-05 11:09:33.798978 INFO::Creating boxplot for categorical data, Filtered vs ASV351
+2024-09-05 11:09:34.6071 INFO::Creating boxplot for categorical data, Filtered vs ASV353
+2024-09-05 11:09:34.83614 INFO::Creating boxplot for categorical data, Filtered vs ASV358
+2024-09-05 11:09:35.624421 INFO::Creating boxplot for categorical data, Filtered vs ASV359
+2024-09-05 11:09:36.426121 INFO::Creating boxplot for categorical data, Filtered vs ASV360
+2024-09-05 11:09:36.661483 INFO::Creating boxplot for categorical data, Filtered vs ASV367
+2024-09-05 11:09:37.05715 INFO::Creating boxplot for categorical data, Filtered vs ASV369
+2024-09-05 11:09:37.71193 INFO::Creating boxplot for categorical data, Filtered vs ASV380
+2024-09-05 11:09:38.496737 INFO::Creating boxplot for categorical data, Filtered vs ASV388
+2024-09-05 11:09:38.728679 INFO::Creating boxplot for categorical data, Filtered vs ASV400
+2024-09-05 11:09:39.537734 INFO::Creating boxplot for categorical data, Filtered vs ASV403
+2024-09-05 11:09:40.346453 INFO::Creating boxplot for categorical data, Filtered vs ASV405
+2024-09-05 11:09:40.585223 INFO::Creating boxplot for categorical data, Filtered vs ASV409
+2024-09-05 11:09:40.98011 INFO::Creating boxplot for categorical data, Filtered vs ASV411
+2024-09-05 11:09:41.638944 INFO::Creating boxplot for categorical data, Filtered vs ASV419
+2024-09-05 11:09:41.866498 INFO::Creating boxplot for categorical data, Filtered vs ASV420
+2024-09-05 11:09:42.652063 INFO::Creating boxplot for categorical data, Filtered vs ASV422
+2024-09-05 11:09:43.462301 INFO::Creating boxplot for categorical data, Filtered vs ASV423
+2024-09-05 11:09:43.69932 INFO::Creating boxplot for categorical data, Filtered vs ASV425
+2024-09-05 11:09:44.520994 INFO::Creating boxplot for categorical data, Filtered vs ASV429
+2024-09-05 11:09:44.907297 INFO::Creating boxplot for categorical data, Filtered vs ASV430
+2024-09-05 11:09:45.551331 INFO::Creating boxplot for categorical data, Filtered vs ASV434
+2024-09-05 11:09:45.77836 INFO::Creating boxplot for categorical data, Filtered vs ASV449
+2024-09-05 11:09:46.56667 INFO::Creating boxplot for categorical data, Filtered vs ASV451
+2024-09-05 11:09:47.367949 INFO::Creating boxplot for categorical data, Filtered vs ASV452
+2024-09-05 11:09:47.606649 INFO::Creating boxplot for categorical data, Filtered vs ASV456
+2024-09-05 11:09:48.002255 INFO::Creating boxplot for categorical data, Filtered vs ASV461
+2024-09-05 11:09:48.667792 INFO::Creating boxplot for categorical data, Filtered vs ASV480
+2024-09-05 11:09:48.896039 INFO::Creating boxplot for categorical data, Filtered vs ASV484
+2024-09-05 11:09:49.701432 INFO::Creating boxplot for categorical data, Filtered vs ASV485
+2024-09-05 11:09:50.515786 INFO::Creating boxplot for categorical data, Filtered vs ASV486
+2024-09-05 11:09:50.753671 INFO::Creating boxplot for categorical data, Filtered vs ASV487
+2024-09-05 11:09:51.575189 INFO::Creating boxplot for categorical data, Filtered vs ASV501
+2024-09-05 11:09:51.962764 INFO::Creating boxplot for categorical data, Filtered vs ASV504
+2024-09-05 11:09:52.60251 INFO::Creating boxplot for categorical data, Filtered vs ASV511
+2024-09-05 11:09:52.829512 INFO::Creating boxplot for categorical data, Filtered vs ASV515
+2024-09-05 11:09:53.62267 INFO::Creating boxplot for categorical data, Filtered vs ASV521
+2024-09-05 11:09:54.423598 INFO::Creating boxplot for categorical data, Filtered vs ASV527
+2024-09-05 11:09:54.660193 INFO::Creating boxplot for categorical data, Filtered vs ASV529
+2024-09-05 11:09:55.054641 INFO::Creating boxplot for categorical data, Filtered vs ASV534
+2024-09-05 11:09:55.7087 INFO::Creating boxplot for categorical data, Filtered vs ASV535
+2024-09-05 11:09:56.495151 INFO::Creating boxplot for categorical data, Filtered vs ASV545
+2024-09-05 11:09:56.72776 INFO::Creating boxplot for categorical data, Filtered vs ASV548
+2024-09-05 11:09:57.53072 INFO::Creating boxplot for categorical data, Filtered vs ASV549
+2024-09-05 11:09:57.772807 INFO::Creating boxplot for categorical data, Filtered vs ASV551
+2024-09-05 11:09:58.686795 INFO::Creating boxplot for categorical data, Filtered vs ASV552
+2024-09-05 11:09:59.50487 INFO::Creating boxplot for categorical data, Filtered vs ASV561
+2024-09-05 11:09:59.729993 INFO::Creating boxplot for categorical data, Filtered vs ASV565
+2024-09-05 11:10:00.515296 INFO::Creating boxplot for categorical data, Filtered vs ASV569
+2024-09-05 11:10:00.751466 INFO::Creating boxplot for categorical data, Filtered vs ASV570
+2024-09-05 11:10:01.134173 INFO::Creating boxplot for categorical data, Filtered vs ASV572
+2024-09-05 11:10:01.782125 INFO::Creating boxplot for categorical data, Filtered vs ASV574
+2024-09-05 11:10:02.657448 INFO::Creating boxplot for categorical data, Filtered vs ASV575
+2024-09-05 11:10:03.469036 INFO::Creating boxplot for categorical data, Filtered vs ASV577
+2024-09-05 11:10:03.703732 INFO::Creating boxplot for categorical data, Filtered vs ASV578
+2024-09-05 11:10:04.069826 INFO::Creating boxplot for categorical data, Filtered vs ASV579
+2024-09-05 11:10:04.732209 INFO::Creating boxplot for categorical data, Filtered vs ASV580
+2024-09-05 11:10:05.536135 INFO::Creating boxplot for categorical data, Filtered vs ASV581
+2024-09-05 11:10:05.766949 INFO::Creating boxplot for categorical data, Filtered vs ASV582
+2024-09-05 11:10:06.615484 INFO::Creating boxplot for categorical data, Filtered vs ASV583
+2024-09-05 11:10:07.419599 INFO::Creating boxplot for categorical data, Filtered vs ASV584
+2024-09-05 11:10:07.652745 INFO::Creating boxplot for categorical data, Filtered vs ASV585
+2024-09-05 11:10:07.880827 INFO::Creating boxplot for categorical data, Filtered vs ASV589
+2024-09-05 11:10:08.70074 INFO::Creating boxplot for categorical data, Filtered vs ASV595
+2024-09-05 11:10:09.496675 INFO::Creating boxplot for categorical data, Filtered vs ASV596
+2024-09-05 11:10:09.773771 INFO::Creating boxplot for categorical data, Filtered vs ASV602
+2024-09-05 11:10:10.580275 INFO::Creating boxplot for categorical data, Filtered vs ASV609
+2024-09-05 11:10:10.809754 INFO::Creating boxplot for categorical data, Filtered vs ASV614
+2024-09-05 11:10:11.604881 INFO::Creating boxplot for categorical data, Filtered vs ASV615
+2024-09-05 11:10:11.991405 INFO::Creating boxplot for categorical data, Filtered vs ASV616
+2024-09-05 11:10:12.649136 INFO::Creating boxplot for categorical data, Filtered vs ASV617
+2024-09-05 11:10:12.877376 INFO::Creating boxplot for categorical data, Filtered vs ASV618
+2024-09-05 11:10:13.730459 INFO::Creating boxplot for categorical data, Filtered vs ASV619
+2024-09-05 11:10:14.540045 INFO::Creating boxplot for categorical data, Filtered vs ASV620
+2024-09-05 11:10:14.76711 INFO::Creating boxplot for categorical data, Filtered vs ASV627
+2024-09-05 11:10:15.559154 INFO::Creating boxplot for categorical data, Filtered vs ASV629
+2024-09-05 11:10:15.944825 INFO::Creating boxplot for categorical data, Filtered vs ASV630
+2024-09-05 11:10:16.609611 INFO::Creating boxplot for categorical data, Filtered vs ASV637
+2024-09-05 11:10:16.839742 INFO::Creating boxplot for categorical data, Filtered vs ASV638
+2024-09-05 11:10:17.699448 INFO::Creating boxplot for categorical data, Filtered vs ASV647
+2024-09-05 11:10:18.502872 INFO::Creating boxplot for categorical data, Filtered vs ASV652
+2024-09-05 11:10:18.837209 INFO::Creating boxplot for categorical data, Filtered vs ASV654
+2024-09-05 11:10:19.623313 INFO::Creating boxplot for categorical data, Filtered vs ASV657
+2024-09-05 11:10:19.861383 INFO::Creating boxplot for categorical data, Filtered vs ASV659
+2024-09-05 11:10:20.649295 INFO::Creating boxplot for categorical data, Filtered vs ASV660
+2024-09-05 11:10:21.45551 INFO::Creating boxplot for categorical data, Filtered vs ASV667
+2024-09-05 11:10:21.749131 INFO::Creating boxplot for categorical data, Filtered vs ASV680
+2024-09-05 11:10:22.112757 INFO::Creating boxplot for categorical data, Filtered vs ASV686
+2024-09-05 11:10:22.760423 INFO::Creating boxplot for categorical data, Filtered vs ASV687
+2024-09-05 11:10:23.562085 INFO::Creating boxplot for categorical data, Filtered vs ASV689
+2024-09-05 11:10:23.802953 INFO::Creating boxplot for categorical data, Filtered vs ASV695
+2024-09-05 11:10:24.59107 INFO::Creating boxplot for categorical data, Filtered vs ASV704
+2024-09-05 11:10:25.463177 INFO::Creating boxplot for categorical data, Filtered vs ASV705
+2024-09-05 11:10:25.702634 INFO::Creating boxplot for categorical data, Filtered vs ASV708
+2024-09-05 11:10:26.497215 INFO::Creating boxplot for categorical data, Filtered vs ASV712
+2024-09-05 11:10:26.731985 INFO::Creating boxplot for categorical data, Filtered vs ASV717
+2024-09-05 11:10:26.96346 INFO::Creating boxplot for categorical data, Filtered vs ASV718
+2024-09-05 11:10:27.750486 INFO::Creating boxplot for categorical data, Filtered vs ASV719
+2024-09-05 11:10:28.548064 INFO::Creating boxplot for categorical data, Filtered vs ASV720
+2024-09-05 11:10:28.829004 INFO::Creating boxplot for categorical data, Filtered vs ASV721
+2024-09-05 11:10:29.637593 INFO::Creating boxplot for categorical data, Filtered vs ASV727
+2024-09-05 11:10:30.445176 INFO::Creating boxplot for categorical data, Filtered vs ASV731
+2024-09-05 11:10:30.700788 INFO::Creating boxplot for categorical data, Filtered vs ASV733
+2024-09-05 11:10:31.073256 INFO::Creating boxplot for categorical data, Filtered vs ASV749
+2024-09-05 11:10:31.709376 INFO::Creating boxplot for categorical data, Filtered vs ASV756
+2024-09-05 11:10:32.508048 INFO::Creating boxplot for categorical data, Filtered vs ASV760
+2024-09-05 11:10:32.785913 INFO::Creating boxplot for categorical data, Filtered vs ASV767
+2024-09-05 11:10:33.564243 INFO::Creating boxplot for categorical data, Filtered vs ASV768
+2024-09-05 11:10:33.793346 INFO::Creating boxplot for categorical data, Filtered vs ASV769
+2024-09-05 11:10:34.585708 INFO::Creating boxplot for categorical data, Filtered vs ASV773
+2024-09-05 11:10:34.981704 INFO::Creating boxplot for categorical data, Filtered vs ASV774
+2024-09-05 11:10:35.629164 INFO::Creating boxplot for categorical data, Filtered vs ASV777
+2024-09-05 11:10:36.504829 INFO::Creating boxplot for categorical data, Filtered vs ASV783
+2024-09-05 11:10:36.745017 INFO::Creating boxplot for categorical data, Filtered vs ASV785
+2024-09-05 11:10:37.105166 INFO::Creating boxplot for categorical data, Filtered vs ASV786
+2024-09-05 11:10:37.772051 INFO::Creating boxplot for categorical data, Filtered vs ASV792
+2024-09-05 11:10:38.55854 INFO::Creating boxplot for categorical data, Filtered vs ASV793
+2024-09-05 11:10:38.79096 INFO::Creating boxplot for categorical data, Filtered vs ASV805
+2024-09-05 11:10:39.595289 INFO::Creating boxplot for categorical data, Filtered vs ASV812
+2024-09-05 11:10:40.463456 INFO::Creating boxplot for categorical data, Filtered vs ASV815
+2024-09-05 11:10:40.694524 INFO::Creating boxplot for categorical data, Filtered vs ASV819
+2024-09-05 11:10:41.481371 INFO::Creating boxplot for categorical data, Filtered vs ASV821
+2024-09-05 11:10:41.717257 INFO::Creating boxplot for categorical data, Filtered vs ASV822
+2024-09-05 11:10:41.953239 INFO::Creating boxplot for categorical data, Filtered vs ASV824
+2024-09-05 11:10:42.746564 INFO::Creating boxplot for categorical data, Filtered vs ASV838
+2024-09-05 11:10:43.596643 INFO::Creating boxplot for categorical data, Filtered vs ASV840
+2024-09-05 11:10:43.823737 INFO::Creating boxplot for categorical data, Filtered vs ASV841
+2024-09-05 11:10:44.618598 INFO::Creating boxplot for categorical data, Filtered vs ASV842
+2024-09-05 11:10:45.40349 INFO::Creating boxplot for categorical data, Filtered vs ASV851
+2024-09-05 11:10:45.648704 INFO::Creating boxplot for categorical data, Filtered vs ASV853
+2024-09-05 11:10:45.881537 INFO::Creating boxplot for categorical data, Filtered vs ASV862
+2024-09-05 11:10:46.693084 INFO::Creating boxplot for categorical data, Filtered vs ASV865
+2024-09-05 11:10:47.561449 INFO::Creating boxplot for categorical data, Filtered vs ASV866
+2024-09-05 11:10:47.85467 INFO::Creating boxplot for categorical data, Filtered vs ASV867
+2024-09-05 11:10:48.641165 INFO::Creating boxplot for categorical data, Filtered vs ASV876
+2024-09-05 11:10:49.439196 INFO::Creating boxplot for categorical data, Filtered vs ASV880
+2024-09-05 11:10:49.679888 INFO::Creating boxplot for categorical data, Filtered vs ASV883
+2024-09-05 11:10:50.053699 INFO::Creating boxplot for categorical data, Filtered vs ASV888
+2024-09-05 11:10:50.750346 INFO::Creating boxplot for categorical data, Filtered vs ASV894
+2024-09-05 11:10:50.981667 INFO::Creating boxplot for categorical data, Filtered vs ASV895
+2024-09-05 11:10:51.77892 INFO::Creating boxplot for categorical data, Filtered vs ASV896
+2024-09-05 11:10:52.568833 INFO::Creating boxplot for categorical data, Filtered vs ASV903
+2024-09-05 11:10:52.803275 INFO::Creating boxplot for categorical data, Filtered vs ASV904
+2024-09-05 11:10:53.609089 INFO::Creating boxplot for categorical data, Filtered vs ASV906
+2024-09-05 11:10:53.99896 INFO::Creating boxplot for categorical data, Filtered vs ASV920
+2024-09-05 11:10:54.697457 INFO::Creating boxplot for categorical data, Filtered vs ASV921
+2024-09-05 11:10:54.919882 INFO::Creating boxplot for categorical data, Filtered vs ASV937
+2024-09-05 11:10:55.702304 INFO::Creating boxplot for categorical data, Filtered vs ASV939
+2024-09-05 11:10:56.069803 INFO::Creating boxplot for categorical data, Filtered vs ASV940
+2024-09-05 11:10:56.727152 INFO::Creating boxplot for categorical data, Filtered vs ASV949
+2024-09-05 11:10:57.524032 INFO::Creating boxplot for categorical data, Filtered vs ASV950
+2024-09-05 11:10:57.768737 INFO::Creating boxplot for categorical data, Filtered vs ASV951
+2024-09-05 11:10:58.628872 INFO::Creating boxplot for categorical data, Filtered vs ASV953
+2024-09-05 11:10:59.444834 INFO::Creating boxplot for categorical data, Filtered vs ASV954
+2024-09-05 11:11:00.046976 INFO::Creating boxplot for categorical data, Filtered vs ASV955
+2024-09-05 11:11:00.687508 INFO::Creating boxplot for categorical data, Filtered vs ASV957
+2024-09-05 11:11:01.141859 INFO::Creating boxplot for categorical data, Filtered vs ASV958
+2024-09-05 11:11:01.817349 INFO::Creating boxplot for categorical data, Filtered vs ASV959
+2024-09-05 11:11:02.683973 INFO::Creating boxplot for categorical data, Filtered vs ASV974
+2024-09-05 11:11:03.481008 INFO::Creating boxplot for categorical data, Filtered vs ASV976
+2024-09-05 11:11:03.713339 INFO::Creating boxplot for categorical data, Filtered vs ASV977
+2024-09-05 11:11:04.509247 INFO::Creating boxplot for categorical data, Filtered vs ASV980
+2024-09-05 11:11:04.753713 INFO::Creating boxplot for categorical data, Filtered vs ASV982
+2024-09-05 11:11:04.990886 INFO::Creating boxplot for categorical data, Filtered vs ASV984
+2024-09-05 11:11:05.795287 INFO::Creating boxplot for categorical data, Filtered vs ASV988
+2024-09-05 11:11:06.645518 INFO::Creating boxplot for categorical data, Filtered vs ASV998
+2024-09-05 11:11:06.87064 INFO::Creating boxplot for categorical data, Filtered vs ASV999
+2024-09-05 11:11:07.663306 INFO::Creating boxplot for categorical data, Filtered vs ASV1002
+2024-09-05 11:11:08.468975 INFO::Creating boxplot for categorical data, Filtered vs ASV1006
+2024-09-05 11:11:08.715964 INFO::Creating boxplot for categorical data, Filtered vs ASV1007
+2024-09-05 11:11:09.097263 INFO::Creating boxplot for categorical data, Filtered vs ASV1027
+2024-09-05 11:11:09.812879 INFO::Creating boxplot for categorical data, Filtered vs ASV1034
+2024-09-05 11:11:10.624734 INFO::Creating boxplot for categorical data, Filtered vs ASV1037
+2024-09-05 11:11:10.849827 INFO::Creating boxplot for categorical data, Filtered vs ASV1038
+2024-09-05 11:11:11.644639 INFO::Creating boxplot for categorical data, Filtered vs ASV1039
+2024-09-05 11:11:12.45114 INFO::Creating boxplot for categorical data, Filtered vs ASV1045
+2024-09-05 11:11:12.700046 INFO::Creating boxplot for categorical data, Filtered vs ASV1049
+2024-09-05 11:11:13.540955 INFO::Creating boxplot for categorical data, Filtered vs ASV1051
+2024-09-05 11:11:13.804018 INFO::Creating boxplot for categorical data, Filtered vs ASV1052
+2024-09-05 11:11:14.172357 INFO::Creating boxplot for categorical data, Filtered vs ASV1053
+2024-09-05 11:11:14.821136 INFO::Creating boxplot for categorical data, Filtered vs ASV1057
+2024-09-05 11:11:15.62463 INFO::Creating boxplot for categorical data, Filtered vs ASV1062
+2024-09-05 11:11:15.864401 INFO::Creating boxplot for categorical data, Filtered vs ASV1069
+2024-09-05 11:11:16.698157 INFO::Creating boxplot for categorical data, Filtered vs ASV1076
+2024-09-05 11:11:17.687847 INFO::Creating boxplot for categorical data, Filtered vs ASV1081
+2024-09-05 11:11:18.062642 INFO::Creating boxplot for categorical data, Filtered vs ASV1083
+2024-09-05 11:11:18.717276 INFO::Creating boxplot for categorical data, Filtered vs ASV1085
+2024-09-05 11:11:18.947742 INFO::Creating boxplot for categorical data, Filtered vs ASV1095
+2024-09-05 11:11:19.754167 INFO::Creating boxplot for categorical data, Filtered vs ASV1106
+2024-09-05 11:11:20.565518 INFO::Creating boxplot for categorical data, Filtered vs ASV1110
+2024-09-05 11:11:20.809066 INFO::Creating boxplot for categorical data, Filtered vs ASV1112
+2024-09-05 11:11:21.66692 INFO::Creating boxplot for categorical data, Filtered vs ASV1116
+2024-09-05 11:11:22.486482 INFO::Creating boxplot for categorical data, Filtered vs ASV1131
+2024-09-05 11:11:22.726373 INFO::Creating boxplot for categorical data, Filtered vs ASV1133
+2024-09-05 11:11:22.959621 INFO::Creating boxplot for categorical data, Filtered vs ASV1135
+2024-09-05 11:11:23.762802 INFO::Creating boxplot for categorical data, Filtered vs ASV1137
+2024-09-05 11:11:24.577255 INFO::Creating boxplot for categorical data, Filtered vs ASV1142
+2024-09-05 11:11:24.858736 INFO::Creating boxplot for categorical data, Filtered vs ASV1175
+2024-09-05 11:11:25.67476 INFO::Creating boxplot for categorical data, Filtered vs ASV1176
+2024-09-05 11:11:26.495646 INFO::Creating boxplot for categorical data, Filtered vs ASV1193
+2024-09-05 11:11:26.742117 INFO::Creating boxplot for categorical data, Filtered vs ASV1198
+2024-09-05 11:11:27.117466 INFO::Creating boxplot for categorical data, Filtered vs ASV1202
+2024-09-05 11:11:27.779306 INFO::Creating boxplot for categorical data, Filtered vs ASV1206
+2024-09-05 11:11:28.580889 INFO::Creating boxplot for categorical data, Filtered vs ASV1208
+2024-09-05 11:11:28.854027 INFO::Creating boxplot for categorical data, Filtered vs ASV1211
+2024-09-05 11:11:29.691068 INFO::Creating boxplot for categorical data, Filtered vs ASV1212
+2024-09-05 11:11:29.921241 INFO::Creating boxplot for categorical data, Filtered vs ASV1228
+2024-09-05 11:11:30.724328 INFO::Creating boxplot for categorical data, Filtered vs ASV1239
+2024-09-05 11:11:31.545792 INFO::Creating boxplot for categorical data, Filtered vs ASV1247
+2024-09-05 11:11:31.778405 INFO::Creating boxplot for categorical data, Filtered vs ASV1265
+2024-09-05 11:11:32.156803 INFO::Creating boxplot for categorical data, Filtered vs ASV1274
+2024-09-05 11:11:32.858868 INFO::Creating boxplot for categorical data, Filtered vs ASV1276
+2024-09-05 11:11:33.691721 INFO::Creating boxplot for categorical data, Filtered vs ASV1279
+2024-09-05 11:11:33.926332 INFO::Creating boxplot for categorical data, Filtered vs ASV1280
+2024-09-05 11:11:34.73447 INFO::Creating boxplot for categorical data, Filtered vs ASV1308
+2024-09-05 11:11:35.546133 INFO::Creating boxplot for categorical data, Filtered vs ASV1309
+2024-09-05 11:11:35.781808 INFO::Creating boxplot for categorical data, Filtered vs ASV1324
+2024-09-05 11:11:36.622248 INFO::Creating boxplot for categorical data, Filtered vs ASV1349
+2024-09-05 11:11:37.449704 INFO::Creating boxplot for categorical data, Filtered vs ASV1415
+2024-09-05 11:11:37.694503 INFO::Creating boxplot for categorical data, Filtered vs ASV1416
+2024-09-05 11:11:37.923015 INFO::Creating boxplot for categorical data, Filtered vs ASV207
+2024-09-05 11:11:38.722491 INFO::Creating boxplot for categorical data, Filtered vs ASV441
+2024-09-05 11:11:39.650384 INFO::Creating boxplot for categorical data, Filtered vs ASV288
+2024-09-05 11:11:40.656482 INFO::Creating boxplot for categorical data, Filtered vs ASV669
+2024-09-05 11:11:41.545024 INFO::Creating boxplot for categorical data, Filtered vs ASV292
+2024-09-05 11:11:41.789038 INFO::Creating boxplot for categorical data, Filtered vs ASV349
+2024-09-05 11:11:42.596487 INFO::Creating boxplot for categorical data, Filtered vs ASV460
+2024-09-05 11:11:43.483349 INFO::Creating boxplot for categorical data, Filtered vs ASV556
+2024-09-05 11:11:43.72869 INFO::Creating boxplot for categorical data, Filtered vs ASV631
+2024-09-05 11:11:44.097447 INFO::Creating boxplot for categorical data, Filtered vs ASV688
+2024-09-05 11:11:44.750287 INFO::Creating boxplot for categorical data, Filtered vs ASV114
+2024-09-05 11:11:45.613331 INFO::Creating boxplot for categorical data, Filtered vs ASV272
+2024-09-05 11:11:45.845108 INFO::Creating boxplot for categorical data, Filtered vs ASV467
+2024-09-05 11:11:46.635331 INFO::Creating boxplot for categorical data, Filtered vs ASV850
+2024-09-05 11:11:46.872756 INFO::Creating boxplot for categorical data, Filtered vs ASV1244
+2024-09-05 11:11:47.686139 INFO::Creating boxplot for categorical data, Filtered vs ASV336
+2024-09-05 11:11:48.062065 INFO::Creating boxplot for categorical data, Filtered vs ASV573
+2024-09-05 11:11:48.755871 INFO::Creating boxplot for categorical data, Filtered vs ASV628
+2024-09-05 11:11:48.986798 INFO::Creating boxplot for categorical data, Filtered vs ASV832
+2024-09-05 11:11:49.8111 INFO::Creating boxplot for categorical data, Filtered vs ASV941
+2024-09-05 11:11:50.616022 INFO::Creating boxplot for categorical data, Filtered vs ASV1204
+2024-09-05 11:11:50.856839 INFO::Creating boxplot for categorical data, Filtered vs ASV309
+2024-09-05 11:11:51.650196 INFO::Creating boxplot for categorical data, Filtered vs ASV443
+2024-09-05 11:11:52.027278 INFO::Creating boxplot for categorical data, Filtered vs ASV547
+2024-09-05 11:11:52.719615 INFO::Creating boxplot for categorical data, Filtered vs ASV1017
+2024-09-05 11:11:52.95002 INFO::Creating boxplot for categorical data, Filtered vs ASV453
+2024-09-05 11:11:53.745699 INFO::Creating boxplot for categorical data, Filtered vs ASV412
+2024-09-05 11:11:54.553295 INFO::Creating boxplot for categorical data, Filtered vs ASV222
+2024-09-05 11:11:54.799308 INFO::Creating boxplot for categorical data, Filtered vs ASV622
+2024-09-05 11:11:55.580949 INFO::Creating boxplot for categorical data, Filtered vs ASV142
+2024-09-05 11:11:55.856108 INFO::Creating boxplot for categorical data, Filtered vs ASV75
+2024-09-05 11:11:56.673988 INFO::Creating boxplot for categorical data, Filtered vs ASV170
+2024-09-05 11:11:57.064036 INFO::Creating boxplot for categorical data, Filtered vs ASV361
+2024-09-05 11:11:57.717271 INFO::Creating boxplot for categorical data, Filtered vs ASV674
+2024-09-05 11:11:57.955053 INFO::Creating boxplot for categorical data, Filtered vs ASV294
+2024-09-05 11:11:58.754357 INFO::Creating boxplot for categorical data, Filtered vs ASV590
+2024-09-05 11:11:59.556424 INFO::Creating boxplot for categorical data, Filtered vs ASV1019
+2024-09-05 11:11:59.836826 INFO::Creating boxplot for categorical data, Filtered vs ASV77
+2024-09-05 11:12:00.665987 INFO::Creating boxplot for categorical data, Filtered vs ASV252
+2024-09-05 11:12:01.77284 INFO::Creating boxplot for categorical data, Filtered vs ASV414
+2024-09-05 11:12:02.809696 INFO::Creating boxplot for categorical data, Filtered vs ASV1108
+2024-09-05 11:12:03.05923 INFO::Creating boxplot for categorical data, Filtered vs ASV276
+2024-09-05 11:12:03.286346 INFO::Creating boxplot for categorical data, Filtered vs ASV1040
+2024-09-05 11:12:03.517831 INFO::Creating boxplot for categorical data, Filtered vs ASV525
+2024-09-05 11:12:03.774348 INFO::Creating boxplot for categorical data, Filtered vs ASV465
+2024-09-05 11:12:03.999245 INFO::Creating boxplot for categorical data, Filtered vs ASV373
+2024-09-05 11:12:04.798926 INFO::Creating boxplot for categorical data, Filtered vs ASV236
+2024-09-05 11:12:05.039308 INFO::Creating boxplot for categorical data, Filtered vs ASV104
+2024-09-05 11:12:05.275135 INFO::Creating boxplot for categorical data, Filtered vs ASV298
+2024-09-05 11:12:05.505687 INFO::Creating boxplot for categorical data, Filtered vs ASV348
+2024-09-05 11:12:05.764914 INFO::Creating boxplot for categorical data, Filtered vs ASV24
+2024-09-05 11:12:06.610502 INFO::Creating boxplot for categorical data, Filtered vs ASV200
+2024-09-05 11:12:06.99501 INFO::Creating boxplot for categorical data, Filtered vs ASV192
+2024-09-05 11:12:07.654529 INFO::Creating boxplot for categorical data, Filtered vs ASV283
+2024-09-05 11:12:07.893884 INFO::Creating boxplot for categorical data, Filtered vs ASV389
+2024-09-05 11:12:08.69946 INFO::Creating boxplot for categorical data, Filtered vs ASV750
+2024-09-05 11:12:09.501185 INFO::Creating boxplot for categorical data, Filtered vs ASV658
+2024-09-05 11:12:09.783392 INFO::Creating boxplot for categorical data, Filtered vs ASV8
+2024-09-05 11:12:10.591221 INFO::Creating boxplot for categorical data, Filtered vs ASV661
+2024-09-05 11:12:10.835628 INFO::Creating boxplot for categorical data, Filtered vs ASV216
+2024-09-05 11:12:11.215121 INFO::Creating boxplot for categorical data, Filtered vs ASV12
+2024-09-05 11:12:11.885175 INFO::Creating boxplot for categorical data, Filtered vs ASV302
