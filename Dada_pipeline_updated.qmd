@@ -286,5 +286,5 @@ Counts are brought from assays and written to file
 ```{r, warning = FALSE, message = FALSE, size = "tiny"}
 ASV_counts <- as.data.frame(assays(tse)$counts)
 ASV_counts %>% rownames_to_column(var= "Variant") %>%
-write_tsv(file = paste0(exportloc, "/fishery_asvs.tsv"))
+write_tsv(file = paste0(exportloc, "/asvs.tsv"))
 ```
