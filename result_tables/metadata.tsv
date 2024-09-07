@@ -1,4 +1,4 @@
-sampleid	Name	Age	Filtered	Algae	Group
+Sampleid	Name	Age	Filtered	Algae	Group
 Sample01	C2M1	5	yes	chlorella_s	1
 Sample02	C2M2	5	yes	chlorella_s	1
 Sample03	C2M3	5	no	chlorella_s	1
