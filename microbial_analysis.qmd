@@ -4,7 +4,6 @@ format: pdf
 pdf-engine: lualatex
 editor: visual
 mainfont: Aptos
-monofont: PT Mono
 always_allow_html: yes
 header-includes:
    \usepackage[dvipsnames]{xcolor}
@@ -16,7 +15,7 @@ header-includes:
 
 Workflow has been built with help of "Orchestrating microbiome analysis with R and Bioconductor" (Leo Lahti et. al), various analysis tool guides and own modifications.
 
-```{r, include = FALSE}
+```{r, include = F}
 # This will allow to use different font sizes inside code
 def.chunk.hook  <- knitr::knit_hooks$get("chunk")
 knitr::knit_hooks$set(chunk = function(x, options) {
@@ -25,37 +24,34 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 })
 ```
 
-```{r libraries, warning = FALSE, message = FALSE, size = "tiny"}
-#load required libraries
-library(mia); packageVersion("mia")
-library(ape); packageVersion("ape")
-library(miaViz);packageVersion("miaViz")
-library(scater);packageVersion("scater")
-library(vegan);packageVersion("vegan")
-library(tidyverse); packageVersion("tidyverse")
-library(kableExtra);packageVersion("kableExtra")
-library(dplyr);packageVersion("dplyr")
-library(tibble);packageVersion("tibble")
-library(knitr);packageVersion("knitr")
-library(reshape2);packageVersion("reshape2")
-library(scales);packageVersion("scales")
-library(ggplot2);packageVersion("ggplot2")
-library(ggthemes);packageVersion("ggthemes")
-library(ggsci);packageVersion("ggsci")
+```{r libraries, warning = F, message = F, size = "tiny", include=F}
+# Load required libraries
+library(mia)
+library(ape)
+library(miaViz)
+library(scater)
+library(vegan)
+library(tidyverse)
+library(kableExtra)
+library(dplyr)
+library(tibble)
+library(knitr)
+library(reshape2)
+library(scales)
+library(ggplot2)
+library(ggthemes)
+library(ggsci)
+library(ggpubr)
 library(patchwork)
-library(ALDEx2);packageVersion("ALDEx2")
-library(ANCOMBC);packageVersion("ANCOMBC")
-library(DT);packageVersion("DT")
-library(Maaslin2);packageVersion("Maaslin2")
+library(ALDEx2)
+library(ANCOMBC)
+library(DT)
+library(Maaslin2)
 ```
 
-\newpage
+### Define file locations
 
-### Set file locations
-
-Set necessary file paths before running code.
-
-```{r locations, warning = FALSE, message = FALSE, size = "tiny"}
+```{r locations, warning = F, message = F, size = "tiny"}
 # Path variables
 asvfile <- "result_tables/asvs.tsv"
 metafile <- "result_tables/metadata.tsv"
@@ -65,122 +61,130 @@ treefile <- "result_tables/tree.nwk"
 
 ### Import data
 
-Data is imported and a TreeSummarizedExperiment object is created.
+Data import and creation of a TreeSummarizedExperiment object.
 
-```{r import, warning = FALSE, message = FALSE, size = "tiny"}
-#Abundance data is imported from tabular txt file, rownames stored and emptied
-counts <- read_tsv(asvfile, show_col_types = FALSE)
-ASV_names <- counts$ASV_names
-counts$ASV_names <- NULL
-#Metadata is imported from tabular txt file, rownames stored and emptied
-samples <- read_tsv(metafile, show_col_types = FALSE)
+```{r import, warning = F, message = F, size = "tiny"}
+# Abundance data is imported from txt file, rownames stored and emptied
+counts <- read_tsv(asvfile, show_col_types = F)
+ASV_names <- counts$Variant
+counts$Variant <- NULL
+# Metadata is imported from txt file, rownames stored and emptied
+samples <- read_tsv(metafile, show_col_types = F)
 sampleid <- samples$sampleid
 samples$sampleid <- NULL
-#Taxonomy table is imported tabular txt file, rownames stored and emptied
-taxonomy <-read_tsv(taxafile, show_col_types = FALSE)
-taxanames <- taxonomy$ASV_names
-taxonomy$ASV_names <- NULL
-#Check if there are discrepancies between data tables
+# Taxonomy table is imported txt file, rownames stored and emptied
+taxonomy <-read_tsv(taxafile, show_col_types = F)
+taxanames <- taxonomy$Variant
+taxonomy$Variant <- NULL
+# Check if there are discrepancies between data tables
 if( any( colnames(counts) != sampleid ) ){
     counts <- counts[ , sampleid ]}
 if( any( ASV_names != taxanames ) ){
     counts <- counts[ taxanames, ]}
-#Abundance values should be in numeric matrix format
+# Numerc matrix format is required for abundance data
 counts <- as.matrix(counts)
-#And should be added to a SimpleList
+# It should be added to a SimpleList
 assays <-  SimpleList(counts = counts)
-#colData and rowData should be in DataFrame format
-colData <- DataFrame(colData)
-rowData <- DataFrame(rowData)
-#Create a TreeSummarized Experiment object
+# colData and rowData should be in DataFrame (S4) format
+samples <- DataFrame(samples)
+taxonomy <- DataFrame(taxonomy)
+# Create a TreeSummarized Experiment object
 tse <- TreeSummarizedExperiment(assays = assays,
                                      colData = samples,
                                      rowData = taxonomy)
-#Add amplicon variant names as rownames
+# Add variant names as rownames
 rownames(tse) <- ASV_names
 ```
 
-Add phylogenetic tree
+Add phylogenetic tree to object
 
-```{r phylo, warning = FALSE, message = FALSE, size = "tiny"}
-#tree in newick format was created with mafft & fasttree
+```{r phylo, warning = F, message = F, size = "tiny"}
+# Phylogenetic tree in newick format
 phytree <- read.tree(treefile)
 rowTree(tse) <- phytree
-#view tse
-#save as rds object
+# Save as a rds file
 saveRDS(tse,"rds/tse.rds")
 ```
 
-\newpage
-
 ## Community composition
 
-Community composition can be visualised at different taxonomic ranks by agglomerating information and using getTopFeatures function. Barplots can be created either by arranging assay data to a long data table or straight by using plotAbundance function from miaViz package.
+Community composition at different taxonomic ranks can be studied by agglomerating taxa and using getTop function. Easiest way to visualize most common taxonomic features are barplots
 
-Here we plot top 5 phyla from samples. Rest have been relabeled to Others group.
+Phylum rank
 
-```{r phylum, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5,4)}
+```{r phylum_plot, warning=F, message=F, size="tiny", fig.dim=c(6,4)}
+# Reload data
+tse <- readRDS("rds/tse.rds")
 n <- 5
-p_level <- agglomerateByRank(tse, "Phylum", onRankOnly = TRUE)
-p_level <- relAbundanceCounts(p_level, name="relabundance")
-#Get top orders
-top_phyla <- getTopFeatures(p_level,
-                           top = n,
-                           method="median",
-                           assay_name = "relabundance")
-#Leave only names for top phyla and label the rest to "Others"
-phyla_renamed <-  lapply(rowData(p_level)$Phylum,
-                     function(x){if (x %in% top_phyla) {x} else {"Others"}})
-rowData(p_level)$Phylum <- as.character(phyla_renamed)
-#Barplot object
-abund1 <- plotAbundance(p_level,
-              assay_name = "relabundance",
-              rank = "Phylum",
-              order_rank_by = "abund",
-              add_x_text = TRUE,
-              one_facet = TRUE) + labs(color = "Phylum", fill = "Phylum") 
-abund1$scales$scales <- NULL
-abund1 + theme_hc(base_size = 9) +
-  scale_fill_igv("default") + scale_color_igv("default") +
-  theme(axis.text.x = element_text(angle = 90))
+# Agglomerate to genus rank
+tse <- agglomerateByRank(tse, rank="Phylum", na.rm=T)
+# Calculate relative abundance
+tse <- transformAssay(tse, method="relabundance")
+# Get top 10 features
+top_features <- getTop(tse, top=n, method="median",
+assay.type="relabundance")
+# Get data and filter using top features
+df_phylum <- data.frame(assay(tse, "relabundance"))
+# Proportion of Others bacteria group is 1 - colsums
+df_phylum <- df_phylum %>% rownames_to_column(var="Phylum") %>%
+filter(Phylum %in% top_features) %>%
+bind_rows(summarise(., Phylum = "Others", across(where(is.numeric),
+~ 1 - sum(.))))
+# Create long table for ggplot
+phylum_long <- pivot_longer(df_phylum, names_to="Sample", 
+                            values_to="Abundance", cols = starts_with("Sample"))
+# Barplot settings
+bar_theme <- list(theme_fivethirtyeight(base_size=8),
+scale_fill_stata(), theme(axis.text.x =
+element_text(angle = 90,
+vjust = 0.5,
+hjust = 1)))
+# Barplot
+barplot1 <- ggplot(phylum_long, aes(x = Sample,
+y = Abundance, fill = Phylum)) +
+geom_bar(stat = "identity") + xlab("Sample") +
+bar_theme
+barplot1
 ```
 
-\newpage
+Genus rank
 
-Top 10 genera
-
-```{r genus, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5,5)}
+```{r genus_plot, warning=F, message=F, size="tiny", fig.dim=c(6,4)}
+# Reload data
+tse <- readRDS("rds/tse.rds")
 n <- 10
-g_level <- agglomerateByRank(tse, "Genus", onRankOnly = TRUE)
-g_level <- relAbundanceCounts(g_level, name="relabundance")
-#Get top orders
-top_genera <- getTopFeatures(g_level,
-                           top = n,
-                           method = "median",
-                           assay_name = "relabundance")
-#Leave only names for top phyla and label the rest to "Others"
-genera_renamed <-  lapply(rowData(g_level)$Genus,
-                     function(x){if (x %in% top_genera) {x} else {"Others"}})
-rowData(g_level)$Genus <- as.character(genera_renamed)
-#Plot composition as a bar plot
-abund2 <- plotAbundance(g_level,
-              assay_name = "relabundance",
-              rank = "Genus",
-              order_rank_by = "abund",
-              add_x_text = TRUE,
-              one_facet = TRUE) + labs(fill="Genus", color="Genus")
-abund2$scales$scales <- NULL
-abund2 + theme_hc(base_size = 9) + scale_fill_igv("default") +
-              scale_color_igv("default") + theme(axis.text.x = element_text(angle = 90))
+# Agglomerate to genus rank
+tse <- agglomerateByRank(tse, rank="Genus", na.rm=T)
+# Calculate relative abundance
+tse <- transformAssay(tse, method="relabundance")
+# Get top 10 features
+top_features <- getTop(tse, top=n, method="median",
+assay.type="relabundance")
+# Get data and filter using top features
+df_genus <- data.frame(assay(tse, "relabundance"))
+# Proportion of Others bacteria group is 1 - colsums
+df_genus <- df_genus %>% rownames_to_column(var="Genus") %>%
+filter(Genus %in% top_features) %>%
+bind_rows(summarise(., Genus = "Others", across(where(is.numeric),
+~ 1 - sum(.))))
+# Create long table for ggplot
+genus_long <- pivot_longer(df_genus, names_to="Sample", 
+                            values_to="Abundance", cols = starts_with("Sample"))
+# Barplot
+barplot2 <- ggplot(genus_long, aes(x = Sample,
+y = Abundance, fill = Genus)) +
+geom_bar(stat = "identity") + xlab("Sample") +
+bar_theme
+barplot2
 ```
 
 \newpage
 
-Abundance information can be presented also in tables. Next, samples are merged to groups, taxonomy agglomerated and arranged by abundance.
+Abundance information can also be arranged to tables. Samples are merged by categorical data, taxonomy is agglomerated and data arranged by abundance.
 
-Top taxa in filtered samples vs non-filtered.
-
-```{r table1, warning = FALSE, message = FALSE, size = "tiny"}
+```{r table1, warning = F, message = F, size = "tiny"}
+# Reload tse
+tse <- readRDS("rds/tse.rds")
 #Merge filtered values, recount relative abundance and agglomeration to Genus
 col4 <- mergeCols(tse,colData(tse)$Filtered)
 col4 <- agglomerateByRank(col4, "Genus")
@@ -197,16 +201,16 @@ opt2 <- data.frame(assay(col4,"relabundance")) %>%
 #How many to list in table
 n <- 10
 col4_table <- cbind(opt1[1:n,], opt2[1:n,])
-kable(col4_table, digits = 2, caption = "Common taxa") %>%
+kable(col4_table, digits = 2, caption = "Common taxa by Filtering") %>%
   kable_styling(latex_options = c("HOLD_position","striped"), font_size = 12) %>%
   row_spec(0, background = "indigo", color = "ivory")
 ```
 
 \newpage
 
-Top taxa in microalgae categories.
+Algae groups
 
-```{r table2, warning = FALSE, message = FALSE, size = "tiny"}
+```{r table2, warning = F, message = F, size = "tiny"}
 #Merge filtered values, recount relative abundance and agglomeration to Genus
 col5 <- mergeCols(tse, colData(tse)$Algae)
 col5 <- agglomerateByRank(col5, "Genus")
@@ -223,16 +227,16 @@ opt2 <- data.frame(assay(col5,"relabundance")) %>%
 #How many to list in table
 n <- 10
 col5_table <- cbind(opt1[1:n,], opt2[1:n,])
-kable(col5_table, digits = 2, caption = "Common taxa") %>%
+kable(col5_table, digits = 2, caption = "Common taxa by Algae") %>%
   kable_styling(latex_options = c("HOLD_position", "striped"), font_size = 12) %>%
   row_spec(0, background = "indigo", color = "ivory")
 ```
 
 \newpage
 
-Top taxa in culture age categories (Note that numeric values need to be converted to characters).
+Age groups
 
-```{r table3, warning = FALSE, message = FALSE, size = "tiny"}
+```{r table3, warning = F, message = F, size = "tiny"}
 #Merge filtered values, recount relative abundance and agglomeration to Genus
 col3 <- mergeCols(tse, as.character(colData(tse)$Age))
 col3 <- agglomerateByRank(col3, "Genus")
@@ -247,7 +251,7 @@ opt2 <- data.frame(assay(col3, "relabundance")) %>%
 #How many to list in table
 n <- 10
 col3_table <- cbind(opt1[1:n,], opt2[1:n,])
-kable(col3_table, digits = 2, caption = "Common taxa") %>%
+kable(col3_table, digits = 2, caption = "Common taxa by Age") %>%
   kable_styling(latex_options = c("HOLD_position","striped"), font_size = 12) %>%
   row_spec(0, background="indigo", color="ivory")
 ```
@@ -256,257 +260,192 @@ kable(col3_table, digits = 2, caption = "Common taxa") %>%
 
 ### Alpha diversity
 
-Diversity can be studied using diversity indexes. Values can be added to **colData** under defined names. We create table with Shannon, Faith and observed features diversity indexes.
+Diversity can be studied using diversity indexes. Values can be stored to **colData** under defined names. We create table with Shannon, Faith and observed features.
 
-```{r alfa, warning = FALSE, message = FALSE, size = "tiny"}
+```{r alfad, warning = F, message = F, size = "tiny"}
+# Reload tse
+tse <- readRDS("rds/tse.rds")
 #Calculate Shannon index
-tse <- mia::estimateDiversity(tse, 
-                             assay_name = "counts", 
-                             index = "shannon", 
-                             name = "Shannon")
+tse <- addAlpha(tse, assay.type = "counts", 
+                index = "shannon_diversity", 
+                name = "Shannon")
 #Calculate phylogenetic Faith index
-tse <- mia::estimateFaith(tse,
-                          abund_values = "counts",
-                          index = "faith",
-                          name = "Faith",
-                          tree_name = "phylo")
+tse <- addAlpha(tse, assay.type = "counts",
+                index = "faith_diversity",
+                name = "Faith", tree_name = "phylo")
 #Calculate richness with Chao1 index
-tse <- mia::estimateRichness(tse,
-                             abund_values = "counts",
-                             index = "observed",
-                             name = "Observed")
+tse <- addAlpha(tse, assay.type = "counts", 
+                index = "observed_richness",
+                name = "Observed")
 #Create table
-kable(data.frame(Shannon = colData(tse)$Shannon, Faith = colData(tse)$Faith,
+kable(data.frame(Sample = rownames(colData(tse)), Shannon = colData(tse)$Shannon,
+                 Faith = colData(tse)$Faith,
                  Observed_features = colData(tse)$Observed), digits = 2) %>%
                  kable_styling(latex_options = c("HOLD_position", "striped"),
-                               font_size = 12) %>%
+                               font_size = 10) %>%
                  row_spec(0, background = "indigo", color = "ivory")
 ```
 
 \newpage
 
-Boxplots can be used to compare sample categories
+Boxplots can be used to compare diversity between categories
 
-```{r boxplots, warning = FALSE, message = FALSE, size = "tiny"}
-#Shannon boxplot I
-plot1 <- ggplot(as.data.frame(colData(tse)), aes(x = Algae, y = Shannon,
-                                                 fill = Algae)) +
-  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.3, dotsize = 0.5) +
-  labs (title = "Algae", y = "Shannon", x = "Algae")
-#Shannon boxplot II
-plot2 <- ggplot(as.data.frame(colData(tse)), aes(x = Filtered, y = Shannon,
-                                                 fill = Filtered)) +
-  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.3, dotsize = 0.5) +
-  labs (title = "Culture filtering", y = "Shannon", x = "Filtering")
-#Shannon boxplot III
-plot3 <- ggplot(as.data.frame(colData(tse)), aes(x = Name, y = Shannon,
-                                                 fill = Name)) +
-  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.3, dotsize = 0.5) +
-  labs (title = "Samples", y = "Shannon", x = "Sample")
-#Shannon boxplot IV
-plot4 <- ggplot(as.data.frame(colData(tse)), aes(x = as.character(Age), y = Shannon,
-                                                 fill = Algae)) +
-                geom_boxplot(alpha = 0.7, show.legend = FALSE) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.3, dotsize = 0.5) +
-  labs (title = "Algae and age", y = "Shannon", x = "Age of culture") +
-  scale_x_discrete(limits = rev)
-#Shannon boxplot V
-plot5 <- ggplot(as.data.frame(colData(tse)), aes(x = as.character(Age), y = Shannon,
-                                                 fill= Filtered)) +
-  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
-  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 0.3, dotsize = 0.5) +
-  labs (title = "Filtering and age", y = "Shannon", x = "Age of culture") +
-  scale_x_discrete(limits = rev)
+```{r shannon, size="tiny", warning=F, message=F}
+# Boxplot function
+plot_shannon <- function(x_var, fill_var, title, x_label, scale_x = FALSE, s_var) {
+  p <- ggplot(as.data.frame(colData(tse)), aes(x = as.character(.data[[x_var]]), y = Shannon, fill = .data[[fill_var]])) +
+    geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+    labs(title = title, y = "Shannon", x = x_label) +
+    theme_hc(base_size = s_var) +  scale_fill_stata()
+  
+  if (scale_x) p <- p + scale_x_discrete(limits = rev)
+  
+  return(p)
+}
+# Generate plots
+plot1 <- plot_shannon("Algae", "Algae", "Algae", "Algae",, 8)
+plot2 <- plot_shannon("Filtered", "Filtered", "Culture filtering",
+                      "Filtering",, 8)
+plot3 <- plot_shannon("Name", "Name", "Samples", "Sample",, 8)
+plot4 <- plot_shannon("Age", "Algae", "Algae and age", "Age of culture",
+                      scale_x = TRUE, 8)
+plot5 <- plot_shannon("Age", "Filtered", "Filtering and age", "Age of culture",
+                      scale_x = TRUE,8)
 ```
 
-Algae and culture filtering boxplots (n=8).
+Alpha diversity boxplots
 
-```{r plot1, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5, 3)}
-plot1 +  theme_hc(base_size=9) + scale_fill_igv() + plot2 + theme_hc(base_size=9) + scale_fill_igv()
+```{r plot, warning = F, message = F, size = "tiny", fig.dim = c(6, 4.5)}
+# Create the combined plot
+combined_plot <- (plot1 | plot2) /
+                 (plot4 | plot5) /
+                 plot3 
+# Display the combined plot
+combined_plot
 ```
 
 \newpage
 
-Sample comparison boxplot (n=2)
-
-```{r plot2, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5, 3)}
-plot3 + theme_hc(base_size = 9) + scale_fill_igv()
-```
-
-Dual boxplots (n=4)
-
-```{r plot3, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5,3)}
-plot4 + theme_hc(base_size = 9) + scale_fill_igv() + plot5 + theme_hc(base_size = 9) + scale_fill_igv()
-```
-
-Filtering has an effect on diversity. Both microalgae seem also to decrease diversity compared to untreated. However, there is only one control sample and decrease is not statistically significant. Culture age also decreases diversity. This is most evident in final boxplots.
-
-\newpage
+Filtering has clear effect on richness. Both algae species seem also to decrease richness compared to untreated sample. However, there is only one control and decrease is not statistically significant. Culture age also decreases diversity. This is most evident in plots displaying filtering and age categories separately.
 
 ### Beta diversity
 
-Bray-Curtis dissimilarity analysis
+Bray-Curtis dissimilarity analysis using count data and rarefaction to 11 624.
 
-```{r bray, warning = FALSE, message = FALSE, size = "tiny"}
-# Convert counts to relabundance
-tse <- transformAssay(tse, method = "relabundance", assay.type = "counts")
-# Perform Bray-Curtis distance calculation
-tse <- runMDS(tse, FUN = vegan::vegdist, method = "bray",
-              name = "Bray", exprs_values = "relabundance")
-#Create 2D ggplot object
-pcoa_bray <- plotReducedDim(tse, "Bray")
+```{r bray, warning = F, message = F, size = "tiny"}
+# Reload data
+tse <- readRDS("rds/tse.rds")
+# Calculate Bray-Curtis distance and run MDS
+tse <- runMDS(tse, FUN = getDissimilarity, method = "bray",
+              assay.type = "counts", name = "MDS_bray",
+              sample = 11624)
+# Reduce to 2D
+pcoa_bray <- plotReducedDim(tse, "MDS_bray")
 # Calculate explained variance
-e <- attr(reducedDim(tse, "Bray"), "eig");
-rel_eig <- e/sum(e[e>0])
-#Create dataframe for each axis
-bray_curtis_df <- data.frame(pcoa1 = pcoa_bray$data[,1], 
-                             pcoa2 = pcoa_bray$data[,2])
-#Binding sample attributes to same data frame
-#At same time culture age in Days is converted from numeric to character
-bray_attributes <-cbind(bray_curtis_df,
-                        Filtering = colData(tse)$Filtered,
-                        Age = as.character(colData(tse)$Age),
-                        Names = colData(tse)$Name,
-                        Algae = colData(tse)$Algae)
-bray_attributes <- bray_attributes[1:16,]
-#Create series of plots using combined data frame
-filtering <- ggplot(data = bray_attributes, aes(x = pcoa1, y = pcoa2,
-                    color = Filtering, shape = Algae)) + geom_point(size = 3) +
-                    labs(x = paste("PCoA 1 (", round(100 * rel_eig[[1]],1),
-                    "%", ")", sep = ""), y = paste("PCoA 2 (",
-                    round(100 * rel_eig[[2]],1), "%", ")", sep = ""),)
-age <- ggplot(data = bray_attributes, aes(x = pcoa1, y = pcoa2, color = Age,
-                     shape = Algae)) + geom_point(size = 3) +
-                     labs(x = paste("PCoA 1 (", round(100 * rel_eig[[1]],1),
-                     "%", ")", sep = ""), y = paste("PCoA 2 (",
-                    round(100 * rel_eig[[2]],1), "%", ")", sep = ""),)
+e <- attr(reducedDim(tse, "MDS_bray"), "eig")
+rel_eig <- e / sum(e[e > 0])
+# Create dataframe for each axis and bind sample attributes
+bray_attributes <- data.frame(pcoa1 = pcoa_bray$data[, 1],
+                              pcoa2 = pcoa_bray$data[, 2],
+                              Filtering = colData(tse)$Filtered,
+                              Age = as.character(colData(tse)$Age),
+                              Names = colData(tse)$Name,
+                              Algae = colData(tse)$Algae)[1:16,]
+# Create series of plots using data frame
+plot_pcoa <- function(data, color_var, shape_var, x_label, y_label) {
+  ggplot(data, aes(x = pcoa1, y = pcoa2, color = !!sym(color_var),
+                   shape = !!sym(shape_var))) + geom_point(size = 2.5) +
+    theme_pubclean() + scale_color_lancet() + labs(x = x_label, y = y_label)
+}
+x_label <- paste("PCoA 1 (", round(100 * rel_eig[[1]], 1), "%)", sep = "")
+y_label <- paste("PCoA 2 (", round(100 * rel_eig[[2]], 1), "%)", sep = "")
+filtering_plot <- plot_pcoa(bray_attributes, "Filtering", "Algae",
+                            x_label, y_label)
+age_plot <- plot_pcoa(bray_attributes, "Age", "Algae", x_label, y_label)
 ```
 
-Results.
+Plots
 
-```{r plot4, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5,3.5)}
-filtering + theme_hc() + ggtitle("Filtering and Algae") +
-            theme(axis.title = element_text()) + scale_color_igv()
+```{r plot4, warning = F, message = F, size = "tiny", fig.dim = c(6,5)}
+wrap_plots(filtering_plot + ggtitle("Filtering and Algae"), age_plot + ggtitle("Filtering and Age"), ncol=1)
 ```
 
 \newpage
 
-```{r plot5, warning = FALSE, message = FALSE, size = "tiny"}
-age + theme_hc() + ggtitle("Filtering and Age") +
-            theme(axis.title = element_text()) + scale_color_igv()
+Filtering plays the most significant role in driving sample dissimilarity.
+
+Beta diversity analysis using unifrac method
+
+```{r unifrac, message = F, warning = F, size = "tiny"}
+# Reload data
+tse <- readRDS("rds/tse.rds")
+# Method names for both unweighted and weighted UniFrac
+methods <- c("unweighted_uni", "weighted_uni")
+# Run MDS and create data frames in one loop
+results <- lapply(methods, function(method) {
+  weighted <- method == "weighted_uni"
+  # Run MDS for each method
+  tse <- runMDS(tse, FUN = getDissimilarity, method = "unifrac",
+                name = method,  assay.type = "counts", tree = rowTree(tse),
+                sample = 11624, weighted = weighted)
+  # Create PCoA data frame and calculate explained variance
+  pcoa <- reducedDim(tse, method)
+  pcoa_df <- data.frame(pcoa1 = pcoa[, 1],
+                        pcoa2 = pcoa[, 2],
+                        Filtering = colData(tse)$Filtered,
+                        Age = colData(tse)$Age,
+                        Algae = colData(tse)$Algae)[1:16, ]
+  # Calculate explained variance
+  eig <- attr(pcoa, "eig")
+  rel_eig <- eig / sum(eig[eig > 0])
+  list(pcoa_df = pcoa_df, rel_eig = rel_eig)
+})
+# Extract results for each method
+unweighted_df <- results[[1]]$pcoa_df
+weighted_df <- results[[2]]$pcoa_df
+rel_eig_unw <- results[[1]]$rel_eig
+rel_eig_w <- results[[2]]$rel_eig
 ```
 
-Filtering change community composition.
-
-Beta diversity using unifrac
-
-```{r unifrac, warning = FALSE, message = FALSE, size = "tiny"}
-tse <- runMDS(tse, FUN = mia::calculateUnifrac, name = "unweighted_uni",
-              tree = rowTree(tse),
-              ntop = nrow(tse),
-              exprs_values = "relabundance",
-              weighted = FALSE)
-tse <- runMDS(tse, FUN = mia::calculateUnifrac, name = "weighted_uni",
-              tree = rowTree(tse),
-              ntop = nrow(tse),
-              exprs_values = "relabundance",
-              weighted = TRUE)
-#Create ggplot objects
-unweighted <- plotReducedDim(tse, "unweighted_uni")
-weighted <- plotReducedDim(tse, "weighted_uni")
-#Create data frames
-unweighted_df <- data.frame(pcoa1 = unweighted$data[,1], 
-                            pcoa2 = unweighted$data[,2])
-weighted_df <- data.frame(pcoa1 = weighted$data[,1],
-                          pcoa2 = weighted$data[,2])
-#We  want to include sample metadata to the same data frame
-#At same time culture age in Days is converted from numeric data to character
-unweighted_attributes <-cbind(unweighted_df,
-                         Filtering = colData(tse)$Filtered,
-                         Age = as.character(colData(tse)$Age),
-                         Names = colData(tse)$Name,
-                         Algae = colData(tse)$Algae,
-                         Group = colData(tse)$Group)
-weighted_attributes <-cbind(weighted_df,
-                         Filtering = colData(tse)$Filtered,
-                         Age = as.character(colData(tse)$Age),
-                         Names = colData(tse)$Name,
-                         Algae = colData(tse)$Algae,
-                         Group = colData(tse)$Group)
-# Calculate explained variances
-eu <- attr(reducedDim(tse, "unweighted_uni"), "eig");
-urel_eig <- eu/sum(eu[eu>0])
-ew <- attr(reducedDim(tse, "weighted_uni"), "eig");
-wrel_eig <- ew/sum(ew[ew>0])
-# Removing wastewater from plots
-unweighted_attributes <- unweighted_attributes[1:16,]
-weighted_attributes <- weighted_attributes[1:16,]
-```
-
-Next create ggplot objects
+Next ggplot objects
 
 ```{r, warning = FALSE, message = FALSE, size = "tiny"}
-#Create series of plots using combined data frame
-uni1 <- ggplot(data = unweighted_attributes,
-        aes(x = pcoa1, y = pcoa2, color = Filtering, shape = Age)) +
-        geom_point(size = 2) +
-        labs(x = paste("PCoA 1 (", round(100 * urel_eig[[1]],1), "%", ")", sep = ""),
-        y = paste("PCoA 2 (", round(100 * urel_eig[[2]],1), "%", ")", sep = ""),
-        title = "Unweighted unifrac") +
-        scale_y_continuous(limits = c(-0.5, 0.5)) + 
-        scale_x_continuous(limits = c(-0.5, 0.5)) +
-        theme_hc(base_size = 9) + scale_color_igv()
-uni2 <- ggplot(data = weighted_attributes,
-        aes(x = pcoa1, y = pcoa2, color = Filtering, shape = Age)) +
-        geom_point(size = 2) +
-        labs(x = paste("PCoA 1 (", round(100 * wrel_eig[[1]],1), "%", ")", sep = ""),
-        y = paste("PCoA 2 (", round(100 * wrel_eig[[2]],1), "%", ")", sep = ""),
-        title = "Weighted unifrac") +
-        scale_y_continuous(limits = c(-0.5, 0.5)) + 
-        scale_x_continuous(limits = c(-0.5, 0.5)) +
-        theme_hc(base_size = 9) + scale_color_igv()
-uni3 <- ggplot(data = unweighted_attributes,
-        aes(x = pcoa1, y = pcoa2, color = Algae, shape = Age)) +
-        geom_point(size = 2) +
-        labs(x = paste("PCoA 1 (", round(100 * urel_eig[[1]],1), "%", ")", sep = ""),
-        y = paste("PCoA 2 (", round(100 * urel_eig[[2]],1), "%", ")", sep = ""),
-        title = "Unweighted unifrac") +
-        scale_y_continuous(limits = c(-0.5, 0.5)) + 
-        scale_x_continuous(limits = c(-0.5, 0.5)) +
-        theme_hc(base_size = 9) + scale_color_igv() +
-        theme(legend.position = "bottom", legend.box = "vertical",
-              legend.margin = margin())
-uni4 <- ggplot(data = weighted_attributes,
-        aes(x=pcoa1, y=pcoa2, color = Algae, shape = Age)) +
-        geom_point(size=2) +
-        labs(x = paste("PCoA 1 (", round(100 * wrel_eig[[1]],1), "%", ")", sep = ""),
-        y = paste("PCoA 2 (", round(100 * wrel_eig[[2]],1), "%", ")", sep = ""),
-        title = "Weighted unifrac") +
-        scale_y_continuous(limits = c(-0.5, 0.5)) + 
-        scale_x_continuous(limits = c(-0.5, 0.5)) +
-        theme_hc(base_size = 9) + scale_color_igv() +
-        theme(legend.position = "bottom", legend.box = "vertical",
-              legend.margin = margin())
+# Define a function to create the plots
+create_plot <- function(df, pcoa1, pcoa2, rel_eig, title, color_var, shape_var) {
+  ggplot(data = df, aes(x = pcoa1, y = pcoa2, color = !!sym(color_var), shape = !!sym(shape_var))) + geom_point(size = 2) +
+    labs(x = paste("PCoA 1 (", round(100 * rel_eig[1], 1), "%)", sep = ""),
+         y = paste("PCoA 2 (", round(100 * rel_eig[2], 1), "%)", sep = ""),
+         title = title) + scale_y_continuous(limits = c(-0.5, 0.5)) + 
+         scale_x_continuous(limits = c(-0.5, 0.5)) + theme_hc(base_size = 9) + 
+         scale_color_lancet() + theme(legend.position = "bottom",
+                                      legend.box = "vertical",
+                                      legend.margin = margin())
+}
+# List of plot parameters for looping
+plots_params <- list(
+  list(df = unweighted_df, pcoa1 = "pcoa1", pcoa2 = "pcoa2", rel_eig = rel_eig_unw, 
+       title = "Unweighted unifrac (Filtering and Age)", color_var = "Filtering", shape_var = "Age"),
+  list(df = weighted_df, pcoa1 = "pcoa1", pcoa2 = "pcoa2", rel_eig = rel_eig_w, 
+       title = "Weighted unifrac (Filtering and Age)", color_var = "Filtering", shape_var = "Age"),
+  list(df = unweighted_df, pcoa1 = "pcoa1", pcoa2 = "pcoa2", rel_eig = rel_eig_unw, 
+       title = "Unweighted unifrac (Algae and Age)", color_var = "Algae", shape_var = "Age"),
+  list(df = weighted_df, pcoa1 = "pcoa1", pcoa2 = "pcoa2", rel_eig = rel_eig_w, 
+       title = "Weighted unifrac (Algae and Age)", color_var = "Algae", shape_var = "Age")
+)
+# Create the plots using the parameters
+plots <- lapply(plots_params, function(params) {
+  create_plot(params$df, params$pcoa1, params$pcoa2, params$rel_eig, params$title, 
+              params$color_var, params$shape_var)
+})
 ```
 
-\newpage
+Plot unifrac results
 
-First, comparison of culture filtering and age
-
-```{r plot6, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5,3.5)}
-uni1 + uni2
+```{r plot6, warning = F, message = F, size = "tiny", fig.dim = c(6,6)}
+wrap_plots(plots[[1]], plots[[2]], plots[[3]],plots[[4]], ncol=2)
 ```
 
-Next algae species along with culture age
-
-```{r plot7, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5, 3.5)}
-uni3 + uni4
-```
-
-Results are similar to Bray-Curtis. Weighted plots show smaller differences.
+Results are similar to Bray-Curtis, but weighted plots show only small differences with filtering. Explained variance is high, though.
 
 \newpage
 
@@ -514,13 +453,14 @@ Results are similar to Bray-Curtis. Weighted plots show smaller differences.
 
 Permanova measures importance of each variable to total variance.
 
-```{r permanova, warning = FALSE, message = FALSE, size = "tiny"}
-#dbRDA assay
-#tse <- transformAssay(tse, method = "relabundance")
-tse <- runRDA(tse, assay.type = "relabundance",
+```{r permanova, warning = F, message = F, size = "tiny"}
+# Reload tse
+tse <- readRDS("rds/tse.rds")
+# Calculate relabundance
+tse <- transformAssay(tse, method = "relabundance")
+tse <- addRDA(tse, assay.type = "relabundance", sample=11624,
                    formula = assay ~ Filtered + Age + Algae,
-                   distance = "bray",
-                   na.action = na.exclude)
+                   distance = "bray")
 rda_info <- attr(reducedDim(tse, "RDA"), "significance")
 kable(rda_info$permanova, digits = 2) %>%
                  kable_styling(latex_options = c("HOLD_position", "striped"), 
@@ -528,44 +468,41 @@ kable(rda_info$permanova, digits = 2) %>%
                  row_spec(0, background="indigo", color="ivory")
 ```
 
-Filtering is most important factor. Culture age is also statistically significant, while Algae is not.
+Variable groups explain 67 % of total variance. Filtering and Age are statistically significant, algae not.
 
-From same df, we can extract information, if homogeneity assumption is fulfilled.
+We also need to check if the homogeneity assumption is fulfilled
 
-```{r homogenuity, warning=FALSE, message=FALSE, size="tiny"}
+```{r homogenuity, warning=F, message=F, size="tiny"}
 kable(rda_info$homogeneity, digits = 2) %>%
                  kable_styling(latex_options = c("HOLD_position", "striped"),
                                font_size = 12) %>%
                  row_spec(0, background="indigo", color="ivory")
 ```
 
-Filtering fulfiill homogeneity assumption, Age doesn't
+Age does fulfill homogeneity, while filtering does fall slightly below 0.05 level. Algae groups are not homogenous. Results mean that in Filtered groups variance is quite different can contribute to differences measured.
 
-\newpage
+The plotRDA function can be used to visualize results.
 
-We can also plot results using plotRDA function from miaViz package.
-
-```{r plot8, warning = FALSE, message = FALSE, size = "tiny"}
+```{r plot8, warning = F, message = F, size = "tiny", fig.dim = c(6,4)}
 # Generate RDA plot
-permanova <- plotRDA(tse, "RDA", colour = "Filtered", shape = "Age", add.ellipse = FALSE,
-        parse.labels=TRUE)
+permanova <- plotRDA(tse, "RDA", colour_by="Filtered", shape="Age", add.ellipse="colour")
 permanova$scales$scales <- NULL
 #change dot size
-permanova$layers[[1]]$aes_params$size <-3
+permanova$layers[[1]]$aes_params$size <-2.5
 #add theme and color palette
 permanova  + theme_hc(base_size = 10) +
         scale_colour_igv() + labs(colour="Filtering") 
 ```
 
-\newpage
-
 ### Differential abundance
 
-Differential abundances of microbial features can be studied with several R packages. ALDEx2 is one of the them.
+Differential abundance can be studied with several R packages. Here we use ALDEx2, ANCOM-BC and Maaslin.
 
-Data is preprocessed by removing taxa based on low prevalenc. Also, raw wastewater sample is dropped.
+First, data is filtered by prevalence. Also taxonomy table is extracted for later use.
 
 ```{r daa, warning = FALSE, message = FALSE, size = "tiny"}
+# Reload data
+tse <- readRDS("rds/tse.rds")
 #Filtering data based on prevalence.We also drop uncategorized raw wastewater
 tse_daa <- subsetByPrevalentTaxa(tse[,1:16], detection = 0, prevalence = 0.1)
 #We prepare also list of all taxa labels for later use
@@ -577,50 +514,47 @@ colnames(featureids) <- c("ASV","taxon")
 
 Aldex2 analysis on *filtered* category.
 
-```{r aldex2, warning = FALSE, message = FALSE, size = "tiny"}
+```{r aldex2, warning = F, message = F, size = "tiny"}
 #ALDEx2 analysis can be performed in modular fashion
 #aldex.clr - generates random instances of the centred log-ratio transformed values
-filter_aldex <- aldex.clr(assay(tse_daa), tse_daa$Filtered, useMC = TRUE, mc.samples=256, verbose = FALSE)  
+filter_aldex <- aldex.clr(assay(tse_daa), tse_daa$Filtered, useMC = T, mc.samples=256, verbose = F)  
 #aldex.ttest - perform Welch’s t and Wilcoxon  test when there are only two conditions
-filter_tt <- aldex.ttest(filter_aldex, paired.test = FALSE, verbose = FALSE)
+filter_tt <- aldex.ttest(filter_aldex, paired.test = F, verbose = F)
 #aldex.effect - estimate effect size and the within and between condition values
-filter_effect <- aldex.effect(filter_aldex, CI = TRUE, verbose = FALSE)
+filter_effect <- aldex.effect(filter_aldex, CI = T, verbose = F)
 #Merge two outputs 
 filter_aldex_out <- data.frame(filter_tt, filter_effect)
 #Create plots
-par(mfrow = c(1, 2))
-  aldex.plot(filter_aldex_out, type = "MA", test = "welch")
-  aldex.plot(filter_aldex_out, type = "MW", test = "welch")
+aldex.plot(filter_aldex_out, type="volcano", test="welch", xlab="Difference",
+           ylab="-1(log10(q))", Main="Volcano plot")
 ```
 
-In figure, red dots represent significantly changed taxa, grey dots are abundant taxa and black dots are rare taxa.
+In plot, red dots represent significantly changed taxa, grey dots are abundant taxa and black dots are rare taxa.
 
-\newpage
-
-We have five variants in which wilcoxon probability test result is p \<= 0.05.
+Aldex found five variants, where wilcoxon probability test result is p \<= 0.05.
 
 ```{r aldex_table, warning=FALSE, message=FALSE, size="tiny"}
 #Filter significantly different taxa and create table
 aldex_res <- rownames_to_column(filter_aldex_out, "genus")
-aldex_res <- aldex_res %>% dplyr::filter(wi.eBH <= 0.05) %>% dplyr::select(genus, we.eBH, wi.eBH, effect, overlap)
+aldex_res <- aldex_res %>% dplyr::filter(wi.eBH <= 0.05) %>% 
+  dplyr::select(genus, we.eBH, wi.eBH, effect, overlap)
 #Merge genus id and taxa names into single table
 identity <- merge(aldex_res, featureids, by.x=c("genus"), by.y=c("ASV"))
-identity <- identity %>% relocate("genus","taxon","we.eBH","wi.eBH","effect","overlap")
+identity <- identity %>% relocate("genus", "taxon", "we.eBH", "wi.eBH",
+                                  "effect", "overlap")
 kable(identity, digits=2) %>% kable_styling(latex_options = c("HOLD_position",
                                                             "striped"),
                                             font_size = 12) %>%
   row_spec(0, background="indigo", color="ivory")
 ```
 
-Testing algae types or culture age did not provide significantly different features
-
-\newpage
+Testing algae or culture age did not provide results.
 
 Ancom-BC2 (Analysis of Compositions of Microbiomes with Bias Correction)
 
-```{r ancom, warning = FALSE, message = FALSE, size = "tiny", eval = FALSE}
+```{r ancom, warning = F, message = F, size = "tiny", eval = F}
 #Perform the analysis 
-ancom_out = ancombc2(data = tse_daa, assay_name = "relabundance",
+ancom_out = ancombc2(data = tse_daa, assay_name = "counts",
               fix_formula = "Filtered + Algae + Age", 
               p_adj_method = "holm", prv_cut = 0, lib_cut = 0, 
               group = "Filtered", struc_zero = TRUE, global = TRUE)
@@ -631,20 +565,23 @@ saveRDS(ancom_out, "rds/ancom_out.rds")
 ancom_out <- readRDS("rds/ancom_out.rds")
 ```
 
-Results are collected into out\$res data frame. We can filter statistically significant variants.
+Results are collected into out\$res data frame. We can filter significant variants.
 
 First variable is Filtering (yes/no)
 
-```{r ancom_table, warning = FALSE, message = FALSE, size = "tiny"}
+```{r ancom_table, warning = F, message = F, size = "tiny"}
 #Create data frame, filter Diff = TRUE and arrange by Lfc
 #We also combine taxaid and taxonomic name into first column for our figure
-df_filtered <- data.frame(ASV = ancom_out$res$taxon, Lfc =ancom_out$res$lfc_Filteredyes, SE =
-                         ancom_out$res$se_Filteredyes, Q = ancom_out$res$q_Filteredyes,
-                         Diff = ancom_out$res$diff_Filteredyes) %>%
-  filter(Diff == "TRUE") %>% arrange(desc(Lfc)) %>% left_join(featureids, by = "ASV")
+df_filtered <- data.frame(ASV = ancom_out$res$taxon,
+                          Lfc =ancom_out$res$lfc_Filteredyes,
+                          SE = ancom_out$res$se_Filteredyes,
+                          Q = ancom_out$res$q_Filteredyes, 
+                          Diff = ancom_out$res$diff_Filteredyes) %>%
+  filter(Diff == "TRUE") %>% arrange(desc(Lfc)) %>%
+  left_join(featureids, by = "ASV")
 df_filtered$ASV <- paste(df_filtered$ASV,df_filtered$taxon)
-df_filtered <- df_filtered %>% dplyr::select(,-6) %>%  mutate(Change = ifelse(Lfc > 0, "Positive LFC", "Negative LFC"))
-
+df_filtered <- df_filtered %>% dplyr::select(,-6) %>%
+  mutate(Change = ifelse(Lfc > 0, "Positive LFC", "Negative LFC"))
 kable (df_filtered, caption="Taxa that are changed by filtering",
        digits=2,) %>% kable_styling(latex_options = c("HOLD_position",
                                                             "striped"),
@@ -652,42 +589,39 @@ kable (df_filtered, caption="Taxa that are changed by filtering",
   row_spec(0, background="indigo", color="ivory")
 ```
 
-\newpage
-
 Bar plot of log fold changes including standard error
 
-```{r plot10, warning = FALSE, message = FALSE, size = "tiny", fig.dim = c(6.5,6)}
+```{r anc_plot, warning = F, message = F, size = "tiny", fig.dim = c(6,4)}
 #Create ordered taxa list
 p_filter <- ggplot(data = df_filtered, 
            aes(x = factor(ASV, level=df_filtered$ASV), y = Lfc, fill = Change,
-               color = Change)) + 
-  geom_bar(stat = "identity", width = 0.7, 
+               color = Change)) + geom_bar(stat = "identity", width = 0.7, 
            position = position_dodge(width = 0.4)) +
   geom_errorbar(aes(ymin = Lfc - SE, ymax = Lfc + SE), width = 0.2,
                 position = position_dodge(0.05), color = "black") + 
   labs(x = "Taxa", y = "Log fold change", 
        title = "Largest changes when samples are filtered") + 
-  theme_hc(base_size = 8) + scale_fill_igv() + scale_color_igv() + 
+  theme_hc(base_size = 8) + scale_fill_lancet() + scale_color_lancet() + 
   theme(plot.title = element_text(hjust = 0.5),
         panel.grid.minor.y = element_blank(),
         axis.text.x = element_text(angle = 90, hjust=1))
 p_filter
 ```
 
-\newpage
-
-Examination of Algae did not produce significant changes
+Testing algae did not provide results.
 
 Culture age variable.
 
-```{r ancom_table2, warning=FALSE, message=FALSE, size="tiny"}
+```{r age_ancom, warning=F, message=F, size="tiny"}
 #Create new data frame with Lfc, SE, Diff values
-df_age <- data.frame(ASV = ancom_out$res$taxon, Lfc =ancom_out$res$lfc_Age5, SE =
-                         ancom_out$res$se_Age5, Q = ancom_out$res$q_Age5,
-                         Diff = ancom_out$res$diff_Age5) %>%
-  filter(Diff == "TRUE") %>% arrange(desc(Lfc)) %>% left_join(featureids, by = "ASV")
+df_age <- data.frame(ASV = ancom_out$res$taxon, Lfc =ancom_out$res$lfc_Age5,
+                     SE = ancom_out$res$se_Age5, Q = ancom_out$res$q_Age5, 
+                     Diff = ancom_out$res$diff_Age5) %>%
+  filter(Diff == "TRUE") %>% arrange(desc(Lfc)) %>%
+  left_join(featureids, by = "ASV")
 df_age$ASV <- paste(df_age$ASV,df_age$taxon)
-df_age <- df_age %>% dplyr::select(,-6) %>%  mutate(Change = ifelse(Lfc > 0, "Positive LFC", "Negative LFC"))
+df_age <- df_age %>% dplyr::select(,-6) %>%
+  mutate(Change = ifelse(Lfc > 0, "Positive LFC", "Negative LFC"))
 kable (df_age, caption="Taxa that are changed by culture length",
        digits=2,) %>% kable_styling(latex_options = c("HOLD_position",
                                                             "striped"),
@@ -699,7 +633,7 @@ kable (df_age, caption="Taxa that are changed by culture length",
 
 Bar plot of LFC including standard error.
 
-```{r plot11, warning=FALSE, message=FALSE, size="tiny", fig.dim = c(6.5,6)}
+```{r plot11, warning=FALSE, message=FALSE, size="tiny", fig.dim = c(6,4)}
 p_day <- ggplot(data = df_age, 
            aes(x = factor(ASV, level=df_age$ASV), y = Lfc,
                fill = Change, color = Change)) + 
@@ -707,19 +641,17 @@ p_day <- ggplot(data = df_age,
            position = position_dodge(width = 0.4)) +
   geom_errorbar(aes(ymin = Lfc - SE, ymax = Lfc + SE), width = 0.2,
                 position = position_dodge(0.05), color = "black") + 
-  labs(title = "Largest changes by culture length") + 
-  theme_hc(base_size=8) +  scale_fill_igv() + scale_color_igv() +
+  labs(x = "Taxa", title = "Largest changes by culture time") + 
+  theme_hc(base_size=8) +  scale_fill_lancet() + scale_color_lancet() +
   theme(plot.title = element_text(hjust = 0.5),
         panel.grid.minor.y = element_blank(),
         axis.text.x = element_text(angle = 90, hjust = 1))
 p_day
 ```
 
-\newpage
+MaAsLin2
 
-MaAsLin2 package is another DAA analysis package.
-
-```{r maaslin, warning = FALSE, message = FALSE, results = FALSE, size = "tiny", eval = FALSE}
+```{r maaslin, warning = F, message = F, results = F, size = "tiny", eval = F}
 #Maaslin requires data frame as metadata input
 meta_data <- data.frame(colData(tse_daa))
 #Counts table needs to be transposed
@@ -739,34 +671,30 @@ maaslin_filtering <- Maaslin2(
 saveRDS(maaslin_filtering, "rds/maaslin_filtering.rds")
 ```
 
-**Note**: Maaslin2 will also write results to output folder defined. If you use several fixed effects, it will create additional heatmap plot.
+**Note**: Maaslin2 will also write results to defined output folder. If you use several fixed effects, it creates also heatmap presentation.
 
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
+```{r, warning = F, message = F, size = "tiny"}
 maaslin_filtering <- readRDS("rds/maaslin_filtering.rds")
 ```
 
-\newpage
-
 Filtering significant results to table by qval value (\<= 0.05).
 
-```{r maaslin_table, warning = FALSE, message = FALSE,size = "tiny"}
-maaslin_table <- maaslin_filtering$results %>% dplyr::select(ASV = feature,
-                                                        Coef = coef, SE = stderr,qval,
-                                                        N, Nonzero = N.not.zero) %>%
-  filter(qval <= 0.05) %>% arrange(desc(Coef))
+```{r maaslin_table, warning = F, message = F,size = "tiny"}
+maaslin_table <- maaslin_filtering$results %>%
+  dplyr::select(ASV = feature, Coef = coef, SE = stderr,qval,
+                N, Nonzero = N.not.zero) %>% filter(qval <= 0.05) %>%
+  arrange(desc(Coef))
 kable(maaslin_table, digits=2) %>% kable_styling(latex_options = c("HOLD_position",
                                                             "striped"),
-                                                 font_size = 12) %>%
+                                                 font_size = 10) %>%
   row_spec(0, background="indigo", color="ivory")
 ```
 
-Testing algae and age did not provide significantly different variants
+Testing algae and age did not provide results.
 
-\newpage
+We can summarize results from different DAA methods and look for common features.
 
-For filtering, we can summarize results from different DAA functions and look for common features.
-
-```{r daa_summary, wargning = FALSE, message = FALSE, size = "tiny"}
+```{r daa_summary, wargning = F, message = F, size = "tiny"}
 #Create daa summaries
 aldex_summary <- aldex_res %>% dplyr::select(ASV = genus, Aldex2 = wi.eBH)
 ancom_summary <- ancom_out$res %>% dplyr::select(ASV=taxon, Ancombc2 = q_Filteredyes) %>%
@@ -784,7 +712,7 @@ daa_summary <- daa_summary %>% dplyr::mutate(
 ) %>% filter(Score > 1)
 daa_summary <- daa_summary %>% left_join(featureids, by = "ASV") %>% arrange(ASV)
 daa_summary <- daa_summary[c("ASV","taxon", "Aldex2", "Ancombc2","Maaslin2","Score")]
-kable(daa_summary, caption="Differential taxa with score of 2") %>%
+kable(daa_summary, caption="Differential taxa with minimum score of 2") %>%
   kable_styling(latex_options = c("HOLD_position", "striped"),
                 font_size = 12) %>%
   row_spec(0, background="indigo", color="ivory")
