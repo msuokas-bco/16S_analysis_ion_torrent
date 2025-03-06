@@ -5,7 +5,6 @@ format: pdf
 pdf-engine: lualatex
 editor: visual
 mainfont: Aptos
-monofont: PT Mono
 always_allow_html: yes
 header-includes:
    \usepackage[dvipsnames]{xcolor}
@@ -15,54 +14,60 @@ header-includes:
    \definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
 ---
 
-```{r, include = FALSE}
-#Code to adjust text size inside R code chunks, default is normal size
+```{r, include = F}
+
+# Code to adjust text size inside R code chunks, default is normal size
 def.chunk.hook  <- knitr::knit_hooks$get("chunk")
 knitr::knit_hooks$set(chunk = function(x, options) {
   x <- def.chunk.hook(x, options)
-  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n",
+                                              x, "\n\n \\normalsize"), x)
 })
-```
 
-#### Load libraries
-
-```{r libraries, warning=FALSE, message=FALSE, size = "tiny"}
+# Load libraries
 library(dada2);packageVersion("dada2")
+library(mia)
 library(knitr);packageVersion("knitr")
 library(Biostrings);packageVersion("Biostrings")
 library(DECIPHER);packageVersion("DECIPHER")
-library(phyloseq);packageVersion("phyloseq")
 library(tidyverse);packageVersion("tidyverse")
 library(kableExtra);packageVersion("kableExtra")
 library(patchwork);packageVersion("patchwork")
 ```
 
-\newpage
-
 #### Parameters
 
-```{r parameters, warning = FALSE, message = FALSE, size = "tiny"}
-#Path variables
+```{r parameters, warning = F, message = F, size = "small"}
+# Path to reads
 path <- "data/reads"
-training <- "~/feature_classifiers/SILVA_SSU_r138_2019.RData"
+
+# Path to taxonomy reference
+refdb <- "~/reference/silva_nr99_v138.1_train_set.fa.gz"
+
+# Path to metadata
 meta_file <- "data/metadata.tsv"
-exportloc <- "result_tables"
-#Truncation length and phix (Illumina)
+
+# Path to export directory
+exportloc <- "results"
+
+# Dada settings
 truncation <- 245
 phi <- FALSE
+
 #Name of first column in metadata file
 meta_1stcol <- "Sampleid"
+
 #Create results directory
 dir.create(exportloc)
 ```
 
 #### Sample lists
 
-```{r lists, warning=FALSE, message=FALSE, size="tiny"}
+```{r lists, warning=F, message=F, size="small"}
 #List files in path
 list.files(path)
 #Filenames have format: SAMPLENAME_R1_001.fastq
-fnFs <- sort(list.files(path, pattern = "_R1_001.fastq", full.names = TRUE))
+fnFs <- sort(list.files(path, pattern = "_R1_001.fastq", full.names = T))
 # Extract sample names, assuming pattern
 sample.names <- sapply(strsplit(basename(fnFs), "_"), `[`, 1)
 #Filtered files will be placed in filtered/ subdirectory
@@ -76,7 +81,7 @@ names(filtFs) <- sample.names
 
 #### Quality profile
 
-```{r qplot, warning=FALSE, message=FALSE, size = "tiny", fig.dim=c(7,7)}
+```{r qplot, warning=F, message=F, size = "small", fig.dim=c(6.5,6)}
 # Base quality plot in first 6 samples
 plotQualityProfile(fnFs[1:6])
 ```
@@ -85,17 +90,17 @@ plotQualityProfile(fnFs[1:6])
 
 ### Filtering and trimming reads
 
-```{r filtering, warning=FALSE, message=FALSE, eval = FALSE, size = "tiny"}
+```{r filtering, warning=F, message=F, eval = F, size = "small"}
 #Filtered files will be placed in filtered/ subdirectory
-out <- filterAndTrim(fnFs, filtFs, truncLen=245,
+out <- filterAndTrim(fnFs, filtFs, truncLen=truncation,
                      maxN=0, maxEE=2, truncQ=2,
-                     compress=TRUE, multithread=FALSE)
+                     compress=TRUE, multithread=8)
 #Output is saved to rds file, so we don't have to recalculate, if we make changes
 #If you are making changes to chunk, change eval = TRUE
 saveRDS(out,"rds/out.rds")
 ```
 
-```{r rds1, warning = FALSE, message = FALSE, size = "tiny"}
+```{r rds1, warning = F, message = F, size = "small"}
 #read rds file
 out <- readRDS("rds/out.rds")
 ```
@@ -108,14 +113,14 @@ For ITS sequencing, it is usually undesirable to truncate reads to a fixed lengt
 
 Step determinates error rate of dataset using *learnErrors* function.
 
-```{r learnerrors, warning=FALSE, message=FALSE, size = "tiny", eval = FALSE}
+```{r learnerrors, warning=F, message=F, size = "small", eval = F}
 # Forward read error rate
-errF <- learnErrors(filtFs, multithread=TRUE)
+errF <- learnErrors(filtFs, multithread=8)
 # saverds
 saveRDS(errF,"rds/errF.rds")
 ```
 
-```{r rds2, warning = FALSE, message = FALSE, size = "tiny"}
+```{r rds2, warning = F, message = F, size = "small"}
 errF <- readRDS("rds/errF.rds")
 ```
 
@@ -123,7 +128,7 @@ errF <- readRDS("rds/errF.rds")
 
 #### Plot error profiles
 
-```{r errorplot, warning=FALSE, message=FALSE, size = "tiny", fig.dim = c(6.5,6)}
+```{r errorplot, warning=F, message=F, size = "small", fig.dim = c(6.5,6)}
 # Plotting error rate profile for forward reads
 plotErrors(errF, nominalQ=TRUE)
 ```
@@ -132,21 +137,22 @@ plotErrors(errF, nominalQ=TRUE)
 
 #### Denoise data
 
-```{r denoise, warning=FALSE, message=FALSE, eval = FALSE, size = "tiny"}
+```{r denoise, warning=F, message=F, eval = F, size = "small"}
 #denoise command
-dadaFs <- dada(filtFs, err=errF, multithread=TRUE)
+dadaFs <- dada(filtFs, err=errF, multithread=8)
 #save to rds file
 saveRDS(dadaFs,"rds/dadaFs.rds")
 ```
 
-```{r rds3, warning = FALSE, message = FALSE, size = "tiny"}
+```{r rds3, warning = F, message = F, size = "small"}
+
 #read rds
 dadaFs <- readRDS("rds/dadaFs.rds")
 ```
 
 #### Create ASV table
 
-```{r asvtable, warning=FALSE, message=FALSE, size = "tiny"}
+```{r asvtable, warning=F, message=F, size = "small"}
 seqtab <- makeSequenceTable(dadaFs)
 # Dimensions of ASV table
 dim(seqtab)
@@ -154,8 +160,9 @@ dim(seqtab)
 
 #### Remove chimeric variants
 
-```{r chimeras, warning=FALSE, message=FALSE, size = "tiny"}
-seqtab.nochim <- removeBimeraDenovo(seqtab, method = "consensus", multithread = TRUE, verbose = TRUE)
+```{r chimeras, warning=F, message=F, size = "small"}
+seqtab.nochim <- removeBimeraDenovo(seqtab, method = "consensus",
+                                    multithread = T, verbose = T)
 dim(seqtab.nochim)
 ```
 
@@ -163,12 +170,13 @@ dim(seqtab.nochim)
 
 #### Summary
 
-Summary can help to pinpoint if at some stage, abnormal amount of the data is lost
+Table can help to pinpoint if large amount of the data is lost at some point.
 
-```{r summary, warning=FALSE, message=FALSE, size = "small"}
+```{r summary, warning=F, message=F, size = "small"}
 getN <- function(x) sum(getUniques(x))
 track <- cbind(out, sapply(dadaFs, getN), rowSums(seqtab.nochim),
                rowSums(seqtab.nochim != 0))
+
 # If processing a single sample, replace sapply(dadaFs, getN) with getN(dadaFs)
 colnames(track) <- c("Input", "Filtered", "Denoised", "Nonchimeric", "Variants")
 rownames(track) <- sample.names
@@ -181,114 +189,115 @@ kable(track, caption="Denoising summary") %>%
 
 #### Assign taxonomy
 
-We use idTaxa from DECIPHER and Silva database to assign taxonomic information.
+We use assignTaxonomy from dada2 library and Silva database to assign taxonomic information.
 
-```{r taxonomy, warning = FALSE, message = FALSE, size = "tiny", eval = FALSE}
-#Create a DNAStringSet from the ASVs
-sequences <- DNAStringSet(getSequences(seqtab.nochim))
-# CHANGE TO THE PATH OF YOUR TRAINING SET
-load("~/feature_classifiers/SILVA_SSU_r138_2019.RData")
-#IdTaxa
-ids <- IdTaxa(sequences, trainingSet, strand="top", processors = 3, verbose = FALSE)
-ranks <- c("domain", "phylum", "class", "order", "family", "genus", "species") 
-#Convert the output object of class "Taxa" to a matrix analogous to the output from assignTaxonomy
-taxid <- t(sapply(ids, function(x) {
-        m <- match(ranks, x$rank)
-        taxa <- x$taxon[m]
-        taxa[startsWith(taxa, "unclassified_")] <- NA
-        taxa
-}))
-colnames(taxid) <- ranks; rownames(taxid) <- getSequences(seqtab.nochim)
-#save end result to rds
-saveRDS(taxid, "rds/taxid.rds")
+```{r taxonomy, warning = F, message = F, size = "small", eval = F}
+
+# Assign taxonomy
+taxa <- assignTaxonomy(colnames(seqtab.nochim), refFasta=refdb,
+                       multithread=8, verbose=T)
+# Add Species column
+taxa <- data.frame(taxa) %>% mutate(Species = NA)
+# Save rds
+saveRDS(taxa, "rds/taxa.rds")
 ```
 
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
-taxid <- readRDS("rds/taxid.rds")
+```{r, warning = F, message = F, size = "small"}
+
+taxa <- readRDS("rds/taxa.rds")
 ```
 
-#### Create phyloseq object
+#### Create TSE object
 
-```{r phyloseq, warning=FALSE, message=FALSE, size = "tiny"}
-# Reading tsv file, arranging first column to rownames and creating phyloseq object pseq
-samples_meta <- read_tsv("data/metadata.tsv", show_col_types = FALSE)
-samples_meta <- samples_meta %>% tibble::column_to_rownames("Sampleid")
-sampletable = sample_data(samples_meta)
-pseq <- phyloseq(otu_table(seqtab.nochim, taxa_are_rows = FALSE),
-               tax_table(taxid),
-               sampletable)
-#Viewing basic information of pseq object
-pseq
+```{r tse, warning=FALSE, message=FALSE, size = "small"}
+
+# Counts table is a matrix containing abundance information
+counts <- t(seqtab.nochim)
+rownames(counts) <- NULL
+
+# Metadata
+metafile <- read_tsv("data/metadata.tsv", show_col_types = T)
+metafile$Sampleid <- NULL
+
+# Taxonomy
+rownames(taxa) <- NULL
+
+# Create object
+tse <- TreeSummarizedExperiment(assays = list(counts = counts),
+                                rowData = DataFrame(taxa),
+                                colData = DataFrame(metafile))
+
+# Create novel variant names
+names(tse) <- paste0("ASV", seq(nrow(tse)))
+
+# Add representative sequences
+repseq <- Biostrings::DNAStringSet(colnames(seqtab.nochim))
+referenceSeq(tse) <- repseq 
 ```
 
 \newpage
 
 Our variant sequences are currently stored as names. They will moved to refseq and taxa names will be replaced by more convenient format
 
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
-repseq <- Biostrings::DNAStringSet(taxa_names(pseq))
-names(repseq) <- taxa_names(pseq)
-pseq <- merge_phyloseq(pseq, repseq)
-taxa_names(pseq) <- paste0("ASV", seq(ntaxa(pseq)))
-pseq
-```
-
-Finally, minor modifications for dataset. Number of taxa lost is checked at each step
-
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
-#We  capitalise taxonomic rank names
-colnames(tax_table(pseq)) <- c("Kingdom", "Phylum", "Class", 
-  "Order", "Family", "Genus", "Species")
-#Sample18 negative control in unnecessary as there is nothing to investigate
-pseq <- subset_samples(pseq, Name != "control")
-pseq
+```{r, warning = FALSE, message = FALSE, size = "small"}
+# Negative control sample 18 is unnecessary as number of counts are very low
+tse <- tse[,colData(tse)$Name != "control"]
+tse
 # Keeping all taxa that are not unknown at Kingdom rank
-pseq <- subset_taxa(pseq, Kingdom != "NA")
-pseq
+tse <- tse[rowData(tse)$Kingdom == "Bacteria"]
+tse
 # Keeping all that are not Chloroplastic at Order rank
-pseq <- subset_taxa(pseq, Order != "Chloroplast" | is.na(Order))
-pseq
+tse <- tse[rowData(tse)$Order != "Chloroplast" | is.na(rowData(tse)$Order)]
+tse
 # Keeping all that are not Mitochondrial at Family rank
-pseq <- subset_taxa(pseq, Family != "Mitochondria" | is.na(Family))
-pseq
+tse <- tse[rowData(tse)$Family != "Mitochondria" | is.na(rowData(tse)$Family)]
+tse
 ```
 
-In the end we have 17 samples and 1417 taxa
+In the end we have 17 samples and 1525 taxa
 
 \newpage
 
-#### Writing data
+#### Write object data
 
 Last step is to save data to suitable file formats.
 
 All variant sequences are save to fasta
 
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
-pseq %>% refseq() %>% writeXStringSet(paste0(exportloc,"/repseq.fasta"), append=FALSE,
-                                  compress=FALSE, format="fasta")
+```{r, warning = F, message = F, size = "small"}
+
+referenceSeq(tse) %>% writeXStringSet(paste0(exportloc,"/repseq.fasta"),
+                                      append=F, compress=F, format="fasta")
 ```
 
 Taxonomy table is converted to dataframe and written as tsv
 
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
-taxonomy <- as.data.frame(tax_table(pseq))
+```{r, warning = F, message = F, size = "small"}
+
+taxonomy <- as.data.frame(rowData(tse)) %>% rownames_to_column(var="ASV")
 write_tsv(taxonomy, paste0(exportloc, "/taxonomy.tsv"))
 ```
 
 For metadata we add sampleid colum and write as tsv
 
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
-sampleid <- sample_names(pseq)
-metafile <- sample_data(pseq)
-metadf <- data.frame(sampleid,metafile)
-write_tsv(metadf, paste0(exportloc, "/metadata.tsv"))
+```{r, warning = F, message = F, size = "small"}
+
+metadf <- data.frame(sampleid=rownames(colData(tse)), colData(tse))
+write_tsv(metadf, paste0(exportloc, "/meta.tsv"))
 ```
 
 ASV count data need to be transposed prior writing
 
-```{r, warning = FALSE, message = FALSE, size = "tiny"}
-ASV_names <- taxa_names(pseq)
-ASV_counts <- t(otu_table(pseq))
-ASVdf <- (data.frame(ASV_names,ASV_counts))
-write_tsv(ASVdf, paste0(exportloc, "/fishery_asvs.tsv"))
+```{r, warning = F, message = F, size = "small"}
+
+ASVdf <-  data.frame(ASV = rownames(tse),assay(tse, "counts"))
+write_tsv(ASVdf, paste0(exportloc, "/asvs.tsv"))
+```
+
+TSE files is saved as RDS
+
+```{r, warning = F, message = F, size = "small"}
+
+saveRDS(tse, paste0(exportloc, "/tse.rds"))
+
 ```
